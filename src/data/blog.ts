@@ -36,8 +36,8 @@ export async function markdownToHTML(markdown: string) {
   return p.toString();
 }
 
-export async function getPost(slug: string) {
-  const filePath = path.join("content", `${slug}.mdx`);
+export async function getPost(folder:string, slug: string) {
+  const filePath = path.join(folder, `${slug}.mdx`);
   let source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = matter(source);
   const content = await markdownToHTML(rawContent);
@@ -53,7 +53,7 @@ async function getAllPosts(dir: string) {
   return Promise.all(
     mdxFiles.map(async (file) => {
       let slug = path.basename(file, path.extname(file));
-      let { metadata, source } = await getPost(slug);
+      let { metadata, source } = await getPost(dir, slug);
       return {
         metadata,
         slug,
@@ -63,6 +63,6 @@ async function getAllPosts(dir: string) {
   );
 }
 
-export async function getBlogPosts() {
-  return getAllPosts(path.join(process.cwd(), "content"));
+export async function getBlogPosts(folder: string) {
+  return getAllPosts(path.join(process.cwd(), folder));
 }

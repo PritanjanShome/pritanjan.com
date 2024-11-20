@@ -5,8 +5,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+const folder = "content/blogs";
+
 export async function generateStaticParams() {
-  const posts = await getBlogPosts();
+  const posts = await getBlogPosts(folder);
   return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -17,7 +19,7 @@ export async function generateMetadata({
     slug: string;
   };
 }): Promise<Metadata | undefined> {
-  let post = await getPost(params.slug);
+  let post = await getPost(folder, params.slug);
 
   let {
     title,
@@ -58,7 +60,7 @@ export default async function Blog({
     slug: string;
   };
 }) {
-  let post = await getPost(params.slug);
+  let post = await getPost(folder, params.slug);
 
   if (!post) {
     notFound();
