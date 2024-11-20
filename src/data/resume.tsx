@@ -12,17 +12,22 @@ export const DATA = {
     "I’m a product designer turned product leader and co- founder with 8+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
   avatarUrl: "/me.png",
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
-    "Python",
-    "Go",
-    "Postgres",
-    "Docker",
-    "Kubernetes",
-    "Java",
-    "C++",
+    "Strategic Thinking",
+    "Team Building",
+    "Product Life-Cycle Management",
+    "Product Development & Design",
+    "Product Requirement Diagrams",
+    "Agile & Scrum Methodologies",
+    "Technology Integration & Adoption",
+    "Stakeholder Management",
+    "Competitive Analysis",
+    "User Metrics & Data Analysis",
+    "UI/UX Design",
+    "Usability Testing ",
+    "User Research",
+    "Illustrations and UI Graphics",
+    "Prototyping",
+    "Responsive Design",
   ],
   featuredSkills: [
     {
@@ -50,48 +55,20 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/resume", icon: BriefcaseBusiness, label: "Resume"},
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
-    { href: "/work", icon: BriefcaseBusiness, label: "Work" },
+    // { href: "/resume", icon: BriefcaseBusiness, label: "Resume"},
+    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    // { href: "/work", icon: BriefcaseBusiness, label: "Work" },
     { href: "/contact", icon: Contact, label: "Contact Me" },
   ],
   contact: {
     email: "hello@example.com",
     tel: "+123456789",
     social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/princealikhan",
-        icon: Icons.github,
-
-        navbar: true,
-      },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/pritanjan-shome-843612103",
         icon: Icons.linkedin,
-
         navbar: true,
-      },
-      X: {
-        name: "X",
-        url: "https://x.com/PrinceAliKhan_",
-        icon: Icons.x,
-
-        navbar: true,
-      },
-      Dribble: {
-        name: "Dribble",
-        url: "https://dribbble.com/Pritanjan",
-        icon: Icons.dribble,
-        navbar: true,
-      },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.email,
-
-        navbar: false,
       },
     },
   },
