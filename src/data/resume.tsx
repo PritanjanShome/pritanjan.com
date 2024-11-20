@@ -7,10 +7,9 @@ export const DATA = {
   url: "https://pritanjan.com",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Life.",
+  description: "Co-founder, Product and Design",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "I’m a product designer turned product leader and co- founder with 8+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
   avatarUrl: "/me.jpg",
   skills: [
     "React",
@@ -98,30 +97,82 @@ export const DATA = {
   },
   work: [
     {
-      company: "Atomic Finance",
-      href: "https://atomic.finance",
+      title: "Co-Founder, Product & Design",
+      company: "Retrac GmbH",
+      location: "Berlin Germany",
+      href: "https://www.heyresi.com",
       badges: [],
-      location: "Remote",
-      title: "Bitcoin Protocol Engineer",
-      logoUrl: "/atomic.png",
-      start: "May 2021",
-      end: "Oct 2022",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+      logoUrl: "/retrac.png",
+      start: "Aug 2021",
+      descriptions: [
+        "Led a team of 7 (Engineers & Designers) to develop and launch a SaaS-based property management platform in 1 year, managing the full product lifecycle, including roadmaps, PRDs, and sprints.",
+        "Prioritized customer pain points, improving client ROI from 2.4x to 3.4x, and partnered with Hasso Plattner Institute to implement gamification strategy to reduce tenant energy consumption by 9%.",
+        "Designed scalable web and mobile apps (Android/iOS) with React Native and Material UI3, improving development speed by 25% and enabling white-label customisation to reduce app launch timelines from 30 to 2 days.",
+        "Conducted user research and usability testing with 50+ participants, driving a 25% increase in user engagement by simplifying workflows and optimizing user experience.",
+        "Collaborated with sales and stakeholders to define go-to-market strategies, competitive analysis, and a scalable business model.",
+        "Developed a business plan with clear growth metrics and KPIs, improving operational efficiency and market positioning."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Created gamification strategy with HPI, saving annually €89,000 across 2,100 apartments, directed an app development pipeline enabling multi white-label app distribution with configuration."
+      }
     },
     {
-      company: "Finance",
-      href: "https://atomic.finance",
+      title: "Associate",
+      company: "Roundglass H2O Pvt. Ltd.",
+      location: "Bangalore, India",
+      href: "https://round.glass",
       badges: [],
-      location: "Remote",
-      title: "Protocol Engineer",
-      logoUrl: "/atomic.png",
-      start: "May 2021",
-      end: "Oct 2022",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+      logoUrl: "/rg.png",
+      start: "Nov 2019",
+      end: "Mar 2021",
+      descriptions: [
+        "Integrated key features from the Zoojoobe and Aware apps into the Roundglass Reach platform, driving seamless functionality and coherence across digital offerings.",
+        "Conducted user research and translated insights into wireframes and prototypes to enhance functionality and user experience.",
+        "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Increased daily In-bound channel impressions from 150-170 to 700-800 clicks, increased user retention by 8%."
+      }
     },
-
+    {
+      title: "Associate",
+      company: "Aware Mindful Meditation",
+      location: "Bangalore, India",
+      href: "https://round.glass",
+      badges: [],
+      logoUrl: "/aware.png",
+      start: "Jan 2017",
+      end: "July 2018",
+      descriptions: [
+        "Worked with the design and product team, creating UI/UX designs and conducting user research and usability testing.",
+        "Collaborated closely with developers, product managers and marketing teams to ensure cohesive product development."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Achieved high user satisfaction with Google Play Store rating of 4.7 and Apple App Store rating of 4.8, with over 600,000 downloads"
+      }
+    },
+    {
+      title: "Associate Product Designer",
+      company: "Zoojoo.BE",
+      location: "Bangalore, India",
+      href: "https://round.glass",
+      badges: [],
+      logoUrl: "/zoojoobe.png",
+      start: "June 2016",
+      end: "July 2018",
+      descriptions: [
+        "Designed web and mobile application for habit formation app, incorporating user research and usability test findings.",
+        "Successfully adopted by corporates like HP, Accenture, Tesco, Bayer, and JLL, with over 500,000 registered users.",
+        "Contributed to the acquisition of Zoojoobe by a US-based company in 2018, with significant user base growth and corporate adoption."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Gained 52 corporates, over 500,000 registered users. Acquired by US based company in 2018."
+      }
+    },
   ],
   education: [
     {

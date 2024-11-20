@@ -3,6 +3,9 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
+import { WorkExperience } from "@/components/work-experience-card";
+
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
@@ -71,21 +74,23 @@ export default function Page() {
               <BlurFade delay={BLUR_FADE_DELAY * 5}>
                 <h2 className="text-xl font-bold">Work Experience</h2>
               </BlurFade>
-              {DATA.work.map((work, id) => (
+              {DATA.work.map((work:any, id) => (
                 <BlurFade
                   key={work.company}
                   delay={BLUR_FADE_DELAY * 6 + id * 0.05}
                 >
-                  <ResumeCard
-                    key={work.company}
+                  <WorkExperience
+                    key={id}
                     logoUrl={work.logoUrl}
                     altText={work.company}
-                    title={work.company}
-                    subtitle={work.title}
+                    title={work.title}
+                    company={work.company}
+                    location={work.location}
                     href={work.href}
                     badges={work.badges}
                     period={`${work.start} - ${work.end ?? "Present"}`}
-                    description={work.description}
+                    descriptions={work.descriptions}
+                    highlight={work.highlight}
                   />
                 </BlurFade>
               ))}
@@ -121,9 +126,9 @@ export default function Page() {
 
         </div> */}
       </div>
-      <BentoDemo/>       
+      {/* <BentoDemo/>        */}
 
-      <MarqueeDemo />
+      {/* <MarqueeDemo /> */}
 
 
 
