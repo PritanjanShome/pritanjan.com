@@ -3,14 +3,14 @@ import { BriefcaseBusiness, Contact, HomeIcon, NotebookIcon } from "lucide-react
 
 export const DATA = {
   name: "Pritanjan Shome",
-  initials: "DV",
+  initials: "PS",
   url: "https://pritanjan.com",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description: "Co-founder, Product and Design",
   summary:
     "I’m a product designer turned product leader and co- founder with 8+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.png",
   skills: [
     "React",
     "Next.js",
@@ -80,10 +80,10 @@ export const DATA = {
 
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
-        icon: Icons.youtube,
+      Dribble: {
+        name: "Dribble",
+        url: "https://dribbble.com/Pritanjan",
+        icon: Icons.dribble,
         navbar: true,
       },
       email: {
@@ -103,7 +103,7 @@ export const DATA = {
       href: "https://www.heyresi.com",
       badges: [],
       logoUrl: "/retrac.png",
-      start: "Aug 2021",
+      start: "Jan 2024",
       descriptions: [
         "Led a team of 7 (Engineers & Designers) to develop and launch a SaaS-based property management platform in 1 year, managing the full product lifecycle, including roadmaps, PRDs, and sprints.",
         "Prioritized customer pain points, improving client ROI from 2.4x to 3.4x, and partnered with Hasso Plattner Institute to implement gamification strategy to reduce tenant energy consumption by 9%.",
@@ -117,6 +117,22 @@ export const DATA = {
         "message": "Created gamification strategy with HPI, saving annually €89,000 across 2,100 apartments, directed an app development pipeline enabling multi white-label app distribution with configuration."
       }
     },
+
+    {
+      title: "Working Student",
+      company: "Retrac GmbH",
+      location: "Berlin Germany",
+      href: "https://www.heyresi.com",
+      badges: [],
+      logoUrl: "/retrac.png",
+      start: "Aug 2021",
+      end: "Dec 2023",
+      descriptions: [
+       "Helped conceptualise the product, developed MVP, and crafted product and business plans."
+      ],
+
+    },
+    
     {
       title: "Associate",
       company: "Roundglass H2O Pvt. Ltd.",
@@ -137,10 +153,46 @@ export const DATA = {
       }
     },
     {
+      title: "Purchase Intern",
+      company: "Kalyani Technoforge Pvt. Ltd.",
+      location: "Pune, India",
+      href: "#",
+      badges: [],
+      logoUrl: "/kalyani.png",
+      start: "Jul 2019",
+      end: "Sep 2019",
+      descriptions: [
+       "Negotiation and purchase of CapEx goods for setting up of a new plant in Baramati, India."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Saved €24,000 through cost optimisation and strategic improvements."
+      }
+    },
+    {
+      title: "Quality Assurance Intern",
+      company: "GKN Sinter Metals",
+      location: "Pimpri Chinchwad, India",
+      href: "#",
+      badges: [],
+      logoUrl: "/gkn.png",
+      start: "Jan 2019",
+      end: "Apr 2019",
+      descriptions: [
+        "Integrated key features from the Zoojoobe and Aware apps into the Roundglass Reach platform, driving seamless functionality and coherence across digital offerings.",
+        "Conducted user research and translated insights into wireframes and prototypes to enhance functionality and user experience.",
+        "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team."
+      ],
+      highlight: {
+        "type": "Highlights:",
+        "message": "Led a sub-supplier upgrade for audits, updating production documents and implementing QMS tools."
+      }
+    },
+    {
       title: "Associate",
       company: "Aware Mindful Meditation",
       location: "Bangalore, India",
-      href: "https://round.glass",
+      href: "https://awaremeditationapp.com",
       badges: [],
       logoUrl: "/aware.png",
       start: "Jan 2017",
@@ -158,7 +210,7 @@ export const DATA = {
       title: "Associate Product Designer",
       company: "Zoojoo.BE",
       location: "Bangalore, India",
-      href: "https://round.glass",
+      href: "https://zoojoo.be",
       badges: [],
       logoUrl: "/zoojoobe.png",
       start: "June 2016",
@@ -176,12 +228,22 @@ export const DATA = {
   ],
   education: [
     {
-      school: "Buildspace",
-      // href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
+      school: "Hochschule Harz",
+      href: "https://www.hs-harz.de/",
+      degree: "M.Sc in Technology and Innovation Management",
+      description: "GPA: 1.4 of 4",
+      logoUrl: "/hsharz.png",
+      start: "2021",
+      end: "2023",
+    },
+    {
+      school: "Manipal Institute of Technology (Sikkim)",
+      href: "https://smu.edu.in",
+      degree: "B.Tech in Mechanical Engineering",
+      description: "GPA: 1.69 of 4",
+      logoUrl: "/smit.png",
+      start: "2012",
+      end: "2016",
     },
   ],
   projects: [
