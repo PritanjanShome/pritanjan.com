@@ -1,8 +1,14 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+export const BLUR_FADE_DELAY = 0.04;
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+export function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
 }
 
 export function formatDate(date: string) {
@@ -36,9 +42,18 @@ export function formatDate(date: string) {
   }
 }
 
+// async function forceDownload(link: string, filename: string) {
+//   const headers = new Headers();
+//   const requestOptions: any = {
+//     method: "GET",
+//     headers,
+//     redirect: "follow",
+//   };
 
-export function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+//   const response = await fetch(link, requestOptions);
+//   const blob = await response.blob();
+//   const mimeType: any = response.headers.get("content-type");
 
-export const BLUR_FADE_DELAY = 0.04;
+//   const file = new File([blob], filename, { type: mimeType });
+//   saveAs(file);
+// }

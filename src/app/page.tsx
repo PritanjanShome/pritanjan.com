@@ -17,6 +17,7 @@ import { SparklesText } from "@/components/magicui/sparkles-text";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { BentoDemo } from "@/components/new-maal";
 import { ShineBorder } from "@/components/magicui/shine-border";
+import { RainbowButton } from "@/components/magicui/rainbow-button";
 
 export default function Page() {
   return (
@@ -65,6 +66,22 @@ export default function Page() {
                 {DATA.summary}
               </Markdown>
             </BlurFade>
+
+            
+            {
+              DATA.resume &&
+              <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                <a href="/test.pdf" download="cv">
+
+<RainbowButton className="mt-4 h-10 px-4  text-sm" >
+  Download Resume
+</RainbowButton>
+</a>
+            </BlurFade>
+             
+
+            }
+
           </section>
           <section id="work">
             <div className="flex min-h-0 flex-col gap-y-3">
