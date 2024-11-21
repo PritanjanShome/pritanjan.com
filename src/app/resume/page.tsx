@@ -17,7 +17,6 @@ import { BentoDemo } from "@/components/new-maal";
 import { ShineBorder } from "@/components/magicui/shine-border";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
-import { PulsatingButton } from "@/components/magicui/rainbow-button";
 import { WorkExperience } from "@/components/work-experience-card";
 // import { Button } from "@/components/ui/button";
 
@@ -59,9 +58,9 @@ export default function Page() {
               <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
                 {DATA.summary}
               </Markdown>
-                <PulsatingButton>
+                {/* <PulsatingButton>
                     Hola
-                </PulsatingButton>
+                </PulsatingButton> */}
             </BlurFade>
           </section>
           <section id="work">
