@@ -92,24 +92,24 @@ export default async function Blog({
         }}
       />
 
-      <main className="max-w-4xl mx-auto py-12 sm:py-24 px-6 min-h-[100dvh] space-y-10">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+      <main className="max-w-6xl mx-auto py-12 sm:py-24 px-6 min-h-[100dvh] space-y-10">
+        {/* <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
               {post.metadata.title}
             </h2>
           </div>
-        </div>
+        </div> */}
         <div className="mx-auto gap-6 grid grid-cols-1 items-center">
           <div>
-            <h1 className="title font-medium text-2xl tracking-tighter "></h1>
+            {/* <h1 className="title font-medium text-2xl tracking-tighter "></h1>
             <div className="flex justify-between items-center mt-2 mb-8 text-sm ">
               <Suspense fallback={<p className="h-5" />}>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400">
                   {formatDate(post.metadata.publishedAt)}
                 </p>
               </Suspense>
-            </div>
+            </div> */}
             <article
               className="prose dark:prose-invert max-w-full"
               dangerouslySetInnerHTML={{ __html: post.source }}
