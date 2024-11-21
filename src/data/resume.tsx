@@ -9,9 +9,9 @@ export const DATA = {
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description: "Co-founder, Product and Design",
   summary:
-    "I’m a product designer turned product leader and co- founder with 8+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
+    "I’m a product designer turned product leader and co- founder with 7+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
   avatarUrl: "/me.png",
-  resume: "/test.pdf",
+  resume: "/PritanjanShome_Resume.pdf",
   skills: [
     "Strategic Thinking",
     "Team Building",
@@ -59,7 +59,7 @@ export const DATA = {
     // { href: "/resume", icon: BriefcaseBusiness, label: "Resume"},
     // { href: "/blog", icon: NotebookIcon, label: "Blog" },
     // { href: "/work", icon: BriefcaseBusiness, label: "Work" },
-    { href: "/contact", icon: Contact, label: "Contact Me" },
+    // { href: "/contact", icon: Contact, label: "Contact Me" },
   ],
   contact: {
     email: "hello@example.com",
@@ -226,89 +226,117 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Dare",
-      href: "/work/dare",
-      dates: "Jan 2024 - Feb 2024",
-      active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    },
-    {
-      title: "Aware",
-      href: "/work/aware",
-      dates: "Jan 2024 - Feb 2024",
-      active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    },
-    {
-      title: "Gamification",
+      title: "Driving Sustainable Living Through Engagement",
       href: "/work/gamification",
-      dates: "Jan 2024 - Feb 2024",
+      // dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    }
+        "This is aimed at encouraging sustainable living through gamification in the **Resi** tenant app. I addressed key pain points such as a complex onboarding flow, overwhelming information, confusing navigation for gamified features, and low participation in community activities.",
+      // technologies: [
+      //   "Next.js",
+      //   "Typescript",
+      //   "PostgreSQL",
+      //   "Prisma",
+      //   "TailwindCSS",
+      //   "Stripe",
+      //   "Shadcn UI",
+      //   "Magic UI",
+      // ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://chatcollect.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
+      image: "/Gamification.png",
+      // video:
+      //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+    },
+    {
+      title: "Optimising the Tenant Move-Out Experience",
+      href: "/work/landlord",
+      // dates: "Jan 2024 - Feb 2024",
+      active: true,
+      description:
+        "I led the development of a move-out feature to simplify and enhance the tenant experience during the move-out process. The feature reduced operational redundancies and provided early assessments of apartment conditions, allowing property managers to minimise downtime between tenants. By offering structured insights for follow-up tasks, the project effectively streamlined operations and enhanced overall tenant satisfaction.",
+      // technologies: [
+      //   "Next.js",
+      //   "Typescript",
+      //   "PostgreSQL",
+      //   "Prisma",
+      //   "TailwindCSS",
+      //   "Stripe",
+      //   "Shadcn UI",
+      //   "Magic UI",
+      // ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://chatcollect.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
+      image: "/MoveOut.png",
+      // video:
+      //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+    },
+    {
+      title: "Enhancing User Experience for Mental Wellness",
+      href: "/work/aware",
+      // dates: "Jan 2024 - Feb 2024",
+      active: true,
+      description:
+        "Redesigned the Aware app to improve user experience and boost engagement. The redesign addressed major pain points such as difficult onboarding, overwhelming information, and low retention. We streamlined onboarding, improved content discoverability, and created personalised engagement strategies. These enhancements led to increased user satisfaction and improved daily active users.",
+      // technologies: [
+      //   "Next.js",
+      //   "Typescript",
+      //   "PostgreSQL",
+      //   "Prisma",
+      //   "TailwindCSS",
+      //   "Stripe",
+      //   "Shadcn UI",
+      //   "Magic UI",
+      // ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://chatcollect.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
+      image: "/aware-cover.png",
+      // video:
+      //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+    },
+    {
+      title: "Boosting Workplace Wellness Through Gamification",
+      href: "/work/dare",
+      // dates: "Jan 2024 - Feb 2024",
+      active: true,
+      description:
+        "Designed and launched **Dares** for the Zoojoobe wellness app to motivate healthy habits in the workplace. The feature used gamified challenges to boost user engagement, making wellness activities fun and interactive. We tackled challenges like low participation and difficulty in tracking progress by creating easy-to-join dares and introducing achievement notifications. This initiative led to increased activity rates and greater user enthusiasm for wellness.",
+      // technologies: [
+      //   "Next.js",
+      //   "Typescript",
+      //   "PostgreSQL",
+      //   "Prisma",
+      //   "TailwindCSS",
+      //   "Stripe",
+      //   "Shadcn UI",
+      //   "Magic UI",
+      // ],
+      // links: [
+      //   {
+      //     type: "Website",
+      //     href: "https://chatcollect.com",
+      //     icon: <Icons.globe className="size-3" />,
+      //   },
+      // ],
+      image: "/dare-cover.png",
+      // video:
+      //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+    },
   ],
   hackathons: [
     {

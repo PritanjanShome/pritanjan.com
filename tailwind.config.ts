@@ -88,6 +88,17 @@ const config = {
           "0%": { "background-position": "0%" },
           "100%": { "background-position": "200%" },
         },
+        shine: {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -95,6 +106,7 @@ const config = {
         "marquee": "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        shine: "shine var(--duration) infinite linear",
 
       },
     },
