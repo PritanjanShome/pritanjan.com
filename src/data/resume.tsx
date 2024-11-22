@@ -231,7 +231,7 @@ export const DATA = {
       // dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "This is aimed at encouraging sustainable living through gamification in the **Resi** tenant app. I addressed key pain points such as a complex onboarding flow, overwhelming information, confusing navigation for gamified features, and low participation in community activities.",
+        "Encouraged sustainable living in the **Resi** app through gamification, tackling issues like complex onboarding, overwhelming information, and low community engagement.",
       // technologies: [
       //   "Next.js",
       //   "Typescript",
@@ -259,7 +259,7 @@ export const DATA = {
       // dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "I led the development of a move-out feature to simplify and enhance the tenant experience during the move-out process. The feature reduced operational redundancies and provided early assessments of apartment conditions, allowing property managers to minimise downtime between tenants. By offering structured insights for follow-up tasks, the project effectively streamlined operations and enhanced overall tenant satisfaction.",
+        "Developed a move-out feature to simplify tenant experience, reduce redundancies, and minimize apartment downtime for property managers.",
       // technologies: [
       //   "Next.js",
       //   "Typescript",
@@ -287,7 +287,7 @@ export const DATA = {
       // dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "Redesigned the Aware app to improve user experience and boost engagement. The redesign addressed major pain points such as difficult onboarding, overwhelming information, and low retention. We streamlined onboarding, improved content discoverability, and created personalised engagement strategies. These enhancements led to increased user satisfaction and improved daily active users.",
+        "Redesigned the **Aware App** to boost user engagement by simplifying onboarding, improving discoverability, and creating personalized strategies.",
       // technologies: [
       //   "Next.js",
       //   "Typescript",
@@ -315,7 +315,7 @@ export const DATA = {
       // dates: "Jan 2024 - Feb 2024",
       active: true,
       description:
-        "Designed and launched **Dares** for the Zoojoobe wellness app to motivate healthy habits in the workplace. The feature used gamified challenges to boost user engagement, making wellness activities fun and interactive. We tackled challenges like low participation and difficulty in tracking progress by creating easy-to-join dares and introducing achievement notifications. This initiative led to increased activity rates and greater user enthusiasm for wellness.",
+        "Created **Dares** for the **Zoojoobe app** to gamify workplace wellness, increasing user engagement with fun, trackable challenges.",
       // technologies: [
       //   "Next.js",
       //   "Typescript",
