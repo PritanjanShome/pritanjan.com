@@ -254,7 +254,7 @@ export const DATA = {
       //   "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
     {
-      title: "Optimising the Tenant Move-Out Experience",
+      title: "Optimising & Streamling the Move-Out Process",
       href: "/work/landlord",
       // dates: "Jan 2024 - Feb 2024",
       active: true,

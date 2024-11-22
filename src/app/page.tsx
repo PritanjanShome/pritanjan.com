@@ -162,7 +162,7 @@ export default function Page() {
 
             <section id="projects">
               <div className="space-y-12 w-full py-4">
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 mx-auto">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 mx-auto">
                   {DATA.projects.map((project:any, id) => (
                     <BlurFade
                       key={project.title}
