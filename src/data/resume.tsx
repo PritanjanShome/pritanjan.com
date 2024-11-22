@@ -191,7 +191,7 @@ export const DATA = {
       href: "https://zoojoo.be",
       badges: [],
       logoUrl: "/zoojoobe.png",
-      start: "June 2016",
+      start: "Jan 2016",
       end: "July 2018",
       descriptions: [
         "Designed web and mobile application for habit formation app, incorporating user research and usability test findings.",
