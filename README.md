@@ -1,4 +1,4 @@
-# Getting Started Locally
+# Getting Started Locallys
 
 1. Clone this repository to your local machine:
 
