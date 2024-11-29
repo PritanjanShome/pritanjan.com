@@ -43,7 +43,7 @@ export function ProjectCard({
   return (
     <Card
       className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
+        "flex flex-col overflow-hidden transition-all duration-300 ease-out h-full"
       }
     >
       <Link
@@ -57,7 +57,7 @@ export function ProjectCard({
             loop
             muted
             playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="rounded-sm	 pointer-events-none mx-auto h-52 w-full object-cover " // needed because random black line at bottom of video
           />
         )}
         {image && (
@@ -66,11 +66,11 @@ export function ProjectCard({
             alt={title}
             width={500}
             height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
+            className="rounded-sm	h-52 w-full overflow-hidden object-cover "
           />
         )}
       </Link>
-      <CardHeader className="px-4">
+      <CardHeader className="">
         <div className="space-y-1">
           <CardTitle className="mt-2 mb-2 text-lg">{title}</CardTitle>
           <time className="font-sans text-xs">{dates}</time>
