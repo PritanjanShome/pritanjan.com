@@ -81,7 +81,7 @@ export default function Page() {
 
           <section>
             <BlurFade delay={BLUR_FADE_DELAY * 6}>
-              <h2 className="text-xl font-bold">
+              <h2 className="text-xl font-medium">
                 Check out my latest work
               </h2>
             </BlurFade>
@@ -115,7 +115,7 @@ export default function Page() {
           <section id="skills">
             <div className="flex min-h-0 flex-col gap-y-3">
               <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                <h2 className="text-xl font-bold">Skills</h2>
+                <h2 className="text-xl font-medium">Skills</h2>
               </BlurFade>
               <div className="flex flex-wrap gap-1">
                 {DATA.skills.map((skill, id) => (
@@ -133,7 +133,7 @@ export default function Page() {
           <section id="work">
             <div className="flex min-h-0 flex-col gap-y-3">
               <BlurFade delay={BLUR_FADE_DELAY * 8}>
-                <h2 className="text-xl font-bold">Work Experience</h2>
+                <h2 className="text-xl font-medium">Work Experience</h2>
               </BlurFade>
               {DATA.work.map((work: any, id) => (
                 <BlurFade
@@ -160,7 +160,7 @@ export default function Page() {
           <section id="education">
             <div className="flex min-h-0 flex-col gap-y-3">
               <BlurFade delay={BLUR_FADE_DELAY * 9}>
-                <h2 className="text-xl font-bold">Education</h2>
+                <h2 className="text-xl font-medium">Education</h2>
               </BlurFade>
               {DATA.education.map((education: any, id) => (
                 <BlurFade
