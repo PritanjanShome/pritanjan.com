@@ -69,7 +69,7 @@ export default function Page() {
 
             {DATA.resume && (
               <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                <a href={DATA.resume} download="cv">
+                <a href={DATA.resume} download="PritanjanShome_resume">
                   <RainbowButton className="mt-4 h-10 px-4  text-sm">
                     Download Resume
                   </RainbowButton>
