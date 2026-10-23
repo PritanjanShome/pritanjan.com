@@ -137,7 +137,7 @@ export default function Page() {
               </BlurFade>
               {DATA.work.map((work: any, id) => (
                 <BlurFade
-                  key={work.company}
+                  key={id}
                   delay={BLUR_FADE_DELAY * 6 + id * 0.05}
                 >
                   <WorkExperience

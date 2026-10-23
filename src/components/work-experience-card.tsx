@@ -92,7 +92,7 @@ export const WorkExperience = ({
             </div>
             {company && (
               <div className="font-sans text-xs font-medium">
-                {company}, {location}
+                {company}{location && `, ${location}`}
               </div>
             )}
           </CardHeader>

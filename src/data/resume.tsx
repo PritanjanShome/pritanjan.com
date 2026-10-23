@@ -5,30 +5,27 @@ export const DATA = {
   name: "Pritanjan Shome",
   initials: "PS",
   url: "https://pritanjan.com",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description: "Co-founder, Product and Design",
+  location: "Berlin, Germany",
+  locationLink: "https://www.google.com/maps/place/berlin",
+  description: "Head of Product | Product Strategy & AI Product Management | B2B SaaS · Enterprise Software | Product Discovery · Roadmapping · Product Ops | Former Co-Founder & CPO (Acquired 2024)",
   summary:
-    "I’m a product designer turned product leader and co- founder with 7+ years of experience building user-centric, scalable products. I specialise in UX design and product strategy, combining creative problem-solving with data- driven decision-making. My ability to bridge design and product management ensures impactful solutions that drive user engagement to fuel business growth.",
+    "Product leader and entrepreneur with 12+ years of experience in Product Management, Product Strategy, and Product Leadership across B2B SaaS, B2B2C, Enterprise Software, and digital products. I lead across Product Strategy → Customer Discovery → Prioritization → Roadmapping → Product Development → Execution → Outcomes, connecting customer needs, business strategy, technology, data, and AI to build scalable products and high-performing product organizations.\n\n" +
+    "My focus is AI-native Product Management — not just building AI-powered products, but embedding AI into the way product teams discover, strategize, prioritize, develop, and operate. My expertise spans AI Product Management, Product Portfolio Management, Product Discovery, Product Operations, Digital Transformation, Roadmapping, OKRs, and Product Development.\n\n" +
+    "I currently lead product teams across Germany, the US, and India, bringing a global, cross-cultural perspective to product leadership and collaboration. From founding my first company in 2013 to becoming a Co-Founder and CPO, I combine entrepreneurial experience, enterprise product leadership, and AI-native thinking to build products and teams that deliver measurable business value.",
   avatarUrl: "/me.png",
   resume: "/PritanjanShome_Resume.pdf",
   skills: [
-    "Strategic Thinking",
-    "Team Building",
-    "Product Life-Cycle Management",
-    "Product Development & Design",
-    "Product Requirement Diagrams",
-    "Agile & Scrum Methodologies",
-    "Technology Integration & Adoption",
-    "Stakeholder Management",
-    "Competitive Analysis",
-    "User Metrics & Data Analysis",
-    "UI/UX Design",
-    "Usability Testing ",
-    "User Research",
-    "Illustrations and UI Graphics",
-    "Prototyping",
-    "Responsive Design",
+    "Product Development",
+    "Product Leadership",
+    "Product Lifecycle Management",
+    "AI Product Management",
+    "Product Strategy",
+    "Product Portfolio Management",
+    "Product Discovery",
+    "Product Operations",
+    "Digital Transformation",
+    "Roadmapping",
+    "OKRs",
   ],
   featuredSkills: [
     {
@@ -67,7 +64,7 @@ export const DATA = {
     social: {
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/pritanjan-shome-843612103",
+        url: "https://www.linkedin.com/in/pritanjan-shome/",
         icon: Icons.linkedin,
         navbar: true,
       },
@@ -75,150 +72,146 @@ export const DATA = {
   },
   work: [
     {
-      title: "Co-Founder, Product & Design",
-      company: "Retrac GmbH",
-      location: "Berlin Germany",
-      href: "https://www.heyresi.com",
+      title: "Enterprise Product Leadership",
+      company: "Aptean",
+      location: "Berlin, Germany",
+      href: "https://www.aptean.com",
       badges: [],
-      logoUrl: "/retrac.png",
-      start: "Jan 2024",
+      logoUrl: "/aptean.png",
+      start: "Jul 2026",
       descriptions: [
-        "Led a team of 7 (Engineers & Designers) to develop and launch a SaaS-based property management platform in 1 year, managing the full product lifecycle, including roadmaps, PRDs, and sprints.",
-        "Prioritized customer pain points, improving client ROI from 2.4x to 3.4x, and partnered with Hasso Plattner Institute to implement gamification strategy to reduce tenant energy consumption by 9%.",
-        "Designed scalable web and mobile apps (Android/iOS) with React Native and Material UI3, improving development speed by 25% and enabling white-label customisation to reduce app launch timelines from 30 to 2 days.",
-        "Conducted user research and usability testing with 50+ participants, driving a 25% increase in user engagement by simplifying workflows and optimizing user experience.",
-        "Collaborated with sales and stakeholders to define go-to-market strategies, competitive analysis, and a scalable business model.",
-        "Developed a business plan with clear growth metrics and KPIs, improving operational efficiency and market positioning."
+        "Lead 3 product verticals and 12 Product Managers across Germany, US, and India, driving Product Strategy, Portfolio Management, Roadmapping, and Product Operations.",
+        "Manage 20+ product lines through a consolidated enterprise roadmap, identify integration opportunities across 6 product lines and reduce duplicated development by 3 instances.",
+        "Drive AI-native Product Management across distributed teams, embedding AI into Product Discovery, Knowledge Management, Requirements & Product Development."
       ],
-      highlight: {
-        "type": "Highlights:",
-        "message": "Created gamification strategy with HPI, saving annually €89,000 across 2,100 apartments, directed an app development pipeline enabling multi white-label app distribution with configuration."
-      }
     },
-
     {
-      title: "Working Student",
+      title: "Head of Product Management",
+      company: "Germanedge (an Aptean company)",
+      location: "Berlin, Germany",
+      href: "https://www.germanedge.com",
+      logoUrl: "/germanedge.png",
+      badges: [],
+      start: "Mar 2025",
+      descriptions: [
+        "Lead Product Management across 5 product domains, aligning Product, Engineering, Sales and Professional Services around Product Strategy and prioritisation.",
+        "Drive AI Discovery and Validation → 120 use cases, 17 prototypes, 7 enterprise customers; identify opportunities up to €100K+ ARR.",
+        "Embed AI-native Product Operations → reduce AI context consumption by 90%, knowledge updates 3–4h → 20–25 min, and PRD creation from 8–10 days → 3 h.",
+        "Standardise Release Management → achieve 100% release cadence adherence from Release 3, reduce final consolidation to 0.5 day.",
+        "Drive critical eVAC/VAC delivery 1 day ahead of deadline, addressing reported $2M legal exposure and enabling Phase 2."
+      ],
+    },
+    {
+      title: "Co-Founder & CPO",
       company: "Retrac GmbH",
-      location: "Berlin Germany",
+      location: "Berlin, Germany",
       href: "https://www.heyresi.com",
       badges: [],
       logoUrl: "/retrac.png",
       start: "Aug 2021",
-      end: "Dec 2023",
+      end: "Feb 2025",
       descriptions: [
-       "Helped conceptualise the product, developed MVP, and crafted product and business plans."
+        "Transformed SaaS POC into a scalable B2B2C PropTech platform spanning the full tenant lifecycle.",
+        "Led Product, Design, Strategy, Discovery and Roadmapping → scaled to 12 enterprise customers / 30,000+ apartments across iOS, Android and iPad.",
+        "Raised €200K seed funding and drove company-level Product, Technology, Customer Value and Growth strategy.",
+        "Drove behavioural product innovation → 9% / 15.62% consumption reduction and €90K annual savings across 2,000 apartments.",
+        "Supported a customer acquisition in 2024, taking the product from an early SaaS POC to an acquisition-ready platform in 2 years."
       ],
-
     },
-    
     {
-      title: "Associate",
-      company: "Roundglass H2O Pvt. Ltd.",
-      location: "Bangalore, India",
+      title: "Senior Product Manager",
+      company: "Roundglass Living",
+      location: "Bengaluru, India",
       href: "https://round.glass",
       badges: [],
       logoUrl: "/rg.png",
-      start: "Nov 2019",
+      start: "Sep 2018",
       end: "Mar 2021",
       descriptions: [
         "Integrated key features from the Zoojoobe and Aware apps into the Roundglass Reach platform, driving seamless functionality and coherence across digital offerings.",
         "Conducted user research and translated insights into wireframes and prototypes to enhance functionality and user experience.",
-        "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team."
+        "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team.",
+        "Responsible for designing and execution of marketing strategy in liaison within the product team.",
+        "Creating strategy, plan and execution for B2B and B2C market across mobile, tablet and web platforms.",
+        "Ideate, manage and track multi-channel outreach and acquisition campaign across digital and offline mediums to increase product conversion funnels.",
+        "Build a brand presence and a staunch community of follower across popular social media like Facebook, Instagram, Linkedin and Twitter.",
+        "Work closely with the various stakeholders to drive roadmaps, market research, customer feedback and user engagement."
       ],
-      highlight: {
-        "type": "Highlights:",
-        "message": "Increased daily In-bound channel impressions from 150-170 to 700-800 clicks, increased user retention by 8%."
-      }
     },
     {
-      title: "Purchase Intern",
-      company: "Kalyani Technoforge Pvt. Ltd.",
-      location: "Pune, India",
-      href: "#",
-      badges: [],
-      logoUrl: "/kalyani.png",
-      start: "Jul 2019",
-      end: "Sep 2019",
-      descriptions: [
-       "Negotiation and purchase of CapEx goods for setting up of a new plant in Baramati, India."
-      ],
-      highlight: {
-        "type": "Highlights:",
-        "message": "Saved €24,000 through cost optimisation and strategic improvements."
-      }
-    },
-    {
-      title: "Quality Assurance Intern",
-      company: "GKN Sinter Metals",
-      location: "Pimpri Chinchwad, India",
-      href: "#",
-      badges: [],
-      logoUrl: "/gkn.png",
-      start: "Jan 2019",
-      end: "Apr 2019",
-      descriptions: [
-        "Integrated key features from the Zoojoobe and Aware apps into the Roundglass Reach platform, driving seamless functionality and coherence across digital offerings.",
-        "Conducted user research and translated insights into wireframes and prototypes to enhance functionality and user experience.",
-        "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team."
-      ],
-      highlight: {
-        "type": "Highlights:",
-        "message": "Led a sub-supplier upgrade for audits, updating production documents and implementing QMS tools."
-      }
-    },
-    {
-      title: "Associate",
-      company: "Aware Mindful Meditation",
-      location: "Bangalore, India",
+      title: "Product Manager",
+      company: "Aware Mindful Meditation (acquired by Roundglass)",
+      location: "Bengaluru, India",
       href: "https://awaremeditationapp.com",
       badges: [],
       logoUrl: "/aware.png",
-      start: "Jan 2017",
-      end: "July 2018",
+      start: "Jun 2016",
+      end: "Aug 2018",
       descriptions: [
         "Worked with the design and product team, creating UI/UX designs and conducting user research and usability testing.",
         "Collaborated closely with developers, product managers and marketing teams to ensure cohesive product development."
       ],
       highlight: {
         "type": "Highlights:",
-        "message": "Achieved high user satisfaction with Google Play Store rating of 4.7 and Apple App Store rating of 4.8, with over 600,000 downloads"
+        "message": "Achieved high user satisfaction with Google Play Store rating of 4.7 and Apple App Store rating of 4.8, with over 600,000 downloads."
       }
     },
     {
-      title: "Associate Product Designer",
-      company: "Zoojoo.BE",
-      location: "Bangalore, India",
+      title: "Product Manager",
+      company: "Zoojoo.be (acquired by Roundglass)",
+      location: "Bengaluru, India",
       href: "https://zoojoo.be",
       badges: [],
       logoUrl: "/zoojoobe.png",
       start: "Jan 2016",
-      end: "July 2018",
+      end: "Aug 2018",
       descriptions: [
         "Designed web and mobile application for habit formation app, incorporating user research and usability test findings.",
         "Successfully adopted by corporates like HP, Accenture, Tesco, Bayer, and JLL, with over 500,000 registered users.",
-        "Contributed to the acquisition of Zoojoobe by a US-based company in 2018, with significant user base growth and corporate adoption."
+        "Contributed to the acquisition of Zoojoobe by a US-based company in 2018, with significant user base growth and corporate adoption.",
+        "Strategizing communication campaigns, so as to ensure seamless onboarding of new customers onto the platform.",
+        "Designing landing pages for clients as well as UI components.",
+        "Translating specific customer requirements into modular and scalable deliverables.",
+        "Working with stakeholders for continuous improvement in adoption and retention rates.",
+        "Process and cost optimization of various engagement activities at client locations.",
+        "Working with printing partners from multiple locations in India to cater to the print requirements of clients. Also, brought the cost of printing down by 35% in my first year of working with the company.",
+        "Working closely with the product team to understand user behaviour on the platform using tools such as Hotjar, Mix panel and Google Analytics.",
+        "Organising events at customer location to get feedback from the end-users.",
+        "Managing operations for HR conferences hosted by our company to generate customer leads."
       ],
       highlight: {
         "type": "Highlights:",
         "message": "Gained 52 corporates, over 500,000 registered users. Acquired by US based company in 2018."
       }
     },
+    {
+      title: "Founder (Acquired in 2015)",
+      company: "Deliver.it",
+      href: "#",
+      badges: [],
+      logoUrl: "",
+      start: "Aug 2013",
+      end: "Nov 2015",
+      descriptions: [
+        "Co-founded a hyperlocal delivery startup; built Product, Operations, Logistics & Vendor Network from concept to a profitable business.",
+        "Developed a mobile ordering platform connecting students with local food, grocery & stationery vendors.",
+        "Built foundational expertise in Entrepreneurship, Product Management, Operations & Service Design."
+      ],
+    },
   ],
   education: [
     {
       school: "Hochschule Harz",
       href: "https://www.hs-harz.de/",
-      degree: "M.Sc in Technology and Innovation Management",
-      description: "GPA: 1.4 of 4",
+      degree: "Master's degree, Technology and Innovation Management",
       logoUrl: "/hsharz.png",
-      start: "2021",
-      end: "2023",
+      start: "Apr 2021",
+      end: "Apr 2023",
     },
     {
-      school: "Manipal Institute of Technology (Sikkim)",
+      school: "Sikkim Manipal University of Health, Medical and Technological Sciences",
       href: "https://smu.edu.in",
-      degree: "B.Tech in Mechanical Engineering",
-      description: "GPA: 1.69 of 4",
+      degree: "Engineer's Degree, Mechanical Engineering",
       logoUrl: "/smit.png",
       start: "2012",
       end: "2016",
