@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Deliver.it logo: flat-design yellow gift box whose red ribbon loops into a "D" bow.
-  Original artwork, dedicated to the public domain under CC0 1.0 Universal:
-  https://creativecommons.org/publicdomain/zero/1.0/
+  Deliver.it logo: a flat-design yellow gift box whose red ribbon loops up into a bow
+  and sweeps back down to form a "D". Original artwork, dedicated to the public
+  domain under CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -4 240 240" width="240" height="240" role="img" aria-labelledby="t">
   <title id="t">Deliver.it</title>
-  <defs>
-    <clipPath id="disc"><circle cx="128" cy="128" r="120"/></clipPath>
-  </defs>
-
-  <circle cx="128" cy="128" r="120" fill="#ECF0F1"/>
-
-  <g clip-path="url(#disc)">
-    <!-- long shadow, the 2014 flat-design staple -->
-    <polygon points="48,86 216,86 416,286 416,404 248,404 48,204" fill="#2C3E50" opacity="0.12"/>
-
-    <!-- box body and lid -->
-    <rect x="56" y="112" width="152" height="92" rx="4" fill="#F1C40F"/>
-    <rect x="48" y="86" width="168" height="30" rx="4" fill="#F39C12"/>
-
-    <!-- ribbon wrapping up the front and over the lid -->
-    <rect x="118" y="86" width="20" height="118" fill="#C0392B"/>
-
-    <!-- the bow: a ribbon loop shaped like a "D" -->
-    <path transform="translate(5 0)" fill="#E74C3C" fill-rule="evenodd"
-          d="M96 30 H122 A28 28 0 0 1 122 86 H96 Z
-             M114 46 V70 H122 A12 12 0 0 0 122 46 Z"/>
+  <g>
+    <!-- box -->
+    <rect x="20" y="70" width="140" height="140" rx="5" fill="#F1C40F"/>
+    <rect x="12" y="70" width="156" height="26" rx="5" fill="#F39C12"/>
+    <!-- ribbon: the stem of the D, and the bow loop that sweeps back down to close it -->
+    <g fill="none" stroke="#E74C3C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90 212 V70"/>
+      <path d="M90 70 C90 44 106 26 124 26 C146 26 158 52 156 84 C154 130 126 176 90 212"/>
+    </g>
+    <!-- small left loop of the bow -->
+    <path d="M90 70 C70 70 50 52 50 38 C50 27 66 24 77 31 C85 37 90 52 90 70 Z" fill="#E74C3C"/>
   </g>
 </svg>
