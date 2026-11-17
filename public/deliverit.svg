@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Deliver.it logo: flat-design gift box whose ribbon forms a "D".
+  Deliver.it logo: flat-design yellow gift box whose red ribbon forms a "D".
   Original artwork, dedicated to the public domain under CC0 1.0 Universal:
   https://creativecommons.org/publicdomain/zero/1.0/
 -->
@@ -17,19 +17,19 @@
     <polygon points="56,84 208,84 408,284 408,404 256,404 56,204" fill="#2C3E50" opacity="0.12"/>
 
     <!-- box body and lid -->
-    <rect x="56" y="112" width="152" height="92" rx="4" fill="#1ABC9C"/>
-    <rect x="48" y="86" width="168" height="30" rx="4" fill="#16A085"/>
+    <rect x="56" y="112" width="152" height="92" rx="4" fill="#F1C40F"/>
+    <rect x="48" y="86" width="168" height="30" rx="4" fill="#F39C12"/>
 
     <!-- ribbon band running up the lid -->
-    <rect x="116" y="86" width="24" height="30" fill="#F1C40F"/>
+    <rect x="116" y="86" width="24" height="30" fill="#E74C3C"/>
 
     <!-- bow -->
-    <path d="M128 86 C98 88 80 68 92 56 C106 44 124 68 128 86 Z" fill="#F1C40F"/>
-    <path d="M128 86 C158 88 176 68 164 56 C150 44 132 68 128 86 Z" fill="#F1C40F"/>
-    <circle cx="128" cy="86" r="8" fill="#F39C12"/>
+    <path d="M128 86 C98 88 80 68 92 56 C106 44 124 68 128 86 Z" fill="#E74C3C"/>
+    <path d="M128 86 C158 88 176 68 164 56 C150 44 132 68 128 86 Z" fill="#E74C3C"/>
+    <circle cx="128" cy="86" r="8" fill="#C0392B"/>
 
     <!-- the ribbon wrapped around the box, shaped as a "D" -->
-    <path fill="#F1C40F" fill-rule="evenodd"
+    <path fill="#E74C3C" fill-rule="evenodd"
           d="M92 126 H124 C152 126 170 142 170 159 C170 176 152 192 124 192 H92 Z
              M110 142 V176 H124 C140 176 152 170 152 159 C152 148 140 142 124 142 Z"/>
   </g>
