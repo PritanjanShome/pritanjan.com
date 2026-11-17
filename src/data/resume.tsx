@@ -316,6 +316,7 @@ export const DATA = {
     },
     {
       company: "Deliver.it",
+      logoUrl: "/deliverit.svg",
       roles: [
         {
           title: "Founder (Acquired in 2015)",
