@@ -7,7 +7,7 @@ import { useState, type MouseEvent, type ReactNode } from "react";
 /**
  * Click-to-expand wrapper for one company. The children are rendered on the
  * server; this only flips `data-open`, and anything inside can react to it with
- * the `group-data-[open=true]/co:` variant (see ExpandArea).
+ * the `group-data-[open=true]/co:` variant (see RoleBody).
  */
 export function ExperienceCollapsible({
   children,
@@ -48,15 +48,6 @@ export function ExperienceCollapsible({
         />
       </button>
       <div className="pr-9">{children}</div>
-    </div>
-  );
-}
-
-/** Smoothly grows from 0 to full height when the parent company is open. */
-export function ExpandArea({ children }: { children: ReactNode }) {
-  return (
-    <div className="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-500 ease-out group-data-[open=true]/co:grid-rows-[1fr] group-data-[open=true]/co:opacity-100">
-      <div className="min-h-0 overflow-hidden">{children}</div>
     </div>
   );
 }

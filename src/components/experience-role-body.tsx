@@ -1,6 +1,8 @@
-import { ExpandArea } from "./experience-collapsible";
-
-/** Description area for one role; hidden until its company card is expanded. */
+/**
+ * Description area for one role. Closed, it shows the first point clamped to
+ * two lines with "…more"; once the company card is open it lists every point.
+ * Visibility follows the parent `group/co` (see ExperienceCollapsible).
+ */
 export function RoleBody({
   descriptions,
   highlight,
@@ -10,9 +12,19 @@ export function RoleBody({
 }) {
   if (!descriptions.length) return null;
 
+  const expandable = descriptions.length > 1 || Boolean(highlight);
+
+  if (!expandable) {
+    return <p className="mt-3 text-sm leading-relaxed">1. {descriptions[0]}</p>;
+  }
+
   return (
-    <ExpandArea>
-      <div className="pt-3 text-sm leading-relaxed">
+    <div className="mt-3 text-sm leading-relaxed">
+      <div className="group-data-[open=true]/co:hidden">
+        <p className="line-clamp-2">1. {descriptions[0]}</p>
+        <p className="mt-1 text-muted-foreground">…more</p>
+      </div>
+      <div className="hidden group-data-[open=true]/co:block">
         <ol className="list-decimal space-y-1.5 pl-5">
           {descriptions.map((d) => (
             <li key={d}>{d}</li>
@@ -24,7 +36,8 @@ export function RoleBody({
             {highlight.message}
           </p>
         )}
+        <p className="mt-2 text-muted-foreground">Show less</p>
       </div>
-    </ExpandArea>
+    </div>
   );
 }
