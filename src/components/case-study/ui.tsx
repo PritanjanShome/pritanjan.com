@@ -119,6 +119,34 @@ export function P({
 /*  Layout                                                                    */
 /* -------------------------------------------------------------------------- */
 
+/** Illustration with a separate dark-mode file (e.g. dark text lightened). */
+export function FigPair({
+  src,
+  darkSrc,
+  w,
+  h,
+  alt,
+  className,
+  sizes = "(min-width: 1152px) 1104px, 100vw",
+}: {
+  src: string;
+  darkSrc: string;
+  w: number;
+  h: number;
+  alt: string;
+  className?: string;
+  sizes?: string;
+}) {
+  return (
+    <>
+      <Image src={src} width={w} height={h} alt={alt} sizes={sizes}
+        className={cn("h-auto w-full dark:hidden", className)} />
+      <Image src={darkSrc} width={w} height={h} alt="" aria-hidden sizes={sizes}
+        className={cn("hidden h-auto w-full dark:block", className)} />
+    </>
+  );
+}
+
 /** Flips a light-background illustration for dark mode (keeps hues). */
 export const darkInvert = "dark:[filter:invert(1)_hue-rotate(180deg)]";
 /** Same flip, always on: for art placed on an always-dark band. */

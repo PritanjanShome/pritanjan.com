@@ -12,6 +12,7 @@ import {
   P,
   Paper,
   darkInvert,
+  FigPair,
   FlowFig,
   H4,
   Rich,
@@ -407,13 +408,13 @@ export default function GamificationCaseStudy() {
               </P>
             </div>
           </div>
-          <Fig
+          <FigPair
             src={`${A}/research-methods.webp`}
+            darkSrc={`${A}/research-methods-dark.webp`}
             w={711}
             h={343}
             alt="Research methods: survey, interviews, and cohort analysis with behavioural data"
             sizes="(min-width: 1024px) 540px, 100vw"
-            className={darkInvert}
           />
         </TwoCol>
       </Section>
@@ -554,13 +555,14 @@ export default function GamificationCaseStudy() {
               </P>
             </div>
           </div>
-          <Fig
+          <FigPair
             src={`${A}/sdt-venn.webp`}
+            darkSrc={`${A}/sdt-venn-dark.webp`}
             w={536}
             h={609}
             alt="Self-Determination Theory: autonomy, competence and relatedness"
             sizes="(min-width: 1024px) 420px, 90vw"
-            className={cn("mx-auto max-w-md", darkInvert)}
+            className="mx-auto max-w-md"
           />
         </TwoCol>
       </Section>
@@ -633,7 +635,7 @@ export default function GamificationCaseStudy() {
             h={594}
             alt="Illustrated avatars orbiting the Resi logo, representing the six HEXAD persona types"
             sizes="(min-width: 1024px) 480px, 80vw"
-            className={cn("mx-auto max-w-md", darkInvert)}
+            className="mx-auto max-w-md"
           />
         </TwoCol>
 
