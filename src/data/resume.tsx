@@ -199,6 +199,138 @@ export const DATA = {
       ],
     },
   ],
+  experience: [
+    {
+      company: "Aptean",
+      logoUrl: "/aptean.png",
+      href: "https://www.aptean.com",
+      employmentType: "Full-time",
+      location: "Berlin, Germany · Remote",
+      roles: [
+        {
+          title: "Enterprise Product Leadership",
+          start: "Jul 2026",
+          descriptions: [
+            "Lead 3 product verticals and 12 Product Managers across Germany, US, and India, driving Product Strategy, Portfolio Management, Roadmapping, and Product Operations.",
+            "Manage 20+ product lines through a consolidated enterprise roadmap, identify integration opportunities across 6 product lines and reduce duplicated development by 3 instances.",
+            "Drive AI-native Product Management across distributed teams, embedding AI into Product Discovery, Knowledge Management, Requirements & Product Development.",
+          ],
+        },
+        {
+          title: "Head of Product Management @Germanedge- an Aptean company",
+          start: "Mar 2025",
+          descriptions: [
+            "Lead Product Management across 5 product domains, aligning Product, Engineering, Sales and Professional Services around Product Strategy and prioritisation.",
+            "Drive AI Discovery and Validation → 120 use cases, 17 prototypes, 7 enterprise customers; identify opportunities up to €100K+ ARR.",
+            "Embed AI-native Product Operations → reduce AI context consumption by 90%, knowledge updates 3–4h → 20–25 min, and PRD creation from 8–10 days → 3 h.",
+            "Standardise Release Management → achieve 100% release cadence adherence from Release 3, reduce final consolidation to 0.5 day.",
+            "Drive critical eVAC/VAC delivery 1 day ahead of deadline, addressing reported $2M legal exposure and enabling Phase 2.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Retrac GmbH",
+      logoUrl: "/retrac.png",
+      href: "https://www.heyresi.com",
+      employmentType: "Full-time",
+      location: "Berlin, Germany",
+      roles: [
+        {
+          title: "Co-Founder & CPO",
+          start: "Aug 2021",
+          end: "Feb 2025",
+          descriptions: [
+            "Transformed SaaS POC into a scalable B2B2C PropTech platform spanning the full tenant lifecycle.",
+            "Led Product, Design, Strategy, Discovery and Roadmapping → scaled to 12 enterprise customers / 30,000+ apartments across iOS, Android and iPad.",
+            "Raised €200K seed funding and drove company-level Product, Technology, Customer Value and Growth strategy.",
+            "Drove behavioural product innovation → 9% / 15.62% consumption reduction and €90K annual savings across 2,000 apartments.",
+            "Supported a customer acquisition in 2024, taking the product from an early SaaS POC to an acquisition-ready platform in 2 years.",
+          ],
+        },
+      ],
+    },
+    {
+      company: "Roundglass Living",
+      logoUrl: "/rg.png",
+      href: "https://round.glass",
+      employmentType: "Full-time",
+      location: "Bengaluru, Karnataka, India · On-site",
+      roles: [
+        {
+          title: "Senior Product Manager",
+          start: "Sep 2018",
+          end: "Mar 2021",
+          descriptions: [
+            "Integrated key features from the Zoojoobe and Aware apps into the Roundglass Reach platform, driving seamless functionality and coherence across digital offerings.",
+            "Conducted user research and translated insights into wireframes and prototypes to enhance functionality and user experience.",
+            "Increased user conversion rate by 4% in close collaboration with the marketing team and retention by 8% in liaison with the product team.",
+            "Responsible for designing and execution of marketing strategy in liaison within the product team.",
+            "Creating strategy, plan and execution for B2B and B2C market across mobile, tablet and web platforms.",
+            "Ideate, manage and track multi-channel outreach and acquisition campaign across digital and offline mediums to increase product conversion funnels.",
+            "Build a brand presence and a staunch community of follower across popular social media like Facebook, Instagram, Linkedin and Twitter.",
+            "Work closely with the various stakeholders to drive roadmaps, market research, customer feedback and user engagement.",
+          ],
+        },
+        {
+          title: "Product Manager",
+          note: "Aware Mindful Meditation (acquired by Roundglass)",
+          start: "Jun 2016",
+          end: "Aug 2018",
+          descriptions: [
+            "Worked with the design and product team, creating UI/UX designs and conducting user research and usability testing.",
+            "Collaborated closely with developers, product managers and marketing teams to ensure cohesive product development.",
+          ],
+          highlight: {
+            type: "Highlights:",
+            message:
+              "Achieved high user satisfaction with Google Play Store rating of 4.7 and Apple App Store rating of 4.8, with over 600,000 downloads.",
+          },
+        },
+        {
+          title: "Product Manager",
+          note: "Zoojoo.be (acquired by Roundglass)",
+          start: "Jan 2016",
+          end: "Aug 2018",
+          descriptions: [
+            "Designed web and mobile application for habit formation app, incorporating user research and usability test findings.",
+            "Successfully adopted by corporates like HP, Accenture, Tesco, Bayer, and JLL, with over 500,000 registered users.",
+            "Contributed to the acquisition of Zoojoobe by a US-based company in 2018, with significant user base growth and corporate adoption.",
+            "Strategizing communication campaigns, so as to ensure seamless onboarding of new customers onto the platform.",
+            "Designing landing pages for clients as well as UI components.",
+            "Translating specific customer requirements into modular and scalable deliverables.",
+            "Working with stakeholders for continuous improvement in adoption and retention rates.",
+            "Process and cost optimization of various engagement activities at client locations.",
+            "Working with printing partners from multiple locations in India to cater to the print requirements of clients. Also, brought the cost of printing down by 35% in my first year of working with the company.",
+            "Working closely with the product team to understand user behaviour on the platform using tools such as Hotjar, Mix panel and Google Analytics.",
+            "Organising events at customer location to get feedback from the end-users.",
+            "Managing operations for HR conferences hosted by our company to generate customer leads.",
+          ],
+          highlight: {
+            type: "Highlights:",
+            message:
+              "Gained 52 corporates, over 500,000 registered users. Acquired by US based company in 2018.",
+          },
+        },
+      ],
+    },
+    {
+      company: "Deliver.it",
+      logoUrl: "/deliverit.svg",
+      roles: [
+        {
+          title: "Founder (Acquired in 2015)",
+          start: "Aug 2013",
+          end: "Nov 2015",
+          descriptions: [
+            "Co-founded a hyperlocal delivery startup; built Product, Operations, Logistics & Vendor Network from concept to a profitable business.",
+            "Developed a mobile ordering platform connecting students with local food, grocery & stationery vendors.",
+            "Built foundational expertise in Entrepreneurship, Product Management, Operations & Service Design.",
+          ],
+        },
+      ],
+    },
+  ],
   education: [
     {
       school: "Hochschule Harz",

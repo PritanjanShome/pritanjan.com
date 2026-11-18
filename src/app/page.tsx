@@ -3,7 +3,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { WorkExperience } from "@/components/work-experience-card";
+import { ExperienceList } from "@/components/experience-section";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -135,26 +135,7 @@ export default function Page() {
               <BlurFade delay={BLUR_FADE_DELAY * 8}>
                 <h2 className="text-xl font-medium">Work Experience</h2>
               </BlurFade>
-              {DATA.work.map((work: any, id) => (
-                <BlurFade
-                  key={id}
-                  delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-                >
-                  <WorkExperience
-                    key={id}
-                    logoUrl={work.logoUrl}
-                    altText={work.company}
-                    title={work.title}
-                    company={work.company}
-                    location={work.location}
-                    href={work.href}
-                    badges={work.badges}
-                    period={`${work.start} - ${work.end ?? "Present"}`}
-                    descriptions={work.descriptions}
-                    highlight={work.highlight}
-                  />
-                </BlurFade>
-              ))}
+              <ExperienceList items={DATA.experience} />
             </div>
           </section>
           <section id="education">

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Deliver.it logo: a flat-design yellow gift box whose red ribbon loops up into a bow
+  and sweeps back down to form a "D". Original artwork, dedicated to the public
+  domain under CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 240" width="530" height="240" role="img" aria-labelledby="t">
+  <title id="t">Deliver.it</title>
+  <rect width="530" height="240" fill="#FFFFFF"/>
+  <g>
+    <!-- box -->
+    <rect x="20" y="70" width="140" height="140" rx="5" fill="#F1C40F"/>
+    <rect x="12" y="70" width="156" height="26" rx="5" fill="#F39C12"/>
+    <!-- ribbon: the stem of the D, and the bow loop that sweeps back down to close it -->
+    <g fill="none" stroke="#E74C3C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90 212 V70"/>
+      <path d="M90 70 C90 44 106 26 124 26 C146 26 158 52 156 84 C154 130 126 176 90 212"/>
+    </g>
+    <!-- small left loop of the bow -->
+    <path d="M90 70 C70 70 50 52 50 38 C50 27 66 24 77 31 C85 37 90 52 90 70 Z" fill="#E74C3C"/>
+  </g>
+    <!-- "eliver.it" hand-built from strokes so the whole logo is original artwork -->
+    <g fill="none" stroke="#2C3E50" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+      <!-- e -->
+      <path d="M184 174 H228 A22 22 0 1 0 221.6 189.6"/>
+      <!-- l -->
+      <path d="M250 118 V196"/>
+      <!-- i -->
+      <path d="M272 152 V196"/>
+      <!-- v -->
+      <path d="M284 152 L300 196 L316 152"/>
+      <!-- e -->
+      <path d="M324 174 H368 A22 22 0 1 0 361.6 189.6"/>
+      <!-- r -->
+      <path d="M390 152 V196"/>
+      <path d="M390 174 C392 158 404 150 414 154"/>
+      <!-- i -->
+      <path d="M452 152 V196"/>
+      <!-- t -->
+      <path d="M484 128 V184 Q484 196 498 196"/>
+      <path d="M472 152 H498"/>
+    </g>
+    <g fill="#2C3E50">
+      <circle cx="272" cy="132" r="5.5"/>
+      <circle cx="430" cy="192" r="5.5"/>
+      <circle cx="452" cy="132" r="5.5"/>
+    </g>
+</svg>
