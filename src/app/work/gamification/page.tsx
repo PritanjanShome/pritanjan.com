@@ -311,7 +311,7 @@ export default function GamificationCaseStudy() {
                 **properties by 9%**.
               </Rich>
             </P>
-            <p className="mt-6 text-xs opacity-60">
+            <p className="mt-6 text-xs opacity-70">
               * Full research paper to be published in Dec, 2024.
             </p>
           </div>
@@ -643,19 +643,19 @@ export default function GamificationCaseStudy() {
           {personas.map((p) => (
             <Card key={p.name} className="flex flex-col">
               <H3>{p.name}</H3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-base">
                 {p.about}
               </p>
               <div className="mt-6 grid grid-cols-2 gap-4 border-t pt-5 text-sm">
                 <div>
                   <p className="font-medium">Users in the app</p>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">
+                  <p className="mt-2 leading-relaxed text-neutral-600 dark:text-neutral-400">
                     {p.users}
                   </p>
                 </div>
                 <div>
                   <p className="font-medium">Pain Point</p>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">
+                  <p className="mt-2 leading-relaxed text-neutral-600 dark:text-neutral-400">
                     {p.pain}
                   </p>
                 </div>
@@ -995,7 +995,7 @@ export default function GamificationCaseStudy() {
                 />
                 <div>
                   <p className="text-lg font-medium leading-tight">{t.name}</p>
-                  <p className="text-sm text-neutral-500">{t.meta}</p>
+                  <p className="text-sm text-neutral-600">{t.meta}</p>
                 </div>
               </div>
               <blockquote className="mt-4 leading-relaxed text-neutral-700">

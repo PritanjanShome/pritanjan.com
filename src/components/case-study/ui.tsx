@@ -159,7 +159,8 @@ const tones: Record<Tone, string> = {
   muted: "bg-muted/50 text-foreground",
   tint: "bg-indigo-500/[0.07] text-foreground dark:bg-white/[0.035]",
   lavender: "bg-indigo-400/20 text-foreground dark:bg-white/[0.035]",
-  indigo: "bg-indigo-500 text-white [&_strong]:text-white",
+  indigo:
+    "bg-indigo-700 text-white [&_strong]:text-white [&_.opacity-80]:opacity-95 [&_.opacity-70]:opacity-95",
   dark: "bg-[#1b1b20] text-white [&_strong]:text-white",
 };
 
@@ -266,11 +267,11 @@ export function NumberCard({
 }) {
   return (
     <Card className={className}>
-      <p className="text-xl font-medium text-indigo-500">{n}</p>
+      <p className="text-xl font-medium text-indigo-700 dark:text-indigo-300">{n}</p>
       <h3 className="mt-3 text-xl font-semibold tracking-tight sm:text-2xl">
         {title}
       </h3>
-      <div className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+      <div className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-base">
         {children}
       </div>
     </Card>
@@ -278,9 +279,9 @@ export function NumberCard({
 }
 
 const priorityStyles = {
-  High: "bg-red-500/15 text-red-600 dark:text-red-400",
-  Medium: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-  Low: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+  High: "bg-red-500/15 text-red-800 dark:text-red-300",
+  Medium: "bg-amber-500/15 text-amber-800 dark:text-amber-300",
+  Low: "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300",
 } as const;
 
 export type Priority = keyof typeof priorityStyles;
@@ -314,22 +315,22 @@ export function TicketCard({
           {priority}
         </span>
         {rank && (
-          <span className="text-sm text-muted-foreground">{rank}</span>
+          <span className="text-sm text-neutral-600 dark:text-neutral-400">{rank}</span>
         )}
       </div>
       <h4 className="mt-4 text-lg font-semibold leading-snug">{title}</h4>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
         {description}
       </p>
       {painPoint && (
         <div className="mt-4">
-          <p className="text-xs font-medium text-muted-foreground">
+          <p className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
             Corresponding Pain Point
           </p>
           <p className="mt-1 text-sm leading-relaxed">{painPoint}</p>
         </div>
       )}
-      <p className="mt-4 text-xs font-semibold tracking-wide text-muted-foreground">
+      <p className="mt-4 text-xs font-semibold tracking-wide text-neutral-600 dark:text-neutral-400">
         {ticket}
       </p>
     </div>
@@ -404,7 +405,7 @@ export function DataTable({
                       "px-5 py-4 leading-relaxed",
                       j === 0
                         ? "font-semibold text-foreground"
-                        : "text-muted-foreground",
+                        : "text-neutral-600 dark:text-neutral-400",
                       numeric && j > 0 && "text-center"
                     )}
                   >
@@ -427,7 +428,7 @@ export function DataTable({
             {row.slice(1).map((cell, j) =>
               isEmpty(cell) ? null : (
                 <div key={j}>
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  <p className="text-xs font-medium uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
                     {headers[j + 1]}
                   </p>
                   <p className="mt-0.5 text-sm leading-relaxed">{cell}</p>
@@ -495,7 +496,7 @@ export function ScrollFig({
     <div className={className}>
       <div
         className={cn(
-          "overflow-x-auto overscroll-x-contain rounded-2xl",
+          "overflow-x-auto overscroll-x-contain rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           frame && "border bg-white"
         )}
         tabIndex={0}
@@ -553,8 +554,13 @@ export function FlowFig({
       className={cn(
         "overflow-x-auto overscroll-x-contain",
         minWidth && "max-sm:-mx-6 max-sm:px-6",
+        minWidth &&
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className
       )}
+      {...(minWidth
+        ? { tabIndex: 0, role: "region", "aria-label": `${alt} (scrollable)` }
+        : {})}
     >
       <div
         className="mx-auto"

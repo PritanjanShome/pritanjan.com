@@ -344,8 +344,8 @@ function Bullets({
     <Tag
       className={
         ordered
-          ? "list-decimal space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground"
-          : "list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground"
+          ? "list-decimal space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400"
+          : "list-disc space-y-2 pl-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400"
       }
     >
       {items.map((i) => (
@@ -369,18 +369,18 @@ function PersonaCard({ p }: { p: Persona }) {
           />
           <div>
             <h3 className="text-xl font-semibold leading-tight">{p.name}</h3>
-            <p className="text-sm text-muted-foreground">{p.meta}</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400">{p.meta}</p>
           </div>
         </div>
-        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
           {p.bio}
         </p>
-        <h4 className="mt-6 font-semibold text-indigo-500">Details</h4>
+        <h4 className="mt-6 font-semibold text-indigo-700 dark:text-indigo-300">Details</h4>
         <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
           {p.details.map(([k, v]) => (
             <div key={k} className="contents">
               <dt className="font-medium">{k}:</dt>
-              <dd className="text-muted-foreground">{v}</dd>
+              <dd className="text-neutral-600 dark:text-neutral-400">{v}</dd>
             </div>
           ))}
         </dl>
@@ -388,25 +388,25 @@ function PersonaCard({ p }: { p: Persona }) {
 
       <div className="space-y-6 border-t pt-8 lg:border-l lg:border-t-0 lg:p-8">
         <div>
-          <h4 className="mb-3 font-semibold text-indigo-500">{p.goalsTitle}:</h4>
+          <h4 className="mb-3 font-semibold text-indigo-700 dark:text-indigo-300">{p.goalsTitle}:</h4>
           <Bullets items={p.goals} ordered />
         </div>
         <div>
-          <h4 className="mb-3 font-semibold text-indigo-500">Pain Points:</h4>
+          <h4 className="mb-3 font-semibold text-indigo-700 dark:text-indigo-300">Pain Points:</h4>
           <Bullets items={p.pains} />
         </div>
       </div>
 
       <div className="space-y-6 border-t pt-8 lg:border-l lg:border-t-0 lg:p-8">
         <div>
-          <h4 className="mb-3 font-semibold text-indigo-500">
+          <h4 className="mb-3 font-semibold text-indigo-700 dark:text-indigo-300">
             Behavioral Traits:
           </h4>
           <ul className="flex flex-wrap gap-2">
             {p.traits.map((t) => (
               <li
                 key={t}
-                className="rounded-md bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                className="rounded-md bg-muted px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-400"
               >
                 {t}
               </li>
@@ -414,7 +414,7 @@ function PersonaCard({ p }: { p: Persona }) {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 font-semibold text-indigo-500">Scenarios:</h4>
+          <h4 className="mb-3 font-semibold text-indigo-700 dark:text-indigo-300">Scenarios:</h4>
           <Bullets items={p.scenarios} />
         </div>
       </div>
@@ -455,15 +455,15 @@ function Competitor({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-1 break-all text-xs text-muted-foreground underline underline-offset-4"
+        className="mt-1 break-all text-xs text-neutral-600 dark:text-neutral-400 underline underline-offset-4"
       >
         {url}
       </a>
-      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
         {what}
       </p>
       <h4 className="mt-6 text-sm font-semibold">Competitive Edge</h4>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
         {edge}
       </p>
     </Card>
@@ -475,7 +475,7 @@ function PainCard({ title, items }: { title: string; items: string[] }) {
     <Card>
       <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-4 text-sm font-medium">Pain Point</p>
-      <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-base leading-relaxed text-muted-foreground">
+      <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
         {items.map((i) => (
           <li key={i}>{i}</li>
         ))}
