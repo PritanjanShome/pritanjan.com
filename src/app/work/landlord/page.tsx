@@ -11,6 +11,7 @@ import {
   NumberCard,
   P,
   alwaysInvert,
+  FlowFig,
   darkInvert,
   Rich,
   ScrollFig,
@@ -911,27 +912,60 @@ export default function MoveOutCaseStudy() {
           solutions and iterate at the prototype stage while ensuring technical
           feasibility.
         </P>
-        <H3 className="mt-14">Wireframe: Tenant app</H3>
-        <ScrollFig
-          src={`${M}/flow-tenant.webp`}
-          w={895}
-          h={935}
+        <H3 className="mt-14">Flow: Tenant app</H3>
+        <FlowFig
+          name="tenant"
+          w={1089}
+          h={1073}
           alt="Tenant app flow: contract end date check, pre-moveout notification, time slot selection, pre-check, and landlord confirmation"
-          minWidth={720}
-          frame={false}
-          invert
+          minWidth={760}
           className="mt-6"
         />
-        <H3 className="mt-14">Wireframe: Landlord app</H3>
-        <ScrollFig
-          src={`${M}/flow-landlord.webp`}
-          w={1180}
-          h={1745}
-          alt="Landlord app flow: pending, scheduled and completed move-outs, room checks, damage tickets, charge summary and signatures"
-          minWidth={900}
-          frame={false}
-          invert
-          className="mt-6"
+        <H3 className="mt-14">Flow: Landlord app</H3>
+        <H4 className="mt-8">1. Move-out statuses</H4>
+        <FlowFig
+          name="ll-status"
+          w={1343}
+          h={671}
+          alt="Landlord move-out statuses: pending (no action, schedule now), scheduled and completed"
+          minWidth={820}
+          className="mt-4"
+        />
+        <H4 className="mt-12">2. Assigning and starting a move-out</H4>
+        <FlowFig
+          name="ll-scheduled"
+          w={808}
+          h={786}
+          alt="Scheduled move-out: assign to yourself or a team member, start, check the pre-moveout report"
+          minWidth={620}
+          className="mt-4"
+        />
+        <H4 className="mt-12">3. Room checks and damage tickets</H4>
+        <FlowFig
+          name="ll-rooms"
+          w={1253}
+          h={781}
+          alt="Room check: inventory check, raising damage tickets, charge decisions and moving to the next room"
+          minWidth={820}
+          className="mt-4"
+        />
+        <H4 className="mt-12">4. Summary, attendance and sign-off</H4>
+        <FlowFig
+          name="ll-summary"
+          w={786}
+          h={1107}
+          alt="Preview page, charge summary, tenant attendance options, bank details and signature"
+          minWidth={620}
+          className="mt-4"
+        />
+        <H4 className="mt-12">5. Completed move-outs</H4>
+        <FlowFig
+          name="ll-completed"
+          w={790}
+          h={352}
+          alt="Completed move-outs: charge summary to accounts, tenant notification, report on the landlord screen"
+          minWidth={620}
+          className="mt-4"
         />
       </Section>
 

@@ -12,6 +12,8 @@ import {
   P,
   Paper,
   darkInvert,
+  FlowFig,
+  H4,
   Rich,
   ScrollFig,
   Section,
@@ -669,16 +671,54 @@ export default function GamificationCaseStudy() {
           platform, we mapped the user journey of each gamification metric that
           would help users navigate effortlessly and quickly.
         </P>
-        <ScrollFig
-          src={`${A}/user-flow.webp`}
-          w={1625}
-          h={1198}
-          alt="Gamification user journey flowchart covering goals, challenges, levels, leaderboard, badges and streaks"
-          minWidth={900}
-          frame={false}
-          invert
-          className="mt-10"
-        />
+        <H4 className="mt-12">Global entities</H4>
+        <div className="mt-6 grid gap-8 lg:grid-cols-2">
+          <FlowFig
+            name="gm-entry"
+            w={615}
+            h={260}
+            alt="Onboarding assigns XP, sends a welcome greeting and schedules drip communication; landing on the profile page shows the gamification menus"
+            minWidth={520}
+          />
+          <FlowFig
+            name="gm-xp"
+            w={816}
+            h={271}
+            alt="Assigning XP feeds badges, level (and avatar), easter eggs, streak, challenges and the monthly eco-score level"
+            minWidth={620}
+          />
+        </div>
+        <H4 className="mt-14">Contract entities</H4>
+        <div className="mt-6 grid items-start gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Goals</p>
+            <FlowFig name="gm-goals" w={250} h={625} alt="Goals flow: set up, choose type, configure, start and end a goal" />
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Challenges</p>
+            <FlowFig name="gm-challenges" w={236} h={642} alt="Challenges flow: set up, assign type, configure, start and end a challenge" />
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Levels and rewards</p>
+            <FlowFig name="gm-levels" w={520} h={1010} alt="Levels flow: check user action, assign XP, unlock the next level and reward, claim the reward" />
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Leaderboard</p>
+            <FlowFig name="gm-leaderboard" w={458} h={652} alt="Leaderboard flow: monthly ranking, top three winners, email and physical rewards" />
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Badges</p>
+            <FlowFig name="gm-badges" w={493} h={532} alt="Badges flow: check user action, assign XP, unlock a badge, drip communication" />
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-medium opacity-70">Streak</p>
+            <FlowFig name="gm-streak" w={461} h={532} alt="Streak flow: check event, increment streak count, break or achieve the streak" />
+          </div>
+          <div className="md:col-span-2 lg:col-span-3">
+            <p className="mb-3 text-sm font-medium opacity-70">Feed</p>
+            <FlowFig name="gm-feed" w={611} h={381} alt="Challenge end, next level, leaderboard winners, badges and streaks all push to the feed, which lists by time and can be shared" />
+          </div>
+        </div>
       </Section>
 
       {/* -------------------------- 08 Wireframes & testing --------------------- */}

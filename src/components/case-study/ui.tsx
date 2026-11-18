@@ -500,6 +500,60 @@ export function ScrollFig({
   );
 }
 
+/**
+ * Redrawn flowchart, shipped as a light and a dark SVG so it follows the theme
+ * and stays sharp at any size. Wide ones scroll sideways on phones.
+ */
+export function FlowFig({
+  name,
+  w,
+  h,
+  alt,
+  minWidth,
+  className,
+}: {
+  name: string;
+  w: number;
+  h: number;
+  alt: string;
+  minWidth?: number;
+  className?: string;
+}) {
+  const base = `/case-studies/flows/${name}`;
+  return (
+    <div
+      className={cn(
+        "overflow-x-auto overscroll-x-contain",
+        minWidth && "max-sm:-mx-6 max-sm:px-6",
+        className
+      )}
+    >
+      <div
+        className="mx-auto"
+        style={{ minWidth, maxWidth: Math.max(w, minWidth ?? 0) }}
+      >
+        <Image
+          src={`${base}-light.svg`}
+          width={w}
+          height={h}
+          alt={alt}
+          unoptimized
+          className="h-auto w-full dark:hidden"
+        />
+        <Image
+          src={`${base}-dark.svg`}
+          width={w}
+          height={h}
+          alt=""
+          aria-hidden
+          unoptimized
+          className="hidden h-auto w-full dark:block"
+        />
+      </div>
+    </div>
+  );
+}
+
 /** White "paper" behind images that were designed on a white canvas. */
 export function Paper({
   children,
