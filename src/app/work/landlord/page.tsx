@@ -10,7 +10,8 @@ import {
   Lane,
   NumberCard,
   P,
-  Paper,
+  alwaysInvert,
+  darkInvert,
   Rich,
   ScrollFig,
   Section,
@@ -20,6 +21,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 const M = "/case-studies/move-out";
 
@@ -489,29 +491,36 @@ export default function MoveOutCaseStudy() {
   return (
     <CaseStudyPage>
       {/* ------------------------------ Hero ------------------------------ */}
-      <Section tone="tint" className="pt-16 sm:pt-24">
-        <Image
-          src={`${M}/resi-logo.webp`}
-          width={180}
-          height={55}
-          alt="Resi"
-          className="h-10 w-auto rounded-sm bg-white p-1 sm:h-12"
-        />
-        <H1 className="mt-8 max-w-3xl">Streamlining the Move-Out Process</H1>
-        <p className="mt-6 text-xl opacity-70 sm:text-2xl">
-          Enhancing Tenant Experience and Operational Efficiency
-        </p>
-        <Paper className="mt-12 p-0 sm:p-0">
+      <section className="w-full overflow-hidden bg-[#202024] text-white">
+        <div className="mx-auto max-w-6xl px-6 pt-20 lg:pt-28">
+          <Image
+            src={`${M}/resi-logo.webp`}
+            width={180}
+            height={55}
+            alt="Resi"
+            className="h-10 w-auto rounded-sm bg-white p-1 sm:h-12"
+          />
+          <H1 className="mt-8 max-w-3xl">Streamlining the Move-Out Process</H1>
+          <p className="mt-6 text-xl opacity-80 sm:text-2xl">
+            Enhancing Tenant Experience and Operational Efficiency
+          </p>
+        </div>
+        <div className="mx-auto mt-10 max-w-6xl lg:mt-14">
           <Fig
             src={`${M}/hero-skyline.webp`}
             w={1410}
             h={395}
             alt="Illustration of a city skyline of blue apartment buildings"
             priority
-            className="h-44 object-cover object-center sm:h-auto"
+            sizes="(min-width: 1152px) 1152px, 100vw"
+            className={cn(
+              "h-44 object-cover object-bottom sm:h-auto",
+              alwaysInvert,
+              "[-webkit-mask-image:linear-gradient(to_bottom,transparent,black_30%)] [mask-image:linear-gradient(to_bottom,transparent,black_30%)]"
+            )}
           />
-        </Paper>
-      </Section>
+        </div>
+      </section>
 
       {/* ------------------------------ 01 Problem ------------------------------ */}
       <Section n="01" label="Problem">
@@ -643,7 +652,7 @@ export default function MoveOutCaseStudy() {
             h={623}
             alt=""
             sizes="400px"
-            className="mx-auto hidden max-w-sm rounded-3xl lg:block"
+            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
           />
         </TwoCol>
       </Section>

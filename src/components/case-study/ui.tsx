@@ -119,13 +119,18 @@ export function P({
 /*  Layout                                                                    */
 /* -------------------------------------------------------------------------- */
 
+/** Flips a light-background illustration for dark mode (keeps hues). */
+export const darkInvert = "dark:[filter:invert(1)_hue-rotate(180deg)]";
+/** Same flip, always on: for art placed on an always-dark band. */
+export const alwaysInvert = "[filter:invert(1)_hue-rotate(180deg)]";
+
 export type Tone = "plain" | "muted" | "tint" | "lavender" | "indigo" | "dark";
 
 const tones: Record<Tone, string> = {
   plain: "bg-background text-foreground",
   muted: "bg-muted/50 text-foreground",
-  tint: "bg-indigo-500/[0.07] text-foreground",
-  lavender: "bg-indigo-400/20 text-foreground",
+  tint: "bg-indigo-500/[0.07] text-foreground dark:bg-white/[0.035]",
+  lavender: "bg-indigo-400/20 text-foreground dark:bg-white/[0.035]",
   indigo: "bg-indigo-500 text-white [&_strong]:text-white",
   dark: "bg-[#1b1b20] text-white [&_strong]:text-white",
 };

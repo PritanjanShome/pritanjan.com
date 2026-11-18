@@ -11,6 +11,7 @@ import {
   NumberCard,
   P,
   Paper,
+  darkInvert,
   Rich,
   ScrollFig,
   Section,
@@ -20,6 +21,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 const A = "/case-studies/gamification";
 
@@ -409,7 +411,7 @@ export default function GamificationCaseStudy() {
             h={343}
             alt="Research methods: survey, interviews, and cohort analysis with behavioural data"
             sizes="(min-width: 1024px) 540px, 100vw"
-            className="rounded-3xl"
+            className={darkInvert}
           />
         </TwoCol>
       </Section>
@@ -550,15 +552,14 @@ export default function GamificationCaseStudy() {
               </P>
             </div>
           </div>
-          <Paper className="mx-auto w-full max-w-md">
-            <Fig
-              src={`${A}/sdt-venn.webp`}
-              w={536}
-              h={609}
-              alt="Self-Determination Theory: autonomy, competence and relatedness"
-              sizes="(min-width: 1024px) 420px, 90vw"
-            />
-          </Paper>
+          <Fig
+            src={`${A}/sdt-venn.webp`}
+            w={536}
+            h={609}
+            alt="Self-Determination Theory: autonomy, competence and relatedness"
+            sizes="(min-width: 1024px) 420px, 90vw"
+            className={cn("mx-auto max-w-md", darkInvert)}
+          />
         </TwoCol>
       </Section>
 
@@ -630,7 +631,7 @@ export default function GamificationCaseStudy() {
             h={594}
             alt="Illustrated avatars orbiting the Resi logo, representing the six HEXAD persona types"
             sizes="(min-width: 1024px) 480px, 80vw"
-            className="mx-auto max-w-md rounded-3xl"
+            className={cn("mx-auto max-w-md", darkInvert)}
           />
         </TwoCol>
 
@@ -761,7 +762,6 @@ export default function GamificationCaseStudy() {
             h={509}
             alt="Level screens: Primitive Cave, Cozy Cottage, Modern Villa, Luxurious Mansion and Grand Palace"
             sizes="(min-width: 1024px) 540px, 100vw"
-            className="rounded-3xl"
           />
         </div>
 
@@ -773,7 +773,7 @@ export default function GamificationCaseStudy() {
             h={522}
             alt="Repeating, special and milestone badges"
             sizes="(min-width: 1024px) 540px, 100vw"
-            className="rounded-3xl lg:order-1"
+            className="lg:order-1"
           />
           <div className="lg:order-2">
             <H3>Badges</H3>
@@ -917,15 +917,14 @@ export default function GamificationCaseStudy() {
               rate, feature adoption, and user satisfaction.
             </P>
           </div>
-          <Paper className="p-2 sm:p-3">
-            <Fig
-              src={`${A}/mixpanel.webp`}
-              w={790}
-              h={955}
-              alt="Mixpanel report comparing user landings across two weeks as grouped bars"
-              sizes="(min-width: 1024px) 520px, 100vw"
-            />
-          </Paper>
+          <Fig
+            src={`${A}/mixpanel.webp`}
+            w={790}
+            h={955}
+            alt="Mixpanel report comparing user landings across two weeks as grouped bars"
+            sizes="(min-width: 1024px) 520px, 100vw"
+            className={cn("rounded-2xl", darkInvert)}
+          />
         </TwoCol>
       </Section>
 
@@ -1007,7 +1006,7 @@ export default function GamificationCaseStudy() {
       </Section>
 
       {/* ------------------------------ 13 Conclusion --------------------------- */}
-      <Section n="13" label="Conclusion and Next Steps" tone="lavender">
+      <Section n="13" label="Conclusion and Next Steps" tone="indigo">
         <H2>Conclusion</H2>
         <P className="mt-8 max-w-4xl">
           The introduction of gamification features in our tenant app
