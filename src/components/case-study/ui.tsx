@@ -461,7 +461,8 @@ export function ScrollFig({
   minWidth = 760,
   className,
   frame = true,
-}: ImgProps & { minWidth?: number; frame?: boolean }) {
+  invert = false,
+}: ImgProps & { minWidth?: number; frame?: boolean; invert?: boolean }) {
   return (
     <div className={className}>
       <div
@@ -479,7 +480,7 @@ export function ScrollFig({
             height={h}
             alt={alt}
             sizes="(min-width: 1152px) 1104px, 1200px"
-            className="h-auto w-full"
+            className={cn("h-auto w-full", invert && darkInvert)}
           />
         </div>
       </div>

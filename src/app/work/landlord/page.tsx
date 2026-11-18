@@ -918,6 +918,8 @@ export default function MoveOutCaseStudy() {
           h={935}
           alt="Tenant app flow: contract end date check, pre-moveout notification, time slot selection, pre-check, and landlord confirmation"
           minWidth={720}
+          frame={false}
+          invert
           className="mt-6"
         />
         <H3 className="mt-14">Wireframe: Landlord app</H3>
@@ -927,6 +929,8 @@ export default function MoveOutCaseStudy() {
           h={1745}
           alt="Landlord app flow: pending, scheduled and completed move-outs, room checks, damage tickets, charge summary and signatures"
           minWidth={900}
+          frame={false}
+          invert
           className="mt-6"
         />
       </Section>

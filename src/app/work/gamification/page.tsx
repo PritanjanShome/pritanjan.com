@@ -675,6 +675,8 @@ export default function GamificationCaseStudy() {
           h={1198}
           alt="Gamification user journey flowchart covering goals, challenges, levels, leaderboard, badges and streaks"
           minWidth={900}
+          frame={false}
+          invert
           className="mt-10"
         />
       </Section>
