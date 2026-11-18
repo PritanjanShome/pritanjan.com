@@ -1158,7 +1158,7 @@ export default function MoveOutCaseStudy() {
             h={603}
             alt=""
             sizes="400px"
-            className="mx-auto hidden max-w-sm rounded-3xl lg:block"
+            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
           />
         </div>
 
@@ -1169,7 +1169,7 @@ export default function MoveOutCaseStudy() {
             h={630}
             alt=""
             sizes="400px"
-            className="mx-auto hidden max-w-sm rounded-3xl lg:block"
+            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
           />
           <div>
             <H3>Design considerations</H3>
