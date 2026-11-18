@@ -500,7 +500,7 @@ export default function MoveOutCaseStudy() {
               width={180}
               height={55}
               alt="Resi"
-              className={cn("mb-8 h-10 w-auto sm:h-12", alwaysInvert)}
+              className="mb-8 h-10 w-auto rounded-sm bg-white p-1 sm:h-12"
             />
             <H1>Streamlining the Move-Out Process</H1>
             <p className="mt-6 text-xl opacity-80 sm:text-2xl">
@@ -517,7 +517,6 @@ export default function MoveOutCaseStudy() {
               sizes="(min-width: 1024px) 700px, 100vw"
               className={cn(
                 "h-52 object-cover object-right sm:h-72 lg:h-[22rem]",
-                alwaysInvert,
                 "[-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
               )}
             />
@@ -655,7 +654,7 @@ export default function MoveOutCaseStudy() {
             h={623}
             alt=""
             sizes="400px"
-            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
+            className="mx-auto hidden max-w-sm lg:block"
           />
         </TwoCol>
       </Section>
@@ -1198,7 +1197,7 @@ export default function MoveOutCaseStudy() {
             h={603}
             alt=""
             sizes="400px"
-            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
+            className="mx-auto hidden max-w-sm lg:block"
           />
         </div>
 
@@ -1209,7 +1208,7 @@ export default function MoveOutCaseStudy() {
             h={630}
             alt=""
             sizes="400px"
-            className={cn("mx-auto hidden max-w-sm lg:block", darkInvert)}
+            className="mx-auto hidden max-w-sm lg:block"
           />
           <div>
             <H3>Design considerations</H3>
