@@ -492,33 +492,35 @@ export default function MoveOutCaseStudy() {
     <CaseStudyPage>
       {/* ------------------------------ Hero ------------------------------ */}
       <section className="w-full overflow-hidden bg-[#202024] text-white">
-        <div className="mx-auto max-w-6xl px-6 pt-20 lg:pt-28">
-          <Image
-            src={`${M}/resi-logo.webp`}
-            width={180}
-            height={55}
-            alt="Resi"
-            className="h-10 w-auto rounded-sm bg-white p-1 sm:h-12"
-          />
-          <H1 className="mt-8 max-w-3xl">Streamlining the Move-Out Process</H1>
-          <p className="mt-6 text-xl opacity-80 sm:text-2xl">
-            Enhancing Tenant Experience and Operational Efficiency
-          </p>
-        </div>
-        <div className="mx-auto mt-10 max-w-6xl lg:mt-14">
-          <Fig
-            src={`${M}/hero-skyline.webp`}
-            w={1410}
-            h={395}
-            alt="Illustration of a city skyline of blue apartment buildings"
-            priority
-            sizes="(min-width: 1152px) 1152px, 100vw"
-            className={cn(
-              "h-44 object-cover object-bottom sm:h-auto",
-              alwaysInvert,
-              "[-webkit-mask-image:linear-gradient(to_bottom,transparent,black_30%)] [mask-image:linear-gradient(to_bottom,transparent,black_30%)]"
-            )}
-          />
+        <div className="mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
+          <div className="pb-2 lg:pb-24">
+            <Image
+              src={`${M}/resi-logo.webp`}
+              width={180}
+              height={55}
+              alt="Resi"
+              className={cn("mb-8 h-10 w-auto sm:h-12", alwaysInvert)}
+            />
+            <H1>Streamlining the Move-Out Process</H1>
+            <p className="mt-6 text-xl opacity-80 sm:text-2xl">
+              Enhancing Tenant Experience and Operational Efficiency
+            </p>
+          </div>
+          <div className="-mx-6 lg:mx-0 lg:-mr-24">
+            <Fig
+              src={`${M}/hero-skyline.webp`}
+              w={1410}
+              h={395}
+              alt="Illustration of a city skyline of blue apartment buildings"
+              priority
+              sizes="(min-width: 1024px) 700px, 100vw"
+              className={cn(
+                "h-52 object-cover object-right sm:h-72 lg:h-[22rem]",
+                alwaysInvert,
+                "[-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
+              )}
+            />
+          </div>
         </div>
       </section>
 
