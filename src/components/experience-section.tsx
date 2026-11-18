@@ -8,6 +8,7 @@ import {
 } from "@/lib/experience";
 import { BLUR_FADE_DELAY, cn } from "@/lib/utils";
 import Image from "next/image";
+import { ExperienceCollapsible } from "./experience-collapsible";
 import { RoleBody } from "./experience-role-body";
 
 function Logo({ company }: { company: Company }) {
@@ -162,7 +163,9 @@ export function ExperienceList({
       {items.map((company, i) => (
         <li key={company.company} className="py-6 first:pt-2 last:pb-0">
           <BlurFade delay={baseDelay + i * 0.05}>
-            <CompanyBlock company={company} />
+            <ExperienceCollapsible label={company.company}>
+              <CompanyBlock company={company} />
+            </ExperienceCollapsible>
           </BlurFade>
         </li>
       ))}
