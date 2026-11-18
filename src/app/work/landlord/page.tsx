@@ -505,7 +505,12 @@ export default function MoveOutCaseStudy() {
               Enhancing Tenant Experience and Operational Efficiency
             </p>
           </div>
-          <div className="-mx-6 lg:mx-0 lg:-mr-24">
+          <div className="relative -mx-6 lg:mx-0 lg:-mr-24">
+            {/* the pale arch that sits behind the skyline in the original art */}
+            <div
+              aria-hidden
+              className="absolute inset-x-[6%] bottom-0 top-[4%] rounded-t-[999px] bg-gradient-to-b from-[#c9d8fb]/0 via-[#c9d8fb]/40 to-[#c9d8fb]/90 [-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
+            />
             <Fig
               src={`${M}/hero-skyline.webp`}
               w={1410}
@@ -514,7 +519,7 @@ export default function MoveOutCaseStudy() {
               priority
               sizes="(min-width: 1024px) 700px, 100vw"
               className={cn(
-                "h-52 object-cover object-right sm:h-72 lg:h-[22rem]",
+                "relative h-52 object-cover object-right sm:h-72 lg:h-[22rem]",
                 "[-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
               )}
             />
@@ -646,14 +651,15 @@ export default function MoveOutCaseStudy() {
               ))}
             </dl>
           </div>
-          <Fig
-            src={`${M}/terminology-building.webp`}
-            w={447}
-            h={623}
-            alt=""
-            sizes="400px"
-            className="mx-auto hidden max-w-sm lg:block"
-          />
+          <div className="mx-auto hidden w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-b from-[#f9faff] to-[#d9e5fb] lg:block">
+            <Fig
+              src={`${M}/terminology-building.webp`}
+              w={447}
+              h={623}
+              alt=""
+              sizes="400px"
+            />
+          </div>
         </TwoCol>
       </Section>
 
@@ -1189,25 +1195,27 @@ export default function MoveOutCaseStudy() {
               </div>
             </div>
           </div>
-          <Fig
-            src={`${M}/impact-building-1.webp`}
-            w={447}
-            h={603}
-            alt=""
-            sizes="400px"
-            className="mx-auto hidden max-w-sm lg:block"
-          />
+          <div className="mx-auto hidden w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-b from-[#f9faff] to-[#d9e5fb] lg:block">
+            <Fig
+              src={`${M}/impact-building-1.webp`}
+              w={447}
+              h={603}
+              alt=""
+              sizes="400px"
+            />
+          </div>
         </div>
 
         <div className="mt-20 grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <Fig
-            src={`${M}/impact-building-2.webp`}
-            w={447}
-            h={630}
-            alt=""
-            sizes="400px"
-            className="mx-auto hidden max-w-sm lg:block"
-          />
+          <div className="mx-auto hidden w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-b from-[#f9faff] to-[#d9e5fb] lg:block">
+            <Fig
+              src={`${M}/impact-building-2.webp`}
+              w={447}
+              h={630}
+              alt=""
+              sizes="400px"
+            />
+          </div>
           <div>
             <H3>Design considerations</H3>
             <div className="mt-6 space-y-8">
