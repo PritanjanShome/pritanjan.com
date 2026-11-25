@@ -21,20 +21,28 @@ export function ChapterNav({
   const [active, setActive] = useState(chapters[0]?.id);
 
   useEffect(() => {
-    const els = chapters
-      .map((c) => document.getElementById(c.id))
-      .filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-20% 0px -65% 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const line = window.innerHeight * 0.3;
+      let current = chapters[0]?.id;
+      for (const c of chapters) {
+        const el = document.getElementById(c.id);
+        if (el && el.getBoundingClientRect().top <= line) current = c.id;
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [chapters]);
 
   const activePhase = chapters.find((c) => c.id === active)?.phase;
@@ -57,13 +65,13 @@ export function ChapterNav({
                   href={`#${target.id}`}
                   aria-current={on ? "step" : undefined}
                   className={cn(
-                    "flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+                    "flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium transition-colors sm:gap-2 sm:px-3",
                     on
                       ? "bg-indigo-600 text-white"
                       : "text-foreground/70 hover:bg-foreground/10"
                   )}
                 >
-                  <span className="text-xs opacity-70">{i + 1}</span>
+                  <span className="hidden text-xs opacity-70 sm:inline">{i + 1}</span>
                   {ph}
                 </a>
               </li>

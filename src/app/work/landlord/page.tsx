@@ -512,7 +512,10 @@ const moveOutPhases = ["Discover", "Define", "Design", "Build", "Results"];
 
 export default function MoveOutCaseStudy() {
   return (
-    <CaseStudyPage>      {/* ------------------------------ Hero ------------------------------ */}
+    <CaseStudyPage>
+      <ChapterNav chapters={moveOutChapters} phases={moveOutPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
+
+      {/* ------------------------------ Hero ------------------------------ */}
       <section className="relative w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-background to-sky-50 text-foreground dark:from-[#1b1b26] dark:via-[#202024] dark:to-[#18213a]">
         {/* soft colour glows */}
         <div
@@ -591,7 +594,6 @@ export default function MoveOutCaseStudy() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
       </section>
 
-      <ChapterNav chapters={moveOutChapters} phases={moveOutPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
       <AtAGlance
         context="Resi (built on the Retrac platform): the move-in and move-out feature for student accommodation, where mass move-outs hit landlords' net operating income."
         role="Product designer and manager"

@@ -351,12 +351,20 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Product Knowledge Base: the foundation for AI-native product management",
+      title: "Building a Product Knowledge Base",
       href: "/work/product-knowledge",
       active: true,
       description:
-        "A first step towards AI-native product management: a governed, cited knowledge base and agents that automate PM assembly work and give an AI-led SDLC clearer PRDs.",
+        "Case study 1 of 2. How I designed, built and governed a cited, owned knowledge base that Product, Sales, Services and AI assistants can trust, with an honest baseline and a measurement plan.",
       image: "/ProductKnowledge.png",
+    },
+    {
+      title: "The Product Knowledge Base as the foundation of an AI-led SDLC",
+      href: "/work/ai-sdlc-foundation",
+      active: true,
+      description:
+        "Case study 2 of 2. When agents build, the PRD is the ceiling. How matching evidence against technical knowledge makes PRDs clearer, what PM work it automates, and how it can feed independent verification.",
+      image: "/AiSdlcFoundation.png",
     },
     {
       title: "Driving Sustainable Living Through Engagement",

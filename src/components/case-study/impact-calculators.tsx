@@ -188,3 +188,40 @@ export function MoveOutCalculator() {
     </div>
   );
 }
+
+/* ---------------------- Clearer PRDs for an AI-led SDLC ------------------- */
+
+const sFields: Field[] = [
+  { key: "specs", label: "PRDs or specs written per quarter", min: 2, max: 60, step: 1 },
+  { key: "rework", label: "Share that hit rework from unclear or conflicting input", min: 0, max: 80, step: 5, suffix: "%" },
+  { key: "hours", label: "Hours of rework per affected spec (PM, developer, review)", min: 4, max: 160, step: 2, suffix: " h" },
+  { key: "catch", label: "Share of that rework a match against technical knowledge catches before build", min: 0, max: 90, step: 5, suffix: "%" },
+  { key: "questions", label: "Clarification questions asked per spec", min: 0, max: 40, step: 1 },
+  { key: "mins", label: "Minutes to answer one question", min: 5, max: 60, step: 5, suffix: " min" },
+  { key: "answered", label: "Share answered from cited notes instead of a PM", min: 0, max: 90, step: 5, suffix: "%" },
+  { key: "rate", label: "Loaded cost per hour", min: 30, max: 200, step: 5, prefix: "€" },
+];
+const sDefaults = { specs: 12, rework: 30, hours: 40, catch: 50, questions: 15, mins: 20, answered: 50, rate: 75 };
+
+export function SdlcCalculator() {
+  const { v, set, reset } = useValues(sDefaults);
+  const specsYear = v.specs * 4;
+  const rework = specsYear * (v.rework / 100) * v.hours * (v.catch / 100);
+  const questions = (specsYear * v.questions * v.mins * (v.answered / 100)) / 60;
+  const total = rework + questions;
+  return (
+    <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+      <Sliders fields={sFields} values={v} onChange={set} onReset={reset} />
+      <Result
+        headlineLabel="Hours returned per year"
+        headline={nf.format(total)}
+        sub={`≈ ${(total / 1600).toFixed(2)} FTE · ≈ €${nf.format(total * v.rate)} of capacity`}
+        parts={[
+          { name: "Rework avoided before build starts", value: rework, unit: "h", color: "bg-indigo-500" },
+          { name: "Clarification questions answered from cited notes", value: questions, unit: "h", color: "bg-teal-500" },
+        ]}
+        note="Illustrative model, not a measured result. I have not yet measured rework or question volume before and after, so every default here is an assumption to replace with your own numbers. For scale, I report PRD creation falling from 8-10 days to about 3 hours. The structure is the point: unclear input costs rework and questions, and a cited, matched PRD should remove part of both."
+      />
+    </div>
+  );
+}

@@ -270,7 +270,7 @@ export function ArchitectureDiagram() {
 const pkGroups: [string, string[]][] = [
   ["Direction (where we want to go)", ["Roadmap references", "Feature requests", "Product research", "Direction meetings"]],
   ["Market", ["Market research", "Competitors", "Pricing and packaging"]],
-  ["Customer voice", ["RFP / RFQ answers", "Customer go-lives", "Personas", "Ideal customer profile"]],
+  ["Customer voice", ["RFP / RFQ answers", "Customer go-lives", "Personas", "Ideal customer profile", "Community-voted requests"]],
   ["Current product", ["Features", "Use cases", "Demo scenarios"]],
 ];
 
@@ -1112,30 +1112,406 @@ export function AutomationMap({ rows }: { rows: AutomationRow[] }) {
   return (
     <div className="space-y-3">
       {rows.map((r) => (
-        <div
+        <details
           key={r.activity}
           className={cn(
-            "grid gap-4 rounded-3xl border bg-card p-5 text-card-foreground sm:p-6 lg:grid-cols-[13rem_1.3fr_1.1fr_12rem] lg:items-start lg:gap-6",
+            "group rounded-3xl border bg-card text-card-foreground",
             r.level === "neutral" && "border-dashed bg-muted/40"
           )}
         >
-          <div>
-            <p className="text-lg font-semibold leading-snug">{r.activity}</p>
-            <p className="mt-1 text-xs text-muted-foreground">For: {r.who}</p>
+          <summary className="grid cursor-pointer list-none gap-3 p-5 sm:p-6 lg:grid-cols-[14rem_1fr_13rem] lg:items-center lg:gap-6 [&::-webkit-details-marker]:hidden">
+            <div>
+              <p className="text-lg font-semibold leading-snug">{r.activity}</p>
+              <p className="mt-1 text-xs text-muted-foreground">For: {r.who}</p>
+            </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">{r.how}</p>
+            <div className="flex items-center justify-between gap-3 lg:justify-end">
+              <Chip tone={r.level}>{r.levelLabel}</Chip>
+              <span aria-hidden className="text-lg text-muted-foreground transition-transform group-open:rotate-45">+</span>
+            </div>
+          </summary>
+          <div className="border-t px-5 py-4 text-sm leading-relaxed sm:px-6">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">What is encoded </span>
+            <p className="mt-1">{r.encoded}</p>
           </div>
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">What is encoded</p>
-            <p className="mt-1 text-sm leading-relaxed">{r.encoded}</p>
+        </details>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Focus-first building blocks                                               */
+/* -------------------------------------------------------------------------- */
+
+/** Native collapsible used to tuck detail away without removing it. */
+export function Expandable({
+  summary,
+  children,
+  className,
+}: {
+  summary: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <details className={cn("group mt-8 rounded-3xl border bg-card text-card-foreground", className)}>
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-base font-semibold sm:p-6 [&::-webkit-details-marker]:hidden">
+        {summary}
+        <span aria-hidden className="flex size-8 shrink-0 items-center justify-center rounded-full border text-lg transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <div className="border-t p-5 sm:p-6">{children}</div>
+    </details>
+  );
+}
+
+export function BigStat({
+  value,
+  label,
+  className,
+}: {
+  value: string;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <div className={cn("rounded-3xl border bg-card p-6 text-card-foreground", className)}>
+      <p className="inline-block bg-gradient-to-br from-indigo-600 to-sky-500 bg-clip-text pr-2 text-4xl font-bold tracking-tight text-transparent sm:text-5xl dark:from-indigo-300 dark:to-sky-300">
+        {value}
+      </p>
+      <p className="mt-3 text-sm leading-snug text-muted-foreground">{label}</p>
+    </div>
+  );
+}
+
+const flow: [string, string, string][] = [
+  ["Sources", "tickets, wiki, decks, RFPs", "bg-foreground/10"],
+  ["Product Knowledge", "cited, owned, current", "bg-indigo-500/20 ring-1 ring-indigo-500/60"],
+  ["Match", "against technical knowledge", "bg-teal-500/20 ring-1 ring-teal-500/60"],
+  ["Clearer PRD", "fit, gaps, conflicts", "bg-teal-500/20 ring-1 ring-teal-500/60"],
+  ["AI-led delivery", "agents build, people accept", "bg-amber-500/20 ring-1 ring-amber-500/60"],
+];
+
+export function FlowStrip() {
+  return (
+    <div>
+      <ol className="grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch">
+        {flow.flatMap(([t, s, c], i) => {
+          const card = (
+            <li key={t} className={cn("rounded-2xl p-4", c)}>
+              <p className="font-semibold leading-snug">{t}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{s}</p>
+            </li>
+          );
+          return i < flow.length - 1
+            ? [card, <li key={`${t}-a`} aria-hidden className="hidden items-center justify-center text-xl text-muted-foreground md:flex">→</li>]
+            : [card];
+        })}
+      </ol>
+      <p className="mt-3 text-center text-xs text-muted-foreground">
+        ↺ What ships flows back as a release-tagged note, so the base stays true.
+      </p>
+    </div>
+  );
+}
+
+export function BenchCard({
+  big,
+  what,
+  source,
+  href,
+  borrowed,
+}: {
+  big: string;
+  what: string;
+  source: string;
+  href: string;
+  borrowed: string;
+}) {
+  return (
+    <div className="flex flex-col rounded-3xl border bg-card p-6 text-card-foreground">
+      <p className="bg-gradient-to-br from-indigo-600 to-teal-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-indigo-300 dark:to-teal-300">
+        {big}
+      </p>
+      <p className="mt-2 text-sm font-medium leading-snug">{what}</p>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+        <span className="font-semibold text-foreground">What I borrowed: </span>
+        {borrowed}
+      </p>
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 text-xs underline underline-offset-4 opacity-70 hover:opacity-100"
+      >
+        {source}
+      </Link>
+    </div>
+  );
+}
+
+/** Example weeks from the repository's own history (not the full series). */
+export function ActivityChart() {
+  const weeks = [
+    { l: "2 Aug", v: 18228 },
+    { l: "16 Aug", v: 111271 },
+    { l: "30 Aug", v: 138899 },
+    { l: "15 Nov", v: 5790 },
+  ];
+  const max = 138899;
+  return (
+    <div className="rounded-3xl border bg-card p-6 text-card-foreground sm:p-8">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="font-semibold">Lines added in example weeks</p>
+        <p className="text-xs text-muted-foreground">GitHub Insights, code frequency. Examples, not the full series.</p>
+      </div>
+      <div className="mt-8 flex h-56 items-stretch gap-3 sm:gap-6">
+        {weeks.map((w) => (
+          <div key={w.l} className="flex flex-1 flex-col items-center gap-2">
+            <span className="text-xs font-semibold tabular-nums">{w.v.toLocaleString("en-US")}</span>
+            <div className="flex w-full flex-1 items-end">
+              <div
+                className="w-full rounded-t-lg bg-gradient-to-t from-indigo-600 to-sky-400"
+                style={{ height: `${Math.max((w.v / max) * 100, 4)}%` }}
+              />
+            </div>
+            <span className="text-xs text-muted-foreground">{w.l}</span>
           </div>
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">How it runs</p>
-            <p className="mt-1 text-sm leading-relaxed">{r.how}</p>
-          </div>
-          <div className="lg:text-right">
-            <Chip tone={r.level}>{r.levelLabel}</Chip>
-          </div>
+        ))}
+      </div>
+      <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+        The base grew in large bursts while the structure and first areas were
+        seeded, and it is still being changed in November. Lines added overstate
+        real growth, since a folder rename counts as both added and deleted
+        lines, so read this as evidence of ongoing work, not of value.
+      </p>
+    </div>
+  );
+}
+
+/** The three enforcement layers, stacked. */
+export function LayerStack() {
+  const layers: [string, string, string][] = [
+    ["1", "In the assistant", "Identity is confirmed before any write, and a write hook blocks paths outside the PM’s own area."],
+    ["2", "In the repository", "CODEOWNERS routes every pull request to the area owner for review."],
+    ["3", "In CI", "A check validates every changed path against the authenticated GitHub actor. A mixed change set fails whole."],
+  ];
+  return (
+    <div className="grid gap-3 md:grid-cols-3">
+      {layers.map(([n, t, s]) => (
+        <div key={n} className="rounded-3xl border bg-card p-6 text-card-foreground">
+          <span className="flex size-8 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">{n}</span>
+          <p className="mt-4 text-lg font-semibold">{t}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s}</p>
         </div>
       ))}
     </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  What goes inside the base                                                 */
+/* -------------------------------------------------------------------------- */
+
+const contentLenses: [string, string, string][] = [
+  ["Direction", "Where we want to go", "border-indigo-500/60 bg-indigo-500/[0.06]"],
+  ["Market", "What is happening outside", "border-teal-500/60 bg-teal-500/[0.06]"],
+  ["Customer voice", "What customers ask and are promised", "border-amber-500/60 bg-amber-500/[0.06]"],
+  ["Current product", "What exists today", "border-pink-500/60 bg-pink-500/[0.06]"],
+];
+
+export function ContentMap() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      {pkGroups.map(([g, items], i) => {
+        const [name, sub, tone] = contentLenses[i];
+        return (
+          <div key={g} className={cn("rounded-3xl border p-6", tone)}>
+            <p className="text-lg font-semibold">{name}</p>
+            <p className="text-sm text-muted-foreground">{sub}</p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {items.map((it) => (
+                <span key={it} className="rounded-full bg-foreground/[0.08] px-2.5 py-1 text-xs">{it}</span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Independent verification loop                                             */
+/* -------------------------------------------------------------------------- */
+
+export function VerifyLoop() {
+  const steps: [string, string, string][] = [
+    ["Use cases and customer questions", "Already curated and cited in the base", "bg-indigo-500/15 ring-1 ring-indigo-500/50"],
+    ["Acceptance scenarios", "Written from that evidence and stored where build agents cannot read them", "bg-amber-500/15 ring-1 ring-amber-500/60"],
+    ["Agents build", "Against the spec only; they never see the scenarios", "bg-foreground/10"],
+    ["Scenarios run independently", "Pass rate becomes the measure of done", "bg-teal-500/15 ring-1 ring-teal-500/50"],
+    ["People accept", "A human gate, with separation of duties", "bg-emerald-500/15 ring-1 ring-emerald-500/50"],
+  ];
+  return (
+    <ol className="grid gap-3 md:grid-cols-5">
+      {steps.map(([t, s, c], i) => (
+        <li key={t} className={cn("relative rounded-2xl p-4", c)}>
+          <p className="text-xs font-bold text-muted-foreground">{String(i + 1).padStart(2, "0")}{i === 1 ? "  ·  held out" : ""}</p>
+          <p className="mt-1 font-semibold leading-snug">{t}</p>
+          <p className="mt-2 text-xs leading-snug text-muted-foreground">{s}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Now / next / later lanes                                                  */
+/* -------------------------------------------------------------------------- */
+
+export function RoadmapLanes({
+  lanes,
+}: {
+  lanes: { title: string; tone: "live" | "designed" | "next"; items: string[] }[];
+}) {
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {lanes.map((l) => (
+        <div key={l.title} className="rounded-3xl bg-foreground/[0.05] p-4">
+          <div className="mb-4 px-1">
+            <Chip tone={l.tone}>{l.title}</Chip>
+          </div>
+          <ul className="space-y-3">
+            {l.items.map((it) => (
+              <li key={it} className="rounded-2xl border bg-card p-4 text-sm leading-snug text-card-foreground">{it}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Link to the companion case study                                          */
+/* -------------------------------------------------------------------------- */
+
+export function CompanionLink({
+  href,
+  kicker,
+  title,
+  body,
+}: {
+  href: string;
+  kicker: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group block rounded-3xl border bg-card p-6 text-card-foreground transition-colors hover:border-indigo-500/60 sm:p-8"
+    >
+      <p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">{kicker}</p>
+      <p className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{title}</p>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <p className="mt-4 text-sm font-medium text-indigo-700 dark:text-indigo-300">
+        Read the case study <span aria-hidden className="inline-block transition-transform group-hover:translate-x-1">→</span>
+      </p>
+    </Link>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Self-service front door and demand loop                                   */
+/* -------------------------------------------------------------------------- */
+
+function Arrow({ down }: { down?: boolean }) {
+  return (
+    <span aria-hidden className={cn("flex items-center justify-center text-xl text-muted-foreground", down ? "py-1 md:hidden" : "hidden md:flex")}>
+      {down ? "↓" : "→"}
+    </span>
+  );
+}
+
+export function DemandLoop() {
+  const stages: { n: string; t: string; s: string; chips: string[]; tone: string }[] = [
+    { n: "1", t: "Ask", s: "Search the Help and Resource section, or ask the AI chatbot. Every answer cites the note it came from.", chips: ["Search", "AI chatbot", "Answer with source"], tone: "border-indigo-500/60 bg-indigo-500/[0.06]" },
+    { n: "2", t: "No answer? A ticket is created", s: "Created automatically, with the right PM suggested from the ownership map and a short form.", chips: ["Relevant PM", "Customer", "Problem or request", "Screenshots"], tone: "border-amber-500/60 bg-amber-500/[0.06]" },
+    { n: "3", t: "Triage the type", s: "The requester or the system marks what it is, and it goes to the relevant PM or PO.", chips: ["Info missing", "New feature or use case", "Bug"], tone: "border-teal-500/60 bg-teal-500/[0.06]" },
+    { n: "4", t: "Close the loop", s: "The base is updated, the page is published, and the requester is told.", chips: ["Update the base on GitHub", "Publish to Help and Resource", "Notify the requester"], tone: "border-emerald-500/60 bg-emerald-500/[0.06]" },
+  ];
+  return (
+    <div>
+      <div className="grid gap-2 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch">
+        {stages.flatMap((st, i) => {
+          const card = (
+            <div key={st.n} className={cn("rounded-3xl border p-5", st.tone)}>
+              <p className="text-xs font-bold text-muted-foreground">STEP {st.n}</p>
+              <p className="mt-1 text-lg font-semibold leading-snug">{st.t}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{st.s}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {st.chips.map((c) => (
+                  <span key={c} className="rounded-full bg-foreground/[0.08] px-2.5 py-1 text-xs">{c}</span>
+                ))}
+              </div>
+            </div>
+          );
+          return i < stages.length - 1
+            ? [card, <Arrow key={`a${i}`} />, <Arrow key={`d${i}`} down />]
+            : [card];
+        })}
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        {[
+          ["If the type is “info missing”", ["PM or PO", "updates the note", "pull request on GitHub", "published page"]],
+          ["If it is a feature or use case", ["Request board", "community votes", "most requested rises", "market-research evidence", "PRD"]],
+          ["If it is a bug", ["Backlog refinement", "fixed", "shipped with a release version", "requester notified"]],
+        ].map(([title, steps]) => (
+          <div key={title as string} className="rounded-3xl border bg-card p-5 text-card-foreground">
+            <p className="text-sm font-semibold">{title as string}</p>
+            <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              {(steps as string[]).map((x, i, arr) => (
+                <span key={x} className="flex items-center gap-2">
+                  <span className="rounded-full border px-2.5 py-1 text-foreground">{x}</span>
+                  {i < arr.length - 1 && <span aria-hidden>→</span>}
+                </span>
+              ))}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-5 rounded-2xl bg-indigo-500/10 p-4 text-center text-sm leading-relaxed">
+        ↺ Every shipped feature becomes a release-tagged note, published as an
+        interactive page in Help and Resource, so the next person finds the
+        answer instead of filing a ticket.
+      </p>
+    </div>
+  );
+}
+
+/** Community-driven feature development: from a vote to release documentation. */
+export function VotingFlow() {
+  const steps: [string, string][] = [
+    ["New request", "Typed and owned, with the customer attached"],
+    ["Community vote", "Others back the requests they also need"],
+    ["Most requested rises", "Demand is observed, not guessed"],
+    ["Market-research input", "The ranking becomes evidence in the PRD"],
+    ["PRD and build", "The PM decides; votes are one input"],
+    ["Published everywhere", "Help and Resource page and the release documentation"],
+  ];
+  return (
+    <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+      {steps.map(([t, s], i) => (
+        <li key={t} className="relative rounded-2xl border bg-card p-4 text-card-foreground">
+          <p className="text-xs font-bold text-indigo-600 dark:text-indigo-300">{String(i + 1).padStart(2, "0")}</p>
+          <p className="mt-1 font-semibold leading-snug">{t}</p>
+          <p className="mt-2 text-xs leading-snug text-muted-foreground">{s}</p>
+        </li>
+      ))}
+    </ol>
   );
 }

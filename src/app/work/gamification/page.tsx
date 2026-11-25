@@ -288,7 +288,10 @@ const gamiPhases = ["Discover", "Define", "Design", "Launch", "Results", "Next"]
 
 export default function GamificationCaseStudy() {
   return (
-    <CaseStudyPage>      {/* ------------------------------ Hero ------------------------------ */}
+    <CaseStudyPage>
+      <ChapterNav chapters={gamiChapters} phases={gamiPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
+
+      {/* ------------------------------ Hero ------------------------------ */}
       <section className="w-full overflow-hidden bg-[#202024] text-white">
         <div className="mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
           <div className="pb-2 lg:pb-24">
@@ -318,7 +321,6 @@ export default function GamificationCaseStudy() {
         </div>
       </section>
 
-      <ChapterNav chapters={gamiChapters} phases={gamiPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
       <AtAGlance
         context="Resi, a tenant mobile app for residential property management. The question: how do you keep tenants engaged beyond paying rent and logging repairs?"
         problem="35% of new users dropped off in week one and 70% never went beyond rent payments and maintenance requests, so the app did little for community or for saving energy."
