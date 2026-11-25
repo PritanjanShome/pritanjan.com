@@ -38,6 +38,8 @@ import {
   BuildTimeline,
 } from "@/components/case-study/pk-visuals";
 import { RoiCalculator } from "@/components/case-study/roi-calculator";
+import { ChapterNav } from "@/components/case-study/chapter-nav";
+import { JourneyMap } from "@/components/case-study/overview";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -459,10 +461,32 @@ const sources: [string, string][] = [
 
 /* -------------------------------- page ------------------------------------ */
 
+const pkChapters = [
+  { id: "the-short-version", label: "The short version", phase: "Discover" },
+  { id: "the-problem", label: "The problem", phase: "Discover" },
+  { id: "benchmarks", label: "Benchmarks", phase: "Discover" },
+  { id: "why-the-groundwork-matters", label: "Why the groundwork matters", phase: "Discover" },
+  { id: "what-product-knowledge-is", label: "What Product Knowledge is", phase: "Define" },
+  { id: "what-it-automates", label: "What it automates", phase: "Define" },
+  { id: "design-principles", label: "Design principles", phase: "Define" },
+  { id: "how-it-fits-together", label: "Architecture", phase: "Design" },
+  { id: "the-note-format", label: "The note format", phase: "Design" },
+  { id: "indexing-and-routing", label: "Indexing and routing", phase: "Design" },
+  { id: "governance", label: "Governance", phase: "Design" },
+  { id: "how-it-was-built", label: "How it was built", phase: "Build" },
+  { id: "the-operating-model", label: "The operating model", phase: "Build" },
+  { id: "an-agent-for-every-job", label: "An agent for every job", phase: "Build" },
+  { id: "the-base-today", label: "The base today", phase: "Results" },
+  { id: "what-it-changes-for-pms", label: "What it changes for PMs", phase: "Results" },
+  { id: "the-audit", label: "The audit", phase: "Results" },
+  { id: "measurement", label: "Measurement and value model", phase: "Results" },
+  { id: "lessons-and-playbook", label: "Lessons and playbook", phase: "Reflect" },
+];
+const pkPhases = ["Discover", "Define", "Design", "Build", "Results", "Reflect"];
+
 export default function ProductKnowledgeCaseStudy() {
   return (
-    <CaseStudyPage>
-      {/* ------------------------------ Hero ------------------------------ */}
+    <CaseStudyPage>      {/* ------------------------------ Hero ------------------------------ */}
       <section className="relative w-full overflow-hidden bg-[#14141a] text-white">
         <div
           aria-hidden
@@ -493,6 +517,12 @@ export default function ProductKnowledgeCaseStudy() {
             cited knowledge base plus agents, what it already automates, and
             what it gives developers building in an AI-led SDLC.
           </p>
+          <a
+            href="#roi-model"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur hover:bg-white/20"
+          >
+            Try the interactive value model <span aria-hidden>↓</span>
+          </a>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <StatTile value="13" label="standard knowledge categories, identical in every product area" />
@@ -516,6 +546,10 @@ export default function ProductKnowledgeCaseStudy() {
           </dl>
         </div>
       </section>
+
+      <ChapterNav chapters={pkChapters} phases={pkPhases} extra={{ href: "#roi-model", label: "Try the value model" }} />
+      <JourneyMap chapters={pkChapters} phases={pkPhases} />
+
 
       {/* ------------------------- Confidentiality note ------------------------- */}
       <Section className="py-10 sm:py-12">
@@ -628,8 +662,32 @@ export default function ProductKnowledgeCaseStudy() {
         <DataTable className="mt-6" headers={["Stakeholder", "The pain today"]} rows={painTable} />
       </Section>
 
+      {/* ----------------------------- 05 Benchmarks ---------------------------- */}
+      <Section n="03" label="Benchmarks" tone="tint">
+        <H2>What good looks like: five public reference points</H2>
+        <P className="mt-8 max-w-4xl">
+          Before refining my design I looked at how comparable knowledge systems
+          are built and measured. None is the same as an internal product
+          knowledge base, so I took the lesson from each, not the number.
+        </P>
+        <DataTable
+          className="mt-10"
+          wide
+          headers={["Reference", "What the numbers show", "What I borrowed", "Where mine differs"]}
+          rows={benchmarks}
+        />
+        <p className="mt-6 max-w-4xl text-sm text-muted-foreground">
+          <strong className="text-foreground">Reading the evidence.</strong>{" "}
+          Spotify’s figures are self-reported and measured at different points
+          (55% two years in vs 60 → 20 days), so I cite both and treat them as
+          the same order of magnitude, not a promise. The Stripe figure is a
+          recollection. RFP savings are vendor claims. The citation studies are
+          the most rigorous, and they are the ones that changed my design.
+        </p>
+      </Section>
+
       {/* ----------------------------- 03 Groundwork ---------------------------- */}
-      <Section n="03" label="Why the groundwork matters" tone="dark">
+      <Section n="04" label="Why the groundwork matters" tone="dark">
         <H2>The delivery pipeline is a company initiative. Its ceiling is set by its inputs.</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -666,7 +724,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 04 What it is ---------------------------- */}
-      <Section n="04" label="What Product Knowledge is">
+      <Section n="05" label="What Product Knowledge is">
         <H2>Direction, market and customer evidence, matched against technical knowledge</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -752,7 +810,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ------------------------------ Automation ------------------------------ */}
-      <Section n="05" label="What it automates" tone="muted">
+      <Section n="06" label="What it automates" tone="muted">
         <H2>What it automates in the PM workflow, and what stays human</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -800,32 +858,24 @@ export default function ProductKnowledgeCaseStudy() {
         </p>
       </Section>
 
-      {/* ----------------------------- 05 Benchmarks ---------------------------- */}
-      <Section n="06" label="Benchmarks" tone="tint">
-        <H2>What good looks like: five public reference points</H2>
+      {/* ------------------------------ Design principles ----------------------- */}
+      <Section n="07" label="Design principles">
+        <H2>Eight failure modes I designed against</H2>
         <P className="mt-8 max-w-4xl">
-          Before refining my design I looked at how comparable knowledge systems
-          are built and measured. None is the same as an internal product
-          knowledge base, so I took the lesson from each, not the number.
+          Most knowledge bases fail in a small number of known ways. These are
+          the ones I designed against, and each has a mechanism behind it
+          rather than an intention. How well the mechanisms hold is what the
+          audit and the baseline above measure.
         </P>
-        <DataTable
-          className="mt-10"
-          wide
-          headers={["Reference", "What the numbers show", "What I borrowed", "Where mine differs"]}
-          rows={benchmarks}
-        />
-        <p className="mt-6 max-w-4xl text-sm text-muted-foreground">
-          <strong className="text-foreground">Reading the evidence.</strong>{" "}
-          Spotify’s figures are self-reported and measured at different points
-          (55% two years in vs 60 → 20 days), so I cite both and treat them as
-          the same order of magnitude, not a promise. The Stripe figure is a
-          recollection. RFP savings are vendor claims. The citation studies are
-          the most rigorous, and they are the ones that changed my design.
-        </p>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {principles.map((d, i) => (
+            <PrincipleCard key={d.t} n={i + 1} title={d.t} how={d.how} prevents={d.solves} />
+          ))}
+        </div>
       </Section>
 
       {/* --------------------------- 06 Architecture ---------------------------- */}
-      <Section n="07" label="How it fits together" tone="muted">
+      <Section n="08" label="How it fits together" tone="muted">
         <H2>The architecture: a knowledge layer between sources and the PRD</H2>
         <P className="mt-8 max-w-4xl">
           Sources are curated into Product Knowledge (1). The PM matches it
@@ -867,181 +917,8 @@ export default function ProductKnowledgeCaseStudy() {
         </div>
       </Section>
 
-      {/* ----------------------------- 07 How built ----------------------------- */}
-      <Section n="08" label="How it was built">
-        <H2>Structure before content, in six phases</H2>
-        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {phases.map(([t, s], i) => (
-            <li key={t} className="rounded-3xl border bg-card p-6 text-card-foreground">
-              <div className="flex items-center gap-3">
-                <span className="flex size-8 items-center justify-center rounded-full bg-indigo-500 text-sm font-bold text-white">{i + 1}</span>
-                <h3 className="text-xl font-semibold tracking-tight">{t}</h3>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{s}</p>
-            </li>
-          ))}
-        </ol>
-
-        <H3 className="mt-20">One tree, separate homes</H3>
-        <P className="mt-4 max-w-4xl">
-          <Rich>
-            The biggest structural choice: **every product uses the same
-            categories, the same note template, the same status lifecycle and
-            the same review rules.** Knowledge is only useful across an
-            organisation if it is predictable. Someone who knows where answers
-            live for one product knows where they live for all of them, and the
-            AI routes content against one set of definitions.
-          </Rich>
-        </P>
-        <div className="mt-10">
-          <TaxonomyMap />
-        </div>
-
-        <H3 className="mt-20">The build, in order</H3>
-        <P className="mt-4 max-w-4xl">
-          <Rich>
-            I built the base **with Claude Code itself**, in working sessions
-            that kept their own memory, and I shaped it through a decision log
-            instead of a big-bang design. Each stage produced something the next
-            one needed.
-          </Rich>
-        </P>
-        <div className="mt-10">
-          <BuildTimeline items={timeline} />
-        </div>
-
-        <H3 className="mt-20">Alternatives I weighed, and why this shape</H3>
-        <P className="mt-4 max-w-4xl">
-          This is my design reasoning, not the result of trials. Each option
-          solves part of the problem; none solves the part I cared about most,
-          which is a PRD that has been checked against what is technically
-          true.
-        </P>
-        <DataTable
-          className="mt-8"
-          wide
-          headers={["Option", "What it does well", "Why I did not stop there"]}
-          rows={alternatives}
-        />
-
-        <H3 className="mt-20">What I got wrong, and fixed</H3>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {mistakes.map(([t, s2]) => (
-            <Card key={t} className="p-5 sm:p-6">
-              <p className="font-semibold">{t}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s2}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* ------------------------- 08 Operating model --------------------------- */}
-      <Section n="09" label="The operating model" tone="tint">
-        <H2>Local first, with GitHub as the shared platform</H2>
-        <P className="mt-8 max-w-4xl">
-          <Rich>
-            Every PM works the same way. Their Obsidian vault **is a local git
-            clone** of one private GitHub repository, and an assistant with a set
-            of agents runs inside it. Work happens on their own machine first.
-            **GitHub is the shared platform and the single ingestion point**:
-            nothing becomes shared truth until it is pushed, reviewed against
-            ownership and merged, and nothing arrives on a PM’s machine until
-            they pull.
-          </Rich>
-        </P>
-        <ScrollBox label="Operating model diagram" className="mt-10" minWidth={820}>
-          <OperatingModelDiagram />
-        </ScrollBox>
-
-        <H3 className="mt-20">The life of a change, from a PM’s laptop to the shared base</H3>
-        <P className="mt-4 max-w-4xl">
-          A PM drops in a source and an agent takes it from there: it works out
-          where the content belongs, writes it in the right format in the right
-          place, checks it, and either commits it or turns it into a proposal
-          for the area’s owner.
-        </P>
-        <div className="mt-8">
-          <StepGrid steps={lifeSteps} />
-        </div>
-
-        <H3 className="mt-20">What it looks like on GitHub</H3>
-        <P className="mt-4 max-w-4xl">
-          Every change travels on its own branch with a pull request and a
-          check result. Branches are named <code>owner/topic</code> for work in
-          a PM’s own area and <code>proposal/topic</code> for cross-area
-          changes. Two older branches show a failed check, and one of them belongs
-          to the ownership-check bug described above.
-        </P>
-        <div className="mt-8">
-          <BranchesPanel />
-          <p className="mt-3 text-xs text-muted-foreground">
-            Anonymised recreation of the repository’s branches view. Names are
-            replaced; branch patterns, check results and PR numbers follow the
-            real list.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {[
-            ["Why GitHub", "One shared place with history, review, branch protection and access control that PMs and engineering already trust. Plain files mean git carries the diff, so sync is cheap however many files changed."],
-            ["Why local first", "Each PM, and each assistant session, works on a full copy without waiting on anyone. Sync is manual and on demand, and the assistant only flags when one is due."],
-            ["Why proposals", "Changes to another owner’s area, shared content or governance never go in directly. They travel as a proposal with named reviewers, so ownership is respected without slowing own-area work."],
-          ].map(([t, s2]) => (
-            <Card key={t} className="p-6">
-              <p className="text-lg font-semibold">{t}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s2}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* ----------------------------- 09 Agents ---------------------- */}
-      <Section n="10" label="An agent for every job">
-        <H2>An agent for every job, and a routine that keeps the base current</H2>
-        <P className="mt-8 max-w-4xl">
-          <Rich>
-            The repeatable work is packaged as **AI skills** that follow the
-            same rules as a human contributor: same classification, same
-            confidence and ownership gates, same citations. Twenty skills run
-            the base. The ten below are the core, and when each one runs.
-          </Rich>
-        </P>
-        <DataTable className="mt-10" wide headers={["Agent or skill", "What it does", "Runs when"]} rows={skills} />
-
-        <H3 className="mt-20">Restartable memory</H3>
-        <P className="mt-4 max-w-4xl">
-          <Rich>
-            Several PMs and their assistants work on the base across many
-            sessions. Without memory, every session starts from zero or replays
-            history at great cost. So the base carries **in-repo working
-            memory** in three scopes (universal, contributor, area-local),
-            written as small deltas after every response and compacted when the
-            state grows, with a line budget of about 120 lines and compaction
-            at about 160. Memory location never decides permissions, and model
-            choice never decides memory location.
-          </Rich>
-        </P>
-
-        <H3 className="mt-20">The routine that keeps it up to date</H3>
-        <P className="mt-4 max-w-4xl">
-          <Rich>
-            Today a refresh runs **on request**: a PM asks and the assistant
-            diffs the sources. The next step is a **scheduled routine** that
-            populates the base from the wiki, the ticket tracker and other
-            sources. It detects change instead of re-reading, applies the same
-            gates as a human, and ends in a **proposal for the owner, never a
-            silent write**. If a source disappears or contradicts a note, a gap
-            is opened for the owner. The base never writes back to the wiki or
-            the tracker.
-          </Rich>
-        </P>
-        <div className="mt-8">
-          <RefreshLoop />
-        </div>
-      </Section>
-
       {/* ----------------------------- 08 OKF ----------------------------------- */}
-      <Section n="11" label="The note format" tone="tint">
+      <Section n="09" label="The note format" tone="tint">
         <H2>Why an open format: the advantages of OKF</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -1070,7 +947,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 09 Indexing ------------------------------ */}
-      <Section n="12" label="Indexing and routing">
+      <Section n="10" label="Indexing and routing">
         <H2>A map at every level, so people and AI load the smallest thing that answers</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -1115,7 +992,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 10 Governance ---------------------------- */}
-      <Section n="13" label="Governance" tone="muted">
+      <Section n="11" label="Governance" tone="muted">
         <H2>Ownership you can enforce, not just agree on</H2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-5">
@@ -1189,8 +1066,181 @@ export default function ProductKnowledgeCaseStudy() {
         />
       </Section>
 
+      {/* ----------------------------- 07 How built ----------------------------- */}
+      <Section n="12" label="How it was built">
+        <H2>Structure before content, in six phases</H2>
+        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {phases.map(([t, s], i) => (
+            <li key={t} className="rounded-3xl border bg-card p-6 text-card-foreground">
+              <div className="flex items-center gap-3">
+                <span className="flex size-8 items-center justify-center rounded-full bg-indigo-500 text-sm font-bold text-white">{i + 1}</span>
+                <h3 className="text-xl font-semibold tracking-tight">{t}</h3>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{s}</p>
+            </li>
+          ))}
+        </ol>
+
+        <H3 className="mt-20">One tree, separate homes</H3>
+        <P className="mt-4 max-w-4xl">
+          <Rich>
+            The biggest structural choice: **every product uses the same
+            categories, the same note template, the same status lifecycle and
+            the same review rules.** Knowledge is only useful across an
+            organisation if it is predictable. Someone who knows where answers
+            live for one product knows where they live for all of them, and the
+            AI routes content against one set of definitions.
+          </Rich>
+        </P>
+        <div className="mt-10">
+          <TaxonomyMap />
+        </div>
+
+        <H3 className="mt-20">The build, in order</H3>
+        <P className="mt-4 max-w-4xl">
+          <Rich>
+            I built the base **with Claude Code itself**, in working sessions
+            that kept their own memory, and I shaped it through a decision log
+            instead of a big-bang design. Each stage produced something the next
+            one needed.
+          </Rich>
+        </P>
+        <div className="mt-10">
+          <BuildTimeline items={timeline} />
+        </div>
+
+        <H3 className="mt-20">Alternatives I weighed, and why this shape</H3>
+        <P className="mt-4 max-w-4xl">
+          This is my design reasoning, not the result of trials. Each option
+          solves part of the problem; none solves the part I cared about most,
+          which is a PRD that has been checked against what is technically
+          true.
+        </P>
+        <DataTable
+          className="mt-8"
+          wide
+          headers={["Option", "What it does well", "Why I did not stop there"]}
+          rows={alternatives}
+        />
+
+        <H3 className="mt-20">What I got wrong, and fixed</H3>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          {mistakes.map(([t, s2]) => (
+            <Card key={t} className="p-5 sm:p-6">
+              <p className="font-semibold">{t}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s2}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* ------------------------- 08 Operating model --------------------------- */}
+      <Section n="13" label="The operating model" tone="tint">
+        <H2>Local first, with GitHub as the shared platform</H2>
+        <P className="mt-8 max-w-4xl">
+          <Rich>
+            Every PM works the same way. Their Obsidian vault **is a local git
+            clone** of one private GitHub repository, and an assistant with a set
+            of agents runs inside it. Work happens on their own machine first.
+            **GitHub is the shared platform and the single ingestion point**:
+            nothing becomes shared truth until it is pushed, reviewed against
+            ownership and merged, and nothing arrives on a PM’s machine until
+            they pull.
+          </Rich>
+        </P>
+        <ScrollBox label="Operating model diagram" className="mt-10" minWidth={820}>
+          <OperatingModelDiagram />
+        </ScrollBox>
+
+        <H3 className="mt-20">The life of a change, from a PM’s laptop to the shared base</H3>
+        <P className="mt-4 max-w-4xl">
+          A PM drops in a source and an agent takes it from there: it works out
+          where the content belongs, writes it in the right format in the right
+          place, checks it, and either commits it or turns it into a proposal
+          for the area’s owner.
+        </P>
+        <div className="mt-8">
+          <StepGrid steps={lifeSteps} />
+        </div>
+
+        <H3 className="mt-20">What it looks like on GitHub</H3>
+        <P className="mt-4 max-w-4xl">
+          Every change travels on its own branch with a pull request and a
+          check result. Branches are named <code>owner/topic</code> for work in
+          a PM’s own area and <code>proposal/topic</code> for cross-area
+          changes. Two older branches show a failed check, and one of them belongs
+          to the ownership-check bug described above.
+        </P>
+        <div className="mt-8">
+          <BranchesPanel />
+          <p className="mt-3 text-xs text-muted-foreground">
+            Anonymised recreation of the repository’s branches view. Names are
+            replaced; branch patterns, check results and PR numbers follow the
+            real list.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {[
+            ["Why GitHub", "One shared place with history, review, branch protection and access control that PMs and engineering already trust. Plain files mean git carries the diff, so sync is cheap however many files changed."],
+            ["Why local first", "Each PM, and each assistant session, works on a full copy without waiting on anyone. Sync is manual and on demand, and the assistant only flags when one is due."],
+            ["Why proposals", "Changes to another owner’s area, shared content or governance never go in directly. They travel as a proposal with named reviewers, so ownership is respected without slowing own-area work."],
+          ].map(([t, s2]) => (
+            <Card key={t} className="p-6">
+              <p className="text-lg font-semibold">{t}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s2}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* ----------------------------- 09 Agents ---------------------- */}
+      <Section n="14" label="An agent for every job">
+        <H2>An agent for every job, and a routine that keeps the base current</H2>
+        <P className="mt-8 max-w-4xl">
+          <Rich>
+            The repeatable work is packaged as **AI skills** that follow the
+            same rules as a human contributor: same classification, same
+            confidence and ownership gates, same citations. Twenty skills run
+            the base. The ten below are the core, and when each one runs.
+          </Rich>
+        </P>
+        <DataTable className="mt-10" wide headers={["Agent or skill", "What it does", "Runs when"]} rows={skills} />
+
+        <H3 className="mt-20">Restartable memory</H3>
+        <P className="mt-4 max-w-4xl">
+          <Rich>
+            Several PMs and their assistants work on the base across many
+            sessions. Without memory, every session starts from zero or replays
+            history at great cost. So the base carries **in-repo working
+            memory** in three scopes (universal, contributor, area-local),
+            written as small deltas after every response and compacted when the
+            state grows, with a line budget of about 120 lines and compaction
+            at about 160. Memory location never decides permissions, and model
+            choice never decides memory location.
+          </Rich>
+        </P>
+
+        <H3 className="mt-20">The routine that keeps it up to date</H3>
+        <P className="mt-4 max-w-4xl">
+          <Rich>
+            Today a refresh runs **on request**: a PM asks and the assistant
+            diffs the sources. The next step is a **scheduled routine** that
+            populates the base from the wiki, the ticket tracker and other
+            sources. It detects change instead of re-reading, applies the same
+            gates as a human, and ends in a **proposal for the owner, never a
+            silent write**. If a source disappears or contradicts a note, a gap
+            is opened for the owner. The base never writes back to the wiki or
+            the tracker.
+          </Rich>
+        </P>
+        <div className="mt-8">
+          <RefreshLoop />
+        </div>
+      </Section>
+
       {/* ------------------------------ The base today -------------------------- */}
-      <Section n="14" label="The base today" tone="dark">
+      <Section n="15" label="The base today" tone="dark">
         <H2>The base as it stands: real numbers from the repository</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -1269,22 +1319,6 @@ export default function ProductKnowledgeCaseStudy() {
         </p>
       </Section>
 
-      {/* ------------------------------ Design principles ----------------------- */}
-      <Section n="15" label="Design principles">
-        <H2>Eight failure modes I designed against</H2>
-        <P className="mt-8 max-w-4xl">
-          Most knowledge bases fail in a small number of known ways. These are
-          the ones I designed against, and each has a mechanism behind it
-          rather than an intention. How well the mechanisms hold is what the
-          audit and the baseline above measure.
-        </P>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {principles.map((d, i) => (
-            <PrincipleCard key={d.t} n={i + 1} title={d.t} how={d.how} prevents={d.solves} />
-          ))}
-        </div>
-      </Section>
-
       {/* ----------------------------- 12 PM impact ----------------------------- */}
       <Section n="16" label="What it changes for PMs" tone="tint">
         <H2>The product management job, before and after</H2>
@@ -1341,7 +1375,8 @@ export default function ProductKnowledgeCaseStudy() {
           rows={kpis}
         />
 
-        <H3 className="mt-20">What it could be worth: an interactive model</H3>
+        <span id="roi-model" className="mt-20 block scroll-mt-24" />
+        <H3>What it could be worth: an interactive model</H3>
         <P className="mt-4 max-w-4xl">
           Adjust the sliders to your own organisation. The assumptions behind
           the maths are stated under the result.

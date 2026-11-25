@@ -183,6 +183,13 @@ export function SectionLabel({ n, label }: { n?: string; label: string }) {
   );
 }
 
+export function slugify(label: string) {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export function Section({
   id,
   n,
@@ -199,7 +206,10 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={cn("w-full scroll-mt-8", tones[tone])}>
+    <section
+      id={id ?? (label ? slugify(label) : undefined)}
+      className={cn("w-full scroll-mt-20", tones[tone])}
+    >
       <div className={cn("mx-auto max-w-6xl px-6 py-16 sm:py-24", className)}>
         {label && <SectionLabel n={n} label={label} />}
         {children}

@@ -24,6 +24,9 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { ChapterNav } from "@/components/case-study/chapter-nav";
+import { AtAGlance, JourneyMap } from "@/components/case-study/overview";
+import { GamificationCalculator, MoveOutCalculator } from "@/components/case-study/impact-calculators";
 import { cn } from "@/lib/utils";
 
 const A = "/case-studies/gamification";
@@ -264,10 +267,28 @@ function Feature({
 
 /* -------------------------------- page ------------------------------------ */
 
+const gamiChapters = [
+  { id: "introduction", label: "Introduction", phase: "Discover" },
+  { id: "problem-analysis", label: "Problem analysis", phase: "Discover" },
+  { id: "user-engagement-analysis", label: "Engagement analysis", phase: "Discover" },
+  { id: "why-gamification", label: "Why gamification", phase: "Define" },
+  { id: "user-persona", label: "User personas", phase: "Define" },
+  { id: "gamification-elements", label: "Gamification elements", phase: "Define" },
+  { id: "user-flows", label: "User flows", phase: "Design" },
+  { id: "wireframe-and-prototypes", label: "Wireframes and prototype tests", phase: "Design" },
+  { id: "components", label: "Components", phase: "Design" },
+  { id: "main-features", label: "Main features", phase: "Launch" },
+  { id: "strategies", label: "Strategy and A/B tests", phase: "Launch" },
+  { id: "feedback", label: "Tenant feedback", phase: "Launch" },
+  { id: "outcomes", label: "Outcomes", phase: "Results" },
+  { id: "impact-model", label: "Impact model", phase: "Results" },
+  { id: "conclusion-and-next-steps", label: "Conclusion and next steps", phase: "Next" },
+];
+const gamiPhases = ["Discover", "Define", "Design", "Launch", "Results", "Next"];
+
 export default function GamificationCaseStudy() {
   return (
-    <CaseStudyPage>
-      {/* ------------------------------ Hero ------------------------------ */}
+    <CaseStudyPage>      {/* ------------------------------ Hero ------------------------------ */}
       <section className="w-full overflow-hidden bg-[#202024] text-white">
         <div className="mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
           <div className="pb-2 lg:pb-24">
@@ -296,6 +317,22 @@ export default function GamificationCaseStudy() {
           </div>
         </div>
       </section>
+
+      <ChapterNav chapters={gamiChapters} phases={gamiPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
+      <AtAGlance
+        context="Resi, a tenant mobile app for residential property management. The question: how do you keep tenants engaged beyond paying rent and logging repairs?"
+        problem="35% of new users dropped off in week one and 70% never went beyond rent payments and maintenance requests, so the app did little for community or for saving energy."
+        approach="I interviewed 30 tenants, surveyed users and analysed a three-month cohort, segmented tenants with the HEXAD framework, then designed levels, badges, streaks, challenges and rewards, and tested prototypes and A/B flows."
+        results={[
+          { value: "+42%", label: "7-day engagement (target was 25%)" },
+          { value: "+58%", label: "participation in community challenges" },
+          { value: "−9%", label: "utility consumption across the property" },
+          { value: "3.4×", label: "customer ROI, up from 2.4×" },
+        ]}
+        link={{ href: "#impact-model", label: "Try the impact model with your own numbers" }}
+      />
+      <JourneyMap chapters={gamiChapters} phases={gamiPhases} />
+
 
       {/* ----------------------------- Headline stat ---------------------------- */}
       <Section className="py-12 sm:py-20">
@@ -567,45 +604,8 @@ export default function GamificationCaseStudy() {
         </TwoCol>
       </Section>
 
-      {/* ------------------------- 05 Gamification elements --------------------- */}
-      <Section n="05" label="Gamification elements" tone="muted">
-        <H2>Finding gamification elements</H2>
-        <P className="mt-8 max-w-4xl">
-          The issues found during our root cause analysis session were
-          crystallised into questions using the “how might we…” method.
-        </P>
-        <div className="mt-12 max-w-4xl space-y-10">
-          <div>
-            <H3>6 HMWs</H3>
-            <P className="mt-3">
-              We explored 6 HMWs how to provide the correct set of elements for
-              gamification that would drive engagement for all the personas
-              while boosting our core goals.
-            </P>
-          </div>
-          <div>
-            <H3>Crazy-8s</H3>
-            <P className="mt-3">
-              Our way of trying to brainstorm these problems. We got out of the
-              office together, folded a sheet of paper to make eight different
-              sections, and sketched new ideas on each fold.
-            </P>
-          </div>
-          <div>
-            <H3>Marczewski’s User Type Reverse Analysis Tool</H3>
-            <P className="mt-3">
-              Using Marczewski’s User Type Reverse Analysis Tool and
-              brainstorming techniques like Crazy 8s, we identified game
-              elements that would appeal to each persona type. We then
-              prioritised these elements based on their potential impact on
-              engagement and ease of implementation.
-            </P>
-          </div>
-        </div>
-      </Section>
-
       {/* ----------------------------- 06 User personas ------------------------- */}
-      <Section n="06" label="User Persona" tone="tint">
+      <Section n="05" label="User Persona" tone="tint">
         <TwoCol>
           <div>
             <H2>User Personas</H2>
@@ -662,6 +662,43 @@ export default function GamificationCaseStudy() {
               </div>
             </Card>
           ))}
+        </div>
+      </Section>
+
+      {/* ------------------------- 05 Gamification elements --------------------- */}
+      <Section n="06" label="Gamification elements" tone="muted">
+        <H2>Finding gamification elements</H2>
+        <P className="mt-8 max-w-4xl">
+          The issues found during our root cause analysis session were
+          crystallised into questions using the “how might we…” method.
+        </P>
+        <div className="mt-12 max-w-4xl space-y-10">
+          <div>
+            <H3>6 HMWs</H3>
+            <P className="mt-3">
+              We explored 6 HMWs how to provide the correct set of elements for
+              gamification that would drive engagement for all the personas
+              while boosting our core goals.
+            </P>
+          </div>
+          <div>
+            <H3>Crazy-8s</H3>
+            <P className="mt-3">
+              Our way of trying to brainstorm these problems. We got out of the
+              office together, folded a sheet of paper to make eight different
+              sections, and sketched new ideas on each fold.
+            </P>
+          </div>
+          <div>
+            <H3>Marczewski’s User Type Reverse Analysis Tool</H3>
+            <P className="mt-3">
+              Using Marczewski’s User Type Reverse Analysis Tool and
+              brainstorming techniques like Crazy 8s, we identified game
+              elements that would appeal to each persona type. We then
+              prioritised these elements based on their potential impact on
+              engagement and ease of implementation.
+            </P>
+          </div>
         </div>
       </Section>
 
@@ -1049,8 +1086,21 @@ export default function GamificationCaseStudy() {
         </div>
       </Section>
 
+      {/* ------------------------------ Impact model ---------------------------- */}
+      <Section id="impact-model" n="13" label="Impact model" tone="muted">
+        <H2>What the results are worth: an interactive model</H2>
+        <P className="mt-8 max-w-4xl">
+          The published savings came from one property. Change the inputs to
+          see what the same engagement lift could mean for another.
+        </P>
+        <div className="mt-10">
+          <GamificationCalculator />
+        </div>
+      </Section>
+
+
       {/* ------------------------------ 13 Conclusion --------------------------- */}
-      <Section n="13" label="Conclusion and Next Steps" tone="indigo">
+      <Section n="14" label="Conclusion and Next Steps" tone="indigo">
         <H2>Conclusion</H2>
         <P className="mt-8 max-w-4xl">
           The introduction of gamification features in our tenant app

@@ -21,6 +21,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { ChapterNav } from "@/components/case-study/chapter-nav";
+import { AtAGlance, JourneyMap } from "@/components/case-study/overview";
+import { GamificationCalculator, MoveOutCalculator } from "@/components/case-study/impact-calculators";
 
 const M = "/case-studies/move-out";
 
@@ -486,24 +489,75 @@ function PainCard({ title, items }: { title: string; items: string[] }) {
 
 /* -------------------------------- page ------------------------------------ */
 
+const moveOutChapters = [
+  { id: "problem", label: "Problem", phase: "Discover" },
+  { id: "questions", label: "Key questions", phase: "Discover" },
+  { id: "terminologies", label: "Terminologies", phase: "Discover" },
+  { id: "competitors", label: "Competitors", phase: "Discover" },
+  { id: "stakeholders", label: "Stakeholders", phase: "Define" },
+  { id: "stakeholder-persona", label: "Stakeholder persona", phase: "Define" },
+  { id: "goals", label: "Goals", phase: "Define" },
+  { id: "pain-points-and-solutions", label: "Pain points and solutions", phase: "Define" },
+  { id: "user-flows", label: "User flows", phase: "Design" },
+  { id: "wireframe-and-prototypes", label: "Wireframes and prototypes", phase: "Design" },
+  { id: "design-process", label: "Design process", phase: "Design" },
+  { id: "the-main-features", label: "Main features", phase: "Build" },
+  { id: "considerations", label: "Considerations", phase: "Build" },
+  { id: "trade-offs", label: "Trade-offs", phase: "Build" },
+  { id: "outcomes", label: "Outcomes", phase: "Results" },
+  { id: "impact-model", label: "Impact model", phase: "Results" },
+  { id: "conclusion", label: "Conclusion", phase: "Results" },
+];
+const moveOutPhases = ["Discover", "Define", "Design", "Build", "Results"];
+
 export default function MoveOutCaseStudy() {
   return (
-    <CaseStudyPage>
-      {/* ------------------------------ Hero ------------------------------ */}
-      <section className="w-full overflow-hidden bg-[#202024] text-white">
-        <div className="mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
+    <CaseStudyPage>      {/* ------------------------------ Hero ------------------------------ */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-background to-sky-50 text-foreground dark:from-[#1b1b26] dark:via-[#202024] dark:to-[#18213a]">
+        {/* soft colour glows */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-24 top-10 size-96 rounded-full bg-indigo-400/25 blur-3xl dark:bg-indigo-500/20"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 bottom-0 size-[28rem] rounded-full bg-sky-400/25 blur-3xl dark:bg-sky-500/15"
+        />
+        {/* faint grid that fades out toward the bottom */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,hsl(var(--foreground)/0.07)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.07)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)] [-webkit-mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
+        />
+
+        <div className="relative mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
           <div className="pb-2 lg:pb-24">
             <Image
               src={`${M}/resi-logo.webp`}
               width={180}
               height={55}
               alt="Resi"
-              className="mb-8 h-10 w-auto rounded-sm bg-white p-1 sm:h-12"
+              className="mb-8 h-10 w-auto rounded-md bg-white p-1 shadow-sm ring-1 ring-black/5 sm:h-12"
             />
-            <H1>Streamlining the Move-Out Process</H1>
-            <p className="mt-6 text-xl opacity-80 sm:text-2xl">
+            <H1>
+              Streamlining the{" "}
+              <span className="whitespace-nowrap bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent dark:from-indigo-300 dark:to-sky-300">
+                Move-Out
+              </span>{" "}
+              Process
+            </H1>
+            <p className="mt-6 max-w-xl text-xl text-foreground/75 sm:text-2xl">
               Enhancing Tenant Experience and Operational Efficiency
             </p>
+            <ul className="mt-8 flex flex-wrap gap-2 text-sm">
+              {["Product design", "Student housing", "Mass move-outs"].map((t) => (
+                <li
+                  key={t}
+                  className="rounded-full border border-foreground/15 bg-background/60 px-3 py-1 font-medium text-foreground/80 backdrop-blur"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="relative -mx-6 lg:mx-0 lg:-mr-24">
             {/* the pale arch that sits behind the skyline in the original art */}
@@ -523,9 +577,36 @@ export default function MoveOutCaseStudy() {
                 "[-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
               )}
             />
+            {/* headline results floating over the art */}
+            <div className="absolute left-[8%] top-[10%] hidden rounded-2xl border border-foreground/10 bg-background/85 px-4 py-3 shadow-lg backdrop-blur sm:block">
+              <p className="text-2xl font-bold tracking-tight text-indigo-600 dark:text-indigo-300">€77,840</p>
+              <p className="text-xs text-foreground/70">in combined savings</p>
+            </div>
+            <div className="absolute left-[3%] top-[46%] hidden rounded-2xl border border-foreground/10 bg-background/85 px-4 py-3 shadow-lg backdrop-blur sm:block">
+              <p className="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-300">+65%</p>
+              <p className="text-xs text-foreground/70">pre-move-out completion</p>
+            </div>
           </div>
         </div>
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
       </section>
+
+      <ChapterNav chapters={moveOutChapters} phases={moveOutPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
+      <AtAGlance
+        context="Resi (built on the Retrac platform): the move-in and move-out feature for student accommodation, where mass move-outs hit landlords' net operating income."
+        role="Product designer and manager"
+        problem="In peak weeks, 20-25 move-outs a day overwhelmed staff. Landlords either hired and trained temporary workers or added permanent staff, both costly, and slow turnarounds left apartments empty."
+        approach="I mapped stakeholders and pain points, set four goals, then designed digital move-out flows for tenants and landlords: early condition checks, scheduling and damage reporting, and bulk repair planning."
+        results={[
+          { value: "€77,840", label: "combined savings at the client property" },
+          { value: "+65%", label: "tenant pre-move-out completion" },
+          { value: "35 → <10 min", label: "to process one move-out" },
+          { value: "200 → 8", label: "units with a delayed move-in" },
+        ]}
+        link={{ href: "#impact-model", label: "Try the impact model with your own numbers" }}
+      />
+      <JourneyMap chapters={moveOutChapters} phases={moveOutPhases} />
+
 
       {/* ------------------------------ 01 Problem ------------------------------ */}
       <Section n="01" label="Problem">
@@ -600,26 +681,8 @@ export default function MoveOutCaseStudy() {
         </div>
       </Section>
 
-      {/* ------------------------------- 03 Goals ------------------------------- */}
-      <Section n="03" label="Goals" tone="indigo">
-        <H2>Goals</H2>
-        <P className="mt-8">
-          Based on our analysis, we set four primary goals to solve this
-          problem.
-        </P>
-        <ol className="mt-10 max-w-4xl list-decimal space-y-3 pl-8 text-2xl font-semibold leading-snug tracking-tight sm:text-4xl sm:leading-tight">
-          <li>Reduce operational redundancies.</li>
-          <li>Enhance the tenant experience during move-out.</li>
-          <li>Provide early assessments of apartment conditions.</li>
-          <li>
-            Offer insights for follow-up tasks to minimise downtime before the
-            next move-in.
-          </li>
-        </ol>
-      </Section>
-
       {/* --------------------------- 04 Terminologies --------------------------- */}
-      <Section n="04" label="Terminologies">
+      <Section n="03" label="Terminologies">
         <TwoCol className="lg:items-start">
           <div>
             <H2>Few terminologies</H2>
@@ -664,7 +727,7 @@ export default function MoveOutCaseStudy() {
       </Section>
 
       {/* ----------------------------- 05 Competitors --------------------------- */}
-      <Section n="05" label="Competitors" tone="tint">
+      <Section n="04" label="Competitors" tone="tint">
         <H2>Our Competitors</H2>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           <Competitor
@@ -698,7 +761,7 @@ export default function MoveOutCaseStudy() {
       </Section>
 
       {/* ----------------------------- 06 Stakeholders -------------------------- */}
-      <Section n="06" label="Stakeholders">
+      <Section n="05" label="Stakeholders">
         <H2>Stakeholders and User segments</H2>
         <div className="mt-8 max-w-4xl space-y-4">
           <P>
@@ -757,7 +820,7 @@ export default function MoveOutCaseStudy() {
       </Section>
 
       {/* ------------------------------ 07 Personas ----------------------------- */}
-      <Section n="07" label="Stakeholder Persona" tone="tint">
+      <Section n="06" label="Stakeholder Persona" tone="tint">
         <H2>Stakeholder Persona</H2>
         <P className="mt-8 max-w-4xl">
           After each stakeholder of the move-out process was identified along
@@ -770,6 +833,24 @@ export default function MoveOutCaseStudy() {
             <PersonaCard key={p.name} p={p} />
           ))}
         </div>
+      </Section>
+
+      {/* ------------------------------- 03 Goals ------------------------------- */}
+      <Section n="07" label="Goals" tone="indigo">
+        <H2>Goals</H2>
+        <P className="mt-8">
+          Based on our analysis, we set four primary goals to solve this
+          problem.
+        </P>
+        <ol className="mt-10 max-w-4xl list-decimal space-y-3 pl-8 text-2xl font-semibold leading-snug tracking-tight sm:text-4xl sm:leading-tight">
+          <li>Reduce operational redundancies.</li>
+          <li>Enhance the tenant experience during move-out.</li>
+          <li>Provide early assessments of apartment conditions.</li>
+          <li>
+            Offer insights for follow-up tasks to minimise downtime before the
+            next move-in.
+          </li>
+        </ol>
       </Section>
 
       {/* ------------------------- 08 Pain points & solutions ------------------- */}
@@ -1336,8 +1417,21 @@ export default function MoveOutCaseStudy() {
         </p>
       </Section>
 
+      {/* ------------------------------ Impact model ---------------------------- */}
+      <Section id="impact-model" n="16" label="Impact model" tone="muted">
+        <H2>What the results are worth: an interactive model</H2>
+        <P className="mt-8 max-w-4xl">
+          The €77,840 came from one client. Change the inputs to see what the
+          same improvements could mean for another property.
+        </P>
+        <div className="mt-10">
+          <MoveOutCalculator />
+        </div>
+      </Section>
+
+
       {/* ----------------------------- 16 Conclusion ---------------------------- */}
-      <Section n="16" label="Conclusion">
+      <Section n="17" label="Conclusion">
         <H2>Conclusion</H2>
         <div className="mt-8 max-w-4xl space-y-5">
           <P>
