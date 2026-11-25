@@ -351,6 +351,14 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Product Knowledge: the groundwork for AI-led delivery",
+      href: "/work/product-knowledge",
+      active: true,
+      description:
+        "Built a governed, cited product knowledge base that matches direction, market and customer evidence against technical knowledge to write clearer PRDs, with benchmarks, an audit and a measurement plan.",
+      image: "/ProductKnowledge.png",
+    },
+    {
       title: "Driving Sustainable Living Through Engagement",
       href: "/work/gamification",
       // dates: "Jan 2024 - Feb 2024",
