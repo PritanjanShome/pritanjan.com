@@ -18,6 +18,7 @@ import { NumberTicker } from "@/components/magicui/number-ticker";
 import { BentoDemo } from "@/components/new-maal";
 import { ShineBorder } from "@/components/magicui/shine-border";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
+import { SiteFooter } from "@/components/site-footer";
 
 export default function Page() {
   return (
@@ -173,6 +174,7 @@ export default function Page() {
 
     </ShineBorder>
       <BentoDemo/>        */}
+      <SiteFooter />
     </main>
   );
 }

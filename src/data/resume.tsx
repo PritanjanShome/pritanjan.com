@@ -59,7 +59,7 @@ export const DATA = {
     // { href: "/contact", icon: Contact, label: "Contact Me" },
   ],
   contact: {
-    email: "hello@example.com",
+    email: "pritanjan.shome@gmail.com",
     tel: "+123456789",
     social: {
       LinkedIn: {
@@ -355,16 +355,16 @@ export const DATA = {
       href: "/work/product-knowledge",
       active: true,
       description:
-        "Case study 1 of 2. How I designed, built and governed a cited, owned knowledge base that Product, Sales, Services and AI assistants can trust, with an honest baseline and a measurement plan.",
-      image: "/ProductKnowledge.png",
+        "How I designed, built and governed a cited, owned knowledge base that Product, Sales, Services and AI assistants can trust, with an honest baseline and a measurement plan.",
+      image: "/pk-cover-build.png",
     },
     {
       title: "The Product Knowledge Base as the foundation of an AI-led SDLC",
       href: "/work/ai-sdlc-foundation",
       active: true,
       description:
-        "Case study 2 of 2. When agents build, the PRD is the ceiling. How matching evidence against technical knowledge makes PRDs clearer, what PM work it automates, and how it can feed independent verification.",
-      image: "/AiSdlcFoundation.png",
+        "When agents build, the PRD is the ceiling. How matching product evidence against technical knowledge makes PRDs clearer, what PM work it automates, and how it can feed independent verification.",
+      image: "/pk-cover-sdlc.png",
     },
     {
       title: "Driving Sustainable Living Through Engagement",

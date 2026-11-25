@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "How I designed, built and governed a cited, owned Product Knowledge Base that Product, Sales, Services and AI assistants can trust, with an honest baseline, an audit and a measurement plan.",
     type: "article",
-    images: [{ url: "/ProductKnowledge.png" }],
+    images: [{ url: "/pk-cover-build.png" }],
   },
 };
 
@@ -63,7 +63,7 @@ export default function ProductKnowledgeCaseStudy() {
           className="pointer-events-none object-cover object-center opacity-[0.28] [mask-image:linear-gradient(to_bottom,black_40%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_40%,transparent)]"
         />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 lg:pt-28">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Case study 1 of 2 · AI-native product management</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Product Knowledge Base · the build</p>
           <H1 className="mt-6 max-w-5xl">Building a Product Knowledge Base: one cited, governed source of product truth</H1>
           <p className="mt-6 max-w-3xl text-xl text-white/75 sm:text-2xl">How I designed, built and governed a knowledge base that Product, Sales, Services and AI assistants can all trust, what it looks like today, and what I would improve next.</p>
           <a
@@ -126,10 +126,6 @@ export default function ProductKnowledgeCaseStudy() {
             </Card>
           ))}
         </div>
-        <p className="mt-8 text-sm text-muted-foreground">
-          This is the first of two case studies. The second shows how this base
-          becomes the foundation for an AI-led SDLC.
-        </p>
       </Section>
 
       {/* ------------------------------ Reported outcomes ----------------------- */}

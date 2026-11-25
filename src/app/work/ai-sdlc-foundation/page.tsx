@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "How a cited Product Knowledge Base, matched against technical knowledge, makes PRDs clearer for an AI-led SDLC, what PM work it automates, and how it can feed independent verification.",
     type: "article",
-    images: [{ url: "/AiSdlcFoundation.png" }],
+    images: [{ url: "/pk-cover-sdlc.png" }],
   },
 };
 
@@ -49,7 +49,7 @@ export default function AiSdlcFoundationCaseStudy() {
           className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:48px_48px]"
         />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 lg:pt-28">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Case study 2 of 2 · AI-native product management</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Product Knowledge Base · the SDLC foundation</p>
           <H1 className="mt-6 max-w-5xl">How the Product Knowledge Base becomes the foundation of an AI-led SDLC</H1>
           <p className="mt-6 max-w-3xl text-xl text-white/75 sm:text-2xl">When agents build, the PRD is the ceiling. How matching direction, market and customer evidence against technical knowledge makes PRDs clearer, what PM work it automates, and how it can feed independent verification.</p>
           <a
@@ -109,10 +109,6 @@ export default function AiSdlcFoundationCaseStudy() {
             </Card>
           ))}
         </div>
-        <p className="mt-8 text-sm text-muted-foreground">
-          This is the second of two case studies. The first covers how the
-          knowledge base itself was designed and built.
-        </p>
       </Section>
 
       {/* ------------------------------ Reported outcomes ----------------------- */}
