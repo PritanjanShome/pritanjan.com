@@ -516,82 +516,46 @@ export default function MoveOutCaseStudy() {
       <ChapterNav chapters={moveOutChapters} phases={moveOutPhases} extra={{ href: "#impact-model", label: "Impact model" }} />
 
       {/* ------------------------------ Hero ------------------------------ */}
-      <section className="relative w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-background to-sky-50 text-foreground dark:from-[#1b1b26] dark:via-[#202024] dark:to-[#18213a]">
-        {/* soft colour glows */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 top-10 size-96 rounded-full bg-indigo-400/25 blur-3xl dark:bg-indigo-500/20"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-0 size-[28rem] rounded-full bg-sky-400/25 blur-3xl dark:bg-sky-500/15"
-        />
-        {/* faint grid that fades out toward the bottom */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(to_right,hsl(var(--foreground)/0.07)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.07)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)] [-webkit-mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-        />
-
-        <div className="relative mx-auto grid max-w-6xl items-end gap-8 px-6 pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-0 lg:pt-28">
-          <div className="pb-2 lg:pb-24">
+      {/* Full-width cover: identical in light and dark mode */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f6f8ff] to-[#d3defc] text-slate-900">
+        <div className="mx-auto grid max-w-6xl items-start gap-8 px-6 pt-14 sm:pt-16 lg:grid-cols-[1.2fr_1fr] lg:pt-16">
+          <div>
             <Image
               src={`${M}/resi-logo.webp`}
               width={180}
               height={55}
               alt="Resi"
-              className="mb-8 h-10 w-auto rounded-md bg-white p-1 shadow-sm ring-1 ring-black/5 sm:h-12"
+              className="mb-8 h-10 w-auto rounded-md bg-white p-1 shadow-sm ring-1 ring-black/10 sm:h-12"
             />
-            <H1>
+            <H1 className="text-4xl sm:text-5xl lg:text-6xl">
               Streamlining the{" "}
-              <span className="whitespace-nowrap bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent dark:from-indigo-300 dark:to-sky-300">
-                Move-Out
-              </span>{" "}
-              Process
+              <span className="whitespace-nowrap">Move-Out Process</span>
             </H1>
-            <p className="mt-6 max-w-xl text-xl text-foreground/75 sm:text-2xl">
+            <p className="mt-6 max-w-xl text-xl text-slate-600 sm:text-2xl">
               Enhancing Tenant Experience and Operational Efficiency
             </p>
-            <ul className="mt-8 flex flex-wrap gap-2 text-sm">
-              {["Product design", "Student housing", "Mass move-outs"].map((t) => (
-                <li
-                  key={t}
-                  className="rounded-full border border-foreground/15 bg-background/60 px-3 py-1 font-medium text-foreground/80 backdrop-blur"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
           </div>
-          <div className="relative -mx-6 lg:mx-0 lg:-mr-24">
-            {/* the pale arch that sits behind the skyline in the original art */}
-            <div
-              aria-hidden
-              className="absolute inset-x-[6%] bottom-0 top-[4%] rounded-t-[999px] bg-gradient-to-b from-[#c9d8fb]/0 via-[#c9d8fb]/40 to-[#c9d8fb]/90 [-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
-            />
-            <Fig
-              src={`${M}/hero-skyline.webp`}
-              w={1410}
-              h={395}
-              alt="Illustration of a city skyline of blue apartment buildings"
-              priority
-              sizes="(min-width: 1024px) 700px, 100vw"
-              className={cn(
-                "relative h-52 object-cover object-right sm:h-72 lg:h-[22rem]",
-                "[-webkit-mask-image:linear-gradient(to_right,transparent,black_22%)] [mask-image:linear-gradient(to_right,transparent,black_22%)]"
-              )}
-            />
-            {/* headline results floating over the art */}
-            <div className="absolute left-[8%] top-[10%] hidden rounded-2xl border border-foreground/10 bg-background/85 px-4 py-3 shadow-lg backdrop-blur sm:block">
-              <p className="text-2xl font-bold tracking-tight text-indigo-600 dark:text-indigo-300">€77,840</p>
-              <p className="text-xs text-foreground/70">in combined savings</p>
+          <div className="hidden gap-3 lg:flex lg:justify-end">
+            <div className="h-fit rounded-2xl border border-slate-200 bg-white/95 px-5 py-4 shadow-lg">
+              <p className="text-3xl font-bold tracking-tight text-indigo-600">€77,840</p>
+              <p className="text-sm text-slate-600">in combined savings</p>
             </div>
-            <div className="absolute left-[3%] top-[46%] hidden rounded-2xl border border-foreground/10 bg-background/85 px-4 py-3 shadow-lg backdrop-blur sm:block">
-              <p className="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-300">+65%</p>
-              <p className="text-xs text-foreground/70">pre-move-out completion</p>
+            <div className="h-fit rounded-2xl border border-slate-200 bg-white/95 px-5 py-4 shadow-lg">
+              <p className="text-3xl font-bold tracking-tight text-emerald-600">+65%</p>
+              <p className="text-sm text-slate-600">pre-move-out completion</p>
             </div>
           </div>
         </div>
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+        {/* the skyline runs edge to edge across the bottom of the cover */}
+        <Fig
+          src={`${M}/hero-skyline.webp`}
+          w={1410}
+          h={395}
+          alt="Illustration of a city skyline of apartment buildings"
+          priority
+          sizes="100vw"
+          className="mt-8 h-auto w-full min-w-[640px] sm:min-w-0 lg:mt-4"
+        />
       </section>
 
       <AtAGlance
