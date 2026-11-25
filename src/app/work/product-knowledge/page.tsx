@@ -18,7 +18,13 @@ import {
   FunnelBars,
   IndexMap,
   LifecycleSteps,
-  NoteSample,
+  AutomationMap,
+  BranchesPanel,
+  CompositionBars,
+  Gauge,
+  ObsidianMock,
+  PrincipleCard,
+  WindowFrame,
   OperatingModelDiagram,
   PipelineStrip,
   PrdMatch,
@@ -33,14 +39,15 @@ import {
 } from "@/components/case-study/pk-visuals";
 import { RoiCalculator } from "@/components/case-study/roi-calculator";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 const title =
-  "Product Knowledge: the groundwork that makes AI-led delivery work";
+  "Automating Product Management with a cited knowledge base and agents";
 const description =
-  "How I built a governed, cited product knowledge base that matches direction, market and customer evidence against technical knowledge to write clearer PRDs, and how I would benchmark and improve it.";
+  "How I built a governed, cited knowledge base and an agent layer that automate the assembly work of product management, and give developers in an AI-led SDLC clearer PRDs. What is automated, what is not, and how I would measure it.";
 
 export const metadata: Metadata = {
-  title: "Building a Product Knowledge Base for AI-Led Delivery",
+  title: "Automating Product Management with a Knowledge Base and Agents",
   description,
   openGraph: {
     title,
@@ -222,6 +229,53 @@ const lifeSteps: { t: string; s: string; who: "PM" | "Agent" | "GitHub" | "Every
   { t: "Merge and pull", s: "After merge, every PM and reader pulls the same truth, and the release view shows what shipped.", who: "Everyone" },
 ];
 
+const principles: { t: string; how: string; solves: string }[] = [
+  { t: "Findability", how: "A fixed taxonomy and an index at every level, so routing is predictable for people and AI.", solves: "Slow navigation, misrouting" },
+  { t: "Traceability", how: "Cite or abstain. Notes carry source links or an explicit gap and are validated before promotion.", solves: "Invented answers" },
+  { t: "Ownership", how: "A named owner per area, enforced by hooks, CODEOWNERS and CI. Shared changes become proposals.", solves: "Silent edits, conflicting versions" },
+  { t: "Consistency", how: "Every product uses the same categories, note template, status lifecycle and review rules.", solves: "Per-team dialects nobody can search" },
+  { t: "Separation", how: "Feature, use case, demo and persona are separate notes, and platform is separate from product.", solves: "Pitches built on demo scripts" },
+  { t: "Currency", how: "Source manifests record the last sync, refresh is diff-first, and shipped changes are release-tagged.", solves: "Silent staleness" },
+  { t: "Restartability", how: "Compact memory, index-first reading and model routing let any session resume cheaply.", solves: "Replayed history, wasted tokens" },
+  { t: "Portability", how: "Markdown, an open note format and git, as a layer above the systems of record.", solves: "Lock-in and a second source of truth" },
+];
+
+const composition = [
+  { label: "Features and functionality", n: 1382 },
+  { label: "Customer questions", n: 53 },
+  { label: "Personas", n: 38 },
+  { label: "Competitors", n: 37 },
+  { label: "Roadmap references", n: 25 },
+  { label: "Feature requests", n: 23 },
+  { label: "Product use cases", n: 17 },
+  { label: "AI agents", n: 15 },
+  { label: "Everything else", n: 83 },
+];
+
+const automationRows: {
+  activity: string;
+  encoded: string;
+  how: string;
+  level: "live" | "designed" | "next" | "neutral";
+  levelLabel: string;
+  who: string;
+}[] = [
+  { activity: "Roadmap tracking", encoded: "Roadmap method, per-domain write-ups, and a skill that rolls completion up per roadmap item through the ticket hierarchy into one workbook.", how: "A PM triggers the skill; it reads the tracker (read-only) and regenerates the workbook and narrative.", level: "live", levelLabel: "Agent-run", who: "PMs, leadership" },
+  { activity: "Release planning and status", encoded: "An 18-step release playbook, a story-level release model, a status taxonomy, and a self-updating status dashboard.", how: "The dashboard updates itself; PMs follow the playbook and the agent answers “where are we”.", level: "live", levelLabel: "Dashboard automated", who: "PMs, services, support" },
+  { activity: "Market and competitor research", encoded: "A repeatable method: frame the question, scope by inclusion criteria, separate validated, emerging and failed directions, 2×2 and SWOT, strict evidence rules.", how: "The agent follows the method and cites every claim; the PM reviews and decides.", level: "designed", levelLabel: "Agent-assisted", who: "PMs" },
+  { activity: "Questionnaires (RFP, RFQ)", encoded: "Approved, cited answers per topic, with a gap log.", how: "Search, reuse, and route unanswered questions to the owning PM.", level: "designed", levelLabel: "Agent-assisted", who: "Pre-sales" },
+  { activity: "Keeping knowledge current", encoded: "Ingest, validate and diff-first refresh skills with source manifests.", how: "PM-triggered today; a scheduled routine that raises owner proposals is designed.", level: "next", levelLabel: "On request · scheduled next", who: "All PMs" },
+  { activity: "Writing the PRD", encoded: "Direction, market and customer evidence matched against technical knowledge.", how: "PM-led with agent help; an automated match report for each draft is on the backlog.", level: "next", levelLabel: "Assisted · report next", who: "PMs, developers" },
+  { activity: "Demo and AI-agent concepts", encoded: "Use cases and personas turned into demo-ready agent specifications.", how: "An agent-builder skill produced ten demo-ready agents from curated notes.", level: "live", levelLabel: "Agent-run", who: "Pre-sales, PMs" },
+  { activity: "Prioritisation, strategy, stakeholder trade-offs", encoded: "Methods and responsibilities (for example RACI) are documented.", how: "Not automated by design.", level: "neutral", levelLabel: "Stays human", who: "PMs" },
+];
+
+const devBenefits: [string, string][] = [
+  ["Clearer input, fewer surprises", "A PRD that was matched against technical knowledge names what already exists, what is new and what conflicts, so agents and developers do not discover constraints mid-build."],
+  ["Less discovery for the builder", "Cited context replaces another round of questions to a PM. The spec starts from facts that already have a source, or a marked gap."],
+  ["A route to independent verification", "Use cases, demo scripts and customer questions are the raw material for acceptance scenarios the building agents cannot see. That step is next, and it is the one that would make delivery safer."],
+];
+
 const okf: [string, string][] = [
   ["One required field", "Only the note type is mandatory, and a note’s ID is simply its path. Contributors are never blocked by schema details."],
   ["Strict where it counts", "Type, source links and known gaps are checked. Everything else is permissive, and tools tolerate missing or unknown fields."],
@@ -265,9 +319,10 @@ const efficiency: [string, string][] = [
 
 const scores = [
   { dim: "Findability", today: 4, target: 5, note: "Fixed taxonomy and an index in every folder make routing predictable. Missing: usage data to show where people still get lost." },
-  { dim: "Trust and traceability", today: 4, target: 5, note: "Cite-or-abstain and gap markers are designed in and checked at write time. Missing: automated checks that a citation actually supports its claim." },
+  { dim: "Trust and traceability", today: 3, target: 5, note: "The mechanism works, its coverage does not yet. In the Oct 2026 snapshot 58% of content notes link at least one source, 44% carry a citations section and only 20 notes are approved. " + "Missing: automated checks that a citation really supports its claim." },
   { dim: "Freshness", today: 2, target: 4, note: "Diff-first refresh works on request. A scheduled refresh and visible review-by dates are designed but not live." },
-  { dim: "Coverage", today: 2, target: 4, note: "Some product areas are still scaffolds. Agents will sound confident where content is rich and be blind elsewhere." },
+  { dim: "Coverage", today: 2, target: 4, note: "About 83% of content notes describe features, mostly in one product area. Use cases (17), demo scenarios (4) and customer-question notes (53) are thin, and some areas are still scaffolds, so agents will sound confident where content is rich and be blind elsewhere." },
+  { dim: "Connectedness", today: 2, target: 4, note: "Notes average about two links each and 27% have none. The structure is hub-and-spoke: great for navigation, weak on the lateral links (feature to use case to questionnaire answer) that make a PRD match possible." },
   { dim: "Adoption and measurement", today: 1, target: 4, note: "No usage telemetry, baselines or KPI view yet. This is the biggest gap between a good build and a proven product." },
   { dim: "Loop closure with delivery", today: 2, target: 4, note: "The PRD is already written against the base. Independent holdout scenarios and defect-to-spec traceability are not in place." },
 ];
@@ -354,7 +409,7 @@ const jobs: string[][] = [
 const kpis: string[][] = [
   ["Time to a sourced answer", "Timed sample of golden questions: self-serve vs ask a PM", "~19% of the workweek is spent searching for and gathering information (McKinsey Global Institute, 2012). Directional, dated.", "Under 5 min for 80% of golden questions"],
   ["PM deflection rate", "Questions answered from the base ÷ questions logged", "No clean public benchmark. Baseline first.", "≥ 50% within two release cycles"],
-  ["Citation coverage", "CI check: notes with a source link or an explicit gap", "Design rule (O2 in the PRD)", "100%, enforced"],
+  ["Citation coverage", "CI check: notes with a source link or an explicit gap", "Measured baseline, Oct 2026 snapshot: 58% of content notes link a source, 44% have a citations section", "100% for new notes, enforced; 90% for the back catalogue"],
   ["Citation validity", "Sampled check: does the source support the claim?", "51.5% full support in public engines (Liu et al.)", "≥ 90%"],
   ["Freshness", "Approved notes verified within the current release cycle", "No public benchmark", "≥ 90%"],
   ["Release-to-visibility lag", "Days from release to the feature note being merged", "The gap the base exists to close", "≤ 5 working days"],
@@ -417,17 +472,26 @@ export default function ProductKnowledgeCaseStudy() {
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:48px_48px]"
         />
+        <Image
+          src="/case-studies/product-knowledge/graph.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none object-cover object-center opacity-[0.28] [mask-image:linear-gradient(to_bottom,black_40%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_40%,transparent)]"
+        />
         <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-20 lg:pt-28">
           <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">
             Case study · AI-native product management
           </p>
           <H1 className="mt-6 max-w-5xl">
-            The groundwork that makes AI-led delivery work
+            Automating Product Management with a cited knowledge base and agents
           </H1>
           <p className="mt-6 max-w-3xl text-xl text-white/75 sm:text-2xl">
-            How I built a Product Knowledge base that matches direction, market
-            and customer evidence against technical knowledge, so PRDs get
-            clearer before an agent writes a line of code.
+            How I turned the working practices of a product team, roadmaps,
+            release planning, market research, questionnaires and PRDs, into a
+            governed knowledge base plus agents, and what that gives developers
+            building in an AI-led SDLC.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -484,8 +548,8 @@ export default function ProductKnowledgeCaseStudy() {
           <NumberCard n="01" title="What I built">
             <Rich>
               A **curated, cited, owned** knowledge base in plain markdown and
-              git, shared on **GitHub** and maintained by PMs working locally
-              with **an agent for every job**. It combines direction, market
+              git, shared on **GitHub**, plus **agents that run the assembly
+              work of product management** for PMs working locally. It combines direction, market
               research, customer evidence (RFPs, RFQs) and the current product,
               and sits **above** the systems of record.
             </Rich>
@@ -495,7 +559,7 @@ export default function ProductKnowledgeCaseStudy() {
               It is **matched against technical knowledge** to show fit, gaps,
               conflicts and feasibility before the PRD is written. The aim is to
               build the right thing first time; I have not yet measured whether
-              it does (section 15).
+              it does (section 18).
             </Rich>
           </NumberCard>
           <NumberCard n="03" title="What I would do next">
@@ -687,8 +751,57 @@ export default function ProductKnowledgeCaseStudy() {
         </div>
       </Section>
 
+      {/* ------------------------------ Automation ------------------------------ */}
+      <Section n="05" label="What it automates" tone="muted">
+        <H2>What it automates in the PM workflow, and what stays human</H2>
+        <P className="mt-8 max-w-4xl">
+          <Rich>
+            Next to the folders for each product, the base has a **product
+            management tier**: roadmap method, release planning, market
+            research, product direction, RACI, workshops and templates. I wrote
+            the working practices down as notes and packaged the repeatable
+            parts as agent skills. The result automates the **assembly work** of
+            product management: rolling up, collating, retrieving and keeping
+            things consistent. **Judgement stays with PMs.**
+          </Rich>
+        </P>
+        <div className="mt-10">
+          <AutomationMap rows={automationRows} />
+        </div>
+        <div className="mt-8 rounded-3xl border-l-4 border-indigo-500 bg-indigo-500/[0.07] p-6 sm:p-8">
+          <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-300">The honest summary</p>
+          <p className="mt-2 max-w-4xl text-lg leading-relaxed">
+            Most of this is <strong>agent-run but PM-triggered</strong>. A PM asks
+            for the roadmap rollup or the refresh and the agent does the
+            legwork. Scheduled, unattended runs are designed but not live, and
+            prioritisation, strategy and stakeholder trade-offs are deliberately
+            not automated.
+          </p>
+        </div>
+
+        <H3 className="mt-20">Why developers in the AI-led SDLC benefit</H3>
+        <P className="mt-4 max-w-4xl">
+          The delivery pipeline is a company initiative and I do not claim it.
+          What I contribute is the input it depends on. When agents build, the
+          spec is the ceiling, and a spec is only as good as the PRD behind it.
+        </P>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {devBenefits.map(([t, s2]) => (
+            <Card key={t} className="p-6">
+              <p className="text-lg font-semibold">{t}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s2}</p>
+            </Card>
+          ))}
+        </div>
+        <p className="mt-6 max-w-4xl text-sm text-muted-foreground">
+          These are the mechanisms. I have not yet measured rework or
+          clarification questions before and after, so I make no numeric claim
+          here; the measurement plan in section 18 covers it.
+        </p>
+      </Section>
+
       {/* ----------------------------- 05 Benchmarks ---------------------------- */}
-      <Section n="05" label="Benchmarks" tone="tint">
+      <Section n="06" label="Benchmarks" tone="tint">
         <H2>What good looks like: five public reference points</H2>
         <P className="mt-8 max-w-4xl">
           Before refining my design I looked at how comparable knowledge systems
@@ -712,7 +825,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* --------------------------- 06 Architecture ---------------------------- */}
-      <Section n="06" label="How it fits together" tone="muted">
+      <Section n="07" label="How it fits together" tone="muted">
         <H2>The architecture: a knowledge layer between sources and the PRD</H2>
         <P className="mt-8 max-w-4xl">
           Sources are curated into Product Knowledge (1). The PM matches it
@@ -755,7 +868,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 07 How built ----------------------------- */}
-      <Section n="07" label="How it was built">
+      <Section n="08" label="How it was built">
         <H2>Structure before content, in six phases</H2>
         <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {phases.map(([t, s], i) => (
@@ -823,7 +936,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ------------------------- 08 Operating model --------------------------- */}
-      <Section n="08" label="The operating model" tone="tint">
+      <Section n="09" label="The operating model" tone="tint">
         <H2>Local first, with GitHub as the shared platform</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -851,6 +964,23 @@ export default function ProductKnowledgeCaseStudy() {
           <StepGrid steps={lifeSteps} />
         </div>
 
+        <H3 className="mt-20">What it looks like on GitHub</H3>
+        <P className="mt-4 max-w-4xl">
+          Every change travels on its own branch with a pull request and a
+          check result. Branches are named <code>owner/topic</code> for work in
+          a PM’s own area and <code>proposal/topic</code> for cross-area
+          changes. Two older branches show a failed check, and one of them belongs
+          to the ownership-check bug described above.
+        </P>
+        <div className="mt-8">
+          <BranchesPanel />
+          <p className="mt-3 text-xs text-muted-foreground">
+            Anonymised recreation of the repository’s branches view. Names are
+            replaced; branch patterns, check results and PR numbers follow the
+            real list.
+          </p>
+        </div>
+
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
             ["Why GitHub", "One shared place with history, review, branch protection and access control that PMs and engineering already trust. Plain files mean git carries the diff, so sync is cheap however many files changed."],
@@ -866,7 +996,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 09 Agents ---------------------- */}
-      <Section n="09" label="An agent for every job">
+      <Section n="10" label="An agent for every job">
         <H2>An agent for every job, and a routine that keeps the base current</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -911,7 +1041,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 08 OKF ----------------------------------- */}
-      <Section n="10" label="The note format" tone="tint">
+      <Section n="11" label="The note format" tone="tint">
         <H2>Why an open format: the advantages of OKF</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -921,26 +1051,26 @@ export default function ProductKnowledgeCaseStudy() {
             source links and known gaps) without breaking the open core.
           </Rich>
         </P>
-        <TwoCol className="mt-12 lg:items-start">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {okf.map(([t, s]) => (
-              <Card key={t} className="p-5">
-                <p className="font-semibold">{t}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s}</p>
-              </Card>
-            ))}
-          </div>
-          <div>
-            <NoteSample />
-            <p className="mt-4 text-sm text-muted-foreground">
-              Anything not yet sourced is marked as a gap instead of filled in.
-            </p>
-          </div>
-        </TwoCol>
+        <div className="mt-12">
+          <ObsidianMock />
+          <p className="mt-3 text-xs text-muted-foreground">
+            Illustrative recreation of how a note looks in the vault: folder
+            tree, frontmatter, citations and linked notes. The content is
+            generic; the structure is real.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {okf.map(([t, s]) => (
+            <Card key={t} className="p-5">
+              <p className="font-semibold">{t}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s}</p>
+            </Card>
+          ))}
+        </div>
       </Section>
 
       {/* ----------------------------- 09 Indexing ------------------------------ */}
-      <Section n="11" label="Indexing and routing">
+      <Section n="12" label="Indexing and routing">
         <H2>A map at every level, so people and AI load the smallest thing that answers</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -985,7 +1115,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ----------------------------- 10 Governance ---------------------------- */}
-      <Section n="12" label="Governance" tone="muted">
+      <Section n="13" label="Governance" tone="muted">
         <H2>Ownership you can enforce, not just agree on</H2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-5">
@@ -1059,8 +1189,104 @@ export default function ProductKnowledgeCaseStudy() {
         />
       </Section>
 
+      {/* ------------------------------ The base today -------------------------- */}
+      <Section n="14" label="The base today" tone="dark">
+        <H2>The base as it stands: real numbers from the repository</H2>
+        <P className="mt-8 max-w-4xl">
+          <Rich>
+            I would rather show the baseline than a flattering story. These
+            numbers come from a snapshot of the repository taken on **2 October
+            2026**. They are my starting line for the measurement plan, and they
+            show clearly where the work is.
+          </Rich>
+        </P>
+
+        <div className="mt-12 overflow-hidden rounded-3xl border border-white/10 bg-[#14141a]">
+          <Image
+            src="/case-studies/product-knowledge/graph.webp"
+            alt="Link graph of the knowledge base: each dot is a note, coloured by product area, with hub-and-spoke clusters around each index page"
+            width={2400}
+            height={1150}
+            sizes="(min-width: 1152px) 1104px, 100vw"
+            className="h-auto w-full"
+          />
+        </div>
+        <div className="mt-4 grid gap-6 text-sm text-white/70 lg:grid-cols-[1fr_1fr]">
+          <p>
+            <strong className="text-white">The base drawn from its own links.</strong>{" "}
+            Each dot is a note and each line is a link between notes, coloured by
+            product area (labels removed). 2,498 markdown notes, 2,540 internal
+            links.
+          </p>
+          <p>
+            <strong className="text-white">What the shape says.</strong> The big
+            wheels are index pages fanning out to hundreds of feature notes.
+            That is good for navigation, but notes average about two links and
+            685 (27%) have none, so the lateral links a PRD match depends on are
+            still sparse.
+          </p>
+        </div>
+
+        <div className="mt-16 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+          <div>
+            <H3>What the notes are about</H3>
+            <p className="mt-3 text-sm text-white/65">1,673 content notes by category (index, memory and session files excluded).</p>
+            <div className="mt-6 text-white">
+              <CompositionBars rows={composition} />
+            </div>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+            <p className="text-lg font-semibold">So what</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/70">
+              About 83% of content notes describe features, mostly in one product
+              area. That is the backbone, but the categories that feed a PRD
+              match, use cases, demo scenarios and customer questions, are
+              thin. My next seeding effort should go there, not into more
+              feature pages.
+            </p>
+          </div>
+        </div>
+
+        <H3 className="mt-20">How trustworthy is it today?</H3>
+        <p className="mt-3 max-w-3xl text-sm text-white/65">
+          Share of the 1,673 content notes (format check across all 2,498).
+        </p>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Gauge pct={99} label="Valid note format" detail="2,477 of 2,498 notes carry the required frontmatter" color="#2dd4bf" />
+          <Gauge pct={58} label="Link at least one source" detail="963 notes; the rest are gaps still to source" color="#818cf8" />
+          <Gauge pct={44} label="Have a citations section" detail="740 notes" color="#fbbf24" />
+          <Gauge pct={1} label="Approved" detail="20 notes. 942 are drafts and about 670 carry no status yet" color="#f472b6" />
+        </div>
+        <p className="mt-8 max-w-4xl text-sm leading-relaxed text-white/70">
+          <Rich>
+            **The honest reading:** the format is enforced, sources are
+            present on a majority of notes, and the promotion gate has barely
+            been used. Most knowledge is still draft. That is the first thing I
+            would fix, because an approved note is the only kind I want agents
+            and the Q&A assistant to rely on. Only 2 notes are release-tagged
+            today, which is why the release-to-visibility gap is still open.
+          </Rich>
+        </p>
+      </Section>
+
+      {/* ------------------------------ Design principles ----------------------- */}
+      <Section n="15" label="Design principles">
+        <H2>Eight failure modes I designed against</H2>
+        <P className="mt-8 max-w-4xl">
+          Most knowledge bases fail in a small number of known ways. These are
+          the ones I designed against, and each has a mechanism behind it
+          rather than an intention. How well the mechanisms hold is what the
+          audit and the baseline above measure.
+        </P>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {principles.map((d, i) => (
+            <PrincipleCard key={d.t} n={i + 1} title={d.t} how={d.how} prevents={d.solves} />
+          ))}
+        </div>
+      </Section>
+
       {/* ----------------------------- 12 PM impact ----------------------------- */}
-      <Section n="13" label="What it changes for PMs" tone="tint">
+      <Section n="16" label="What it changes for PMs" tone="tint">
         <H2>The product management job, before and after</H2>
         <DataTable
           className="mt-10"
@@ -1071,7 +1297,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* --------------------------- 13 Expert audit ---------------------------- */}
-      <Section n="14" label="The audit">
+      <Section n="17" label="The audit">
         <H2>Reviewing my own build as an AI-native PM</H2>
         <P className="mt-8 max-w-4xl">
           A good build is not a proven product. I scored the base on six
@@ -1097,7 +1323,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ---------------------------- 14 Measurement ---------------------------- */}
-      <Section n="15" label="Measurement" tone="muted">
+      <Section n="18" label="Measurement" tone="muted">
         <H2>How I would prove it works</H2>
         <P className="mt-8 max-w-4xl">
           <Rich>
@@ -1126,7 +1352,7 @@ export default function ProductKnowledgeCaseStudy() {
       </Section>
 
       {/* ---------------------------- 15 Lessons -------------------------------- */}
-      <Section n="16" label="Lessons and playbook" tone="lavender">
+      <Section n="19" label="Lessons and playbook" tone="lavender">
         <H2>Lessons, and how another PM team could start</H2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {lessons.map(([t, s], i) => (

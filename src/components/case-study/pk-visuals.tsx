@@ -76,6 +76,29 @@ export function SourceLink({
   );
 }
 
+/** Window chrome used around diagrams and mock screens. */
+export function WindowFrame({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("overflow-hidden rounded-3xl border bg-card text-card-foreground shadow-sm", className)}>
+      <div className="flex items-center gap-2 border-b bg-muted/60 px-4 py-3">
+        <span className="size-3 rounded-full bg-red-400/80" />
+        <span className="size-3 rounded-full bg-amber-400/80" />
+        <span className="size-3 rounded-full bg-emerald-400/80" />
+        <span className="ml-3 truncate text-xs font-medium text-muted-foreground">{title}</span>
+      </div>
+      {children}
+    </div>
+  );
+}
+
 /** Wide diagrams keep a readable minimum width and scroll sideways on phones. */
 export function ScrollBox({
   children,
@@ -90,16 +113,16 @@ export function ScrollBox({
 }) {
   return (
     <div className={className}>
-      <div
-        className="overflow-x-auto overscroll-x-contain rounded-3xl border bg-card p-4 text-card-foreground sm:p-6"
-        tabIndex={0}
-        aria-label={`${label} (scrollable)`}
-      >
-        <div style={{ minWidth }}>{children}</div>
-      </div>
-      <p className="mt-3 text-xs opacity-70 sm:hidden">
-        Swipe sideways to explore
-      </p>
+      <WindowFrame title={label}>
+        <div
+          className="overflow-x-auto overscroll-x-contain p-4 sm:p-6"
+          tabIndex={0}
+          aria-label={`${label} (scrollable)`}
+        >
+          <div style={{ minWidth }}>{children}</div>
+        </div>
+      </WindowFrame>
+      <p className="mt-3 text-xs opacity-70 sm:hidden">Swipe sideways to explore</p>
     </div>
   );
 }
@@ -825,5 +848,294 @@ export function BuildTimeline({
         </li>
       ))}
     </ol>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Health gauges (real baseline)                                             */
+/* -------------------------------------------------------------------------- */
+
+export function Gauge({
+  pct,
+  label,
+  detail,
+  color = "#6366f1",
+}: {
+  pct: number;
+  label: string;
+  detail: string;
+  color?: string;
+}) {
+  return (
+    <div className="rounded-3xl border bg-card p-6 text-card-foreground">
+      <div
+        className="relative mx-auto size-32 rounded-full"
+        style={{ background: `conic-gradient(${color} ${pct * 3.6}deg, hsl(var(--muted)) 0deg)` }}
+        role="img"
+        aria-label={`${label}: ${pct}%`}
+      >
+        <div className="absolute inset-3 flex items-center justify-center rounded-full bg-card">
+          <span className="text-3xl font-bold tracking-tight">{pct}%</span>
+        </div>
+      </div>
+      <p className="mt-5 text-center font-semibold leading-snug">{label}</p>
+      <p className="mt-1 text-center text-xs leading-snug text-muted-foreground">{detail}</p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Composition bars                                                          */
+/* -------------------------------------------------------------------------- */
+
+export function CompositionBars({
+  rows,
+}: {
+  rows: { label: string; n: number }[];
+}) {
+  const max = Math.max(...rows.map((r) => r.n));
+  const total = rows.reduce((a, r) => a + r.n, 0);
+  return (
+    <div className="space-y-3">
+      {rows.map((r, i) => (
+        <div key={r.label} className="grid grid-cols-[8.5rem_1fr_4.5rem] items-center gap-3 text-sm sm:grid-cols-[11rem_1fr_5rem]">
+          <span className="truncate opacity-75">{r.label}</span>
+          <div className="h-3 overflow-hidden rounded-full bg-white/15">
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: `${Math.max((r.n / max) * 100, 1.5)}%`,
+                background: i === 0 ? "#6366f1" : "#2dd4bf",
+              }}
+            />
+          </div>
+          <span className="text-right font-semibold tabular-nums">
+            {r.n.toLocaleString("en-US")}
+            <span className="ml-1 text-xs font-normal opacity-60">
+              {Math.round((r.n / total) * 100)}%
+            </span>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Obsidian-style note window (illustrative content)                         */
+/* -------------------------------------------------------------------------- */
+
+const tree: [number, string, boolean?][] = [
+  [0, "product", true],
+  [1, "product-a", true],
+  [2, "features-and-functionality", true],
+  [3, "workflows-and-ui"],
+  [3, "configuration"],
+  [3, "index.md"],
+  [2, "customer-questions"],
+  [2, "product-use-cases"],
+  [2, "demo-use-cases"],
+  [2, "personas"],
+  [2, "competitors"],
+  [2, "roadmap-references"],
+  [2, "memory"],
+  [1, "product-b"],
+  [1, "platform"],
+  [0, "product-management"],
+  [0, "governance"],
+  [0, "proposals"],
+];
+
+export function ObsidianMock() {
+  return (
+    <WindowFrame title="Product Knowledge: Obsidian vault (illustrative content)">
+      <div className="grid min-h-[26rem] lg:grid-cols-[14rem_1fr_13rem]">
+        <aside className="hidden border-r bg-muted/30 p-4 text-[13px] lg:block">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Files</p>
+          <ul className="space-y-1">
+            {tree.map(([d, name, open], i) => (
+              <li
+                key={i}
+                style={{ paddingLeft: d * 12 }}
+                className={cn("truncate", name === "workflows-and-ui" ? "rounded bg-indigo-500/15 px-1 text-indigo-600 dark:text-indigo-300" : "text-muted-foreground")}
+              >
+                {name.endsWith(".md") ? "▫ " : open ? "▾ " : "▸ "}
+                {name}
+              </li>
+            ))}
+          </ul>
+        </aside>
+
+        <div className="p-5 sm:p-8">
+          <p className="text-xs text-muted-foreground">product / product-a / features-and-functionality / workflows-and-ui</p>
+          <h4 className="mt-3 text-2xl font-bold tracking-tight">Approval workflows</h4>
+          <div className="mt-4 rounded-xl border bg-muted/40 p-4 font-mono text-[12.5px] leading-relaxed">
+            <p><span className="text-teal-600 dark:text-teal-300">type:</span> Feature</p>
+            <p><span className="text-teal-600 dark:text-teal-300">status:</span> draft <span className="text-muted-foreground"># draft | in_review | approved</span></p>
+            <p><span className="text-teal-600 dark:text-teal-300">owners:</span> [product-a owner]</p>
+            <p><span className="text-teal-600 dark:text-teal-300">release:</span> &lt;release name&gt;</p>
+            <p><span className="text-teal-600 dark:text-teal-300">source_links:</span> {"{ tickets, wiki, design }"}</p>
+            <p><span className="text-teal-600 dark:text-teal-300">known_gaps:</span> [SOURCE_LINK_REQUIRED]</p>
+          </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            What the capability does, who it is for and how it is configured,
+            written from the cited sources. Anything not yet sourced stays a
+            marked gap.
+          </p>
+          <p className="mt-5 text-sm font-semibold">Citations</p>
+          <ol className="mt-2 space-y-1 text-sm text-indigo-600 underline-offset-4 dark:text-indigo-300">
+            <li className="underline">[1] Specification page</li>
+            <li className="underline">[2] Ticket</li>
+            <li className="underline">[3] Design frame</li>
+          </ol>
+        </div>
+
+        <aside className="hidden border-l bg-muted/30 p-4 text-[13px] lg:block">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Linked notes</p>
+          <ul className="space-y-2 text-muted-foreground">
+            <li>↩ Use case: approving a change</li>
+            <li>↩ Demo script: approval flow</li>
+            <li>↩ Questionnaire answer: approvals</li>
+            <li>→ Persona: area administrator</li>
+          </ul>
+          <p className="mb-2 mt-6 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Tags</p>
+          <div className="flex flex-wrap gap-1.5">
+            {["feature", "draft", "release-tagged"].map((t) => (
+              <span key={t} className="rounded-full bg-indigo-500/15 px-2 py-0.5 text-[11px] text-indigo-600 dark:text-indigo-300">#{t}</span>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </WindowFrame>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  GitHub branches view (anonymised recreation)                              */
+/* -------------------------------------------------------------------------- */
+
+const branches: { b: string; age: string; check: "pass" | "fail" | "none"; pr: string }[] = [
+  { b: "pm-a/update-feature-notes", age: "5 hours ago", check: "pass", pr: "#36" },
+  { b: "pm-b/new-sales-input", age: "yesterday", check: "pass", pr: "#35" },
+  { b: "pm-c/ownership-guard", age: "last week", check: "none", pr: "#28" },
+  { b: "pm-a/product-gap-analysis", age: "last week", check: "pass", pr: "#15" },
+  { b: "pm-d/roadmap-notes", age: "last week", check: "pass", pr: "#23" },
+  { b: "pm-a/ai-overview", age: "last month", check: "pass", pr: "#20" },
+  { b: "proposal/competitor-source-profile", age: "3 months ago", check: "pass", pr: "#7" },
+  { b: "proposal/fix-ownership-gate", age: "3 months ago", check: "fail", pr: "#10" },
+  { b: "feature/external-messaging-guardrails", age: "3 months ago", check: "fail", pr: "#8" },
+  { b: "proposal/governance-followups", age: "3 months ago", check: "pass", pr: "#6" },
+];
+
+export function BranchesPanel() {
+  return (
+    <WindowFrame title="github.com / shared repository / branches (anonymised recreation)">
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[34rem] text-left text-sm">
+          <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
+            <tr>
+              <th className="px-5 py-3 font-medium">Branch</th>
+              <th className="px-3 py-3 font-medium">Updated</th>
+              <th className="px-3 py-3 font-medium">Check</th>
+              <th className="px-5 py-3 font-medium">Pull request</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y">
+            <tr>
+              <td className="px-5 py-3 font-mono text-[13px]"><span className="rounded-md bg-indigo-500/15 px-2 py-0.5 text-indigo-600 dark:text-indigo-300">master</span> <span className="ml-2 rounded-full border px-2 py-0.5 text-[11px] text-muted-foreground">default · protected</span></td>
+              <td className="px-3 py-3 text-muted-foreground">2 days ago</td>
+              <td className="px-3 py-3 text-muted-foreground">-</td>
+              <td className="px-5 py-3 text-muted-foreground">-</td>
+            </tr>
+            {branches.map((r) => (
+              <tr key={r.b}>
+                <td className="px-5 py-3 font-mono text-[13px]">
+                  <span className="rounded-md bg-sky-500/10 px-2 py-0.5 text-sky-700 dark:text-sky-300">{r.b}</span>
+                </td>
+                <td className="px-3 py-3 text-muted-foreground">{r.age}</td>
+                <td className="px-3 py-3">
+                  {r.check === "pass" && <span className="text-emerald-600 dark:text-emerald-400">✓ 1/1</span>}
+                  {r.check === "fail" && <span className="text-red-600 dark:text-red-400">✗ 0/1</span>}
+                  {r.check === "none" && <span className="text-muted-foreground">-</span>}
+                </td>
+                <td className="px-5 py-3 text-muted-foreground">{r.pr}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </WindowFrame>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Design principles                                                         */
+/* -------------------------------------------------------------------------- */
+
+export function PrincipleCard({
+  n,
+  title,
+  how,
+  prevents,
+}: {
+  n: number;
+  title: string;
+  how: string;
+  prevents: string;
+}) {
+  return (
+    <div className="flex flex-col rounded-3xl border bg-card p-5 text-card-foreground sm:p-6">
+      <p className="text-sm font-semibold text-indigo-500">{String(n).padStart(2, "0")}</p>
+      <h3 className="mt-2 text-lg font-semibold leading-snug">{title}</h3>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{how}</p>
+      <p className="mt-4 border-t pt-3 text-xs font-medium">
+        Designed against: <span className="text-muted-foreground">{prevents}</span>
+      </p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Automation map                                                            */
+/* -------------------------------------------------------------------------- */
+
+export type AutomationRow = {
+  activity: string;
+  encoded: string;
+  how: string;
+  level: "live" | "designed" | "next" | "neutral";
+  levelLabel: string;
+  who: string;
+};
+
+export function AutomationMap({ rows }: { rows: AutomationRow[] }) {
+  return (
+    <div className="space-y-3">
+      {rows.map((r) => (
+        <div
+          key={r.activity}
+          className={cn(
+            "grid gap-4 rounded-3xl border bg-card p-5 text-card-foreground sm:p-6 lg:grid-cols-[13rem_1.3fr_1.1fr_12rem] lg:items-start lg:gap-6",
+            r.level === "neutral" && "border-dashed bg-muted/40"
+          )}
+        >
+          <div>
+            <p className="text-lg font-semibold leading-snug">{r.activity}</p>
+            <p className="mt-1 text-xs text-muted-foreground">For: {r.who}</p>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">What is encoded</p>
+            <p className="mt-1 text-sm leading-relaxed">{r.encoded}</p>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">How it runs</p>
+            <p className="mt-1 text-sm leading-relaxed">{r.how}</p>
+          </div>
+          <div className="lg:text-right">
+            <Chip tone={r.level}>{r.levelLabel}</Chip>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

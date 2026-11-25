@@ -351,11 +351,11 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Product Knowledge: the groundwork for AI-led delivery",
+      title: "Automating Product Management with a knowledge base and agents",
       href: "/work/product-knowledge",
       active: true,
       description:
-        "Built a governed, cited product knowledge base that matches direction, market and customer evidence against technical knowledge to write clearer PRDs, with benchmarks, an audit and a measurement plan.",
+        "Built a governed, cited knowledge base and agents that automate the assembly work of product management, and give developers in an AI-led SDLC clearer PRDs.",
       image: "/ProductKnowledge.png",
     },
     {
