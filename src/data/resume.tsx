@@ -351,11 +351,11 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Automating Product Management with a knowledge base and agents",
+      title: "Product Knowledge Base: the foundation for AI-native product management",
       href: "/work/product-knowledge",
       active: true,
       description:
-        "Built a governed, cited knowledge base and agents that automate the assembly work of product management, and give developers in an AI-led SDLC clearer PRDs.",
+        "A first step towards AI-native product management: a governed, cited knowledge base and agents that automate PM assembly work and give an AI-led SDLC clearer PRDs.",
       image: "/ProductKnowledge.png",
     },
     {

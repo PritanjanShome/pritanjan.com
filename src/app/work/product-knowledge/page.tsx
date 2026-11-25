@@ -42,12 +42,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 const title =
-  "Automating Product Management with a cited knowledge base and agents";
+  "Product Knowledge Base: the foundation for AI-native product management that scales an AI-led SDLC";
 const description =
-  "How I built a governed, cited knowledge base and an agent layer that automate the assembly work of product management, and give developers in an AI-led SDLC clearer PRDs. What is automated, what is not, and how I would measure it.";
+  "A first step towards AI-native product management: a governed, cited Product Knowledge Base and an agent layer that automate the assembly work of PM, and give developers in an AI-led SDLC clearer PRDs. What is automated, what is not, and how I would measure it";
 
 export const metadata: Metadata = {
-  title: "Automating Product Management with a Knowledge Base and Agents",
+  title: "Product Knowledge Base: a Foundation for AI-Native Product Management",
   description,
   openGraph: {
     title,
@@ -485,13 +485,13 @@ export default function ProductKnowledgeCaseStudy() {
             Case study · AI-native product management
           </p>
           <H1 className="mt-6 max-w-5xl">
-            Automating Product Management with a cited knowledge base and agents
+            Product Knowledge Base: the foundation for AI-native product management that scales an AI-led SDLC
           </H1>
           <p className="mt-6 max-w-3xl text-xl text-white/75 sm:text-2xl">
-            How I turned the working practices of a product team, roadmaps,
-            release planning, market research, questionnaires and PRDs, into a
-            governed knowledge base plus agents, and what that gives developers
-            building in an AI-led SDLC.
+            A first step towards an AI-native product organisation. How I
+            turned the working practices of a product team into a governed,
+            cited knowledge base plus agents, what it already automates, and
+            what it gives developers building in an AI-led SDLC.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
